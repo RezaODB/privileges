@@ -5,6 +5,13 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/theory', [PageController::class, 'theory'])->name('theory');
+Route::get('/info', [PageController::class, 'info'])->name('info');
+Route::get('/stats', [PageController::class, 'stats'])->name('stats');
+Route::get('/id', [PageController::class, 'id'])->name('id');
+Route::get('/quotas', [PageController::class, 'quotas'])->name('quotas');
+Route::get('/brochure', [PageController::class, 'brochure'])->name('brochure');
+Route::get('/vote', [PageController::class, 'vote'])->name('vote');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

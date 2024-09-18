@@ -8,17 +8,22 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            <header></header>
-            <main>@yield('content')</main>
-            <footer></footer>
+        <div class="min-h-screen bg-orange-100 relative">
+            <img src="{{ asset('texture.png') }}" class="absolute w-full h-full opacity-20">
+            <header class="relative">
+                @include('includes.header')
+            </header>
+            <main class="relative">
+                @yield('content')
+            </main>
         </div>
     </body>
 </html>

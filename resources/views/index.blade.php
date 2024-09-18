@@ -11,7 +11,7 @@
                 <h3 class="text-xl">Étude socio-artistique</h3>
                 <h3 class="text-xl mt-2">Barbara Iweins</h3>
             </div>
-            <h3 class="p-4 text-xl mt-2">2024/205</h3>
+            <h3 class="p-4 text-xl mt-2">2024/2025</h3>
         </div>
     </div>
 </section>

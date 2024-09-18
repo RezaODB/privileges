@@ -1,5 +1,5 @@
 <div class="bg-gray-100 h-px"></div>
-<nav class="font-mono uppercase font-bold text-sm grid grid-cols-8">
+<nav class="font-mono uppercase font-bold text-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
     <a href="{{ route('index') }}" class="
         @switch(Route::currentRouteName())
         @case('index') pt-3 pl-3 pr-2 rounded-tr-md bg-gradient-to-bl from-orange-950/20 via-transparent opacity-80 @break

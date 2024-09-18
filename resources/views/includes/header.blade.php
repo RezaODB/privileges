@@ -1,4 +1,3 @@
-<div class="bg-gray-100 h-px"></div>
 <nav class="font-mono uppercase font-bold text-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
     <a href="{{ route('index') }}" class="
         @switch(Route::currentRouteName())
@@ -6,7 +5,7 @@
         @case('theory') pt-3 pl-3 pr-2 rounded-tr-md rounded-br-xl bg-gradient-to-tl from-orange-950/40 via-orange-950/20 opacity-60 hover:opacity-80 @break
         @default pt-3 pl-3 pr-2 rounded-tr-md bg-gradient-to-tl from-transparent via-orange-950/20 to-orange-950/20 opacity-60 hover:opacity-80 @endswitch
         ">
-        Dossier n° X/250
+        Dossier n° x/250
     </a>
     <a href="{{ route('theory') }}" class="
         @switch(Route::currentRouteName())

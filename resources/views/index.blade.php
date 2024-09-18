@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="max-w-screen-xl mx-auto px-2 border-b-2 border-black py-24 flex justify-end">
+<section class="max-w-screen-xl mx-auto px-2 border-b-2 border-black py-12 sm:py-24 flex justify-center sm:justify-end">
     <div class="uppercase font-medium border-2 border-black">
         <h1 class="text-3xl p-2 text-center">Les privilèges invisibles</h1>
         <h2 class="text-6xl text-center p-4 border-y-2 border-black"><span class="text-3xl">N°</span> x /250</h2>

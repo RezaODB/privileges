@@ -15,7 +15,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased m-4 bg-gray-100 shadow-2xl">
         <div class="min-h-screen bg-orange-100 relative">
             <img src="{{ asset('texture.png') }}" class="absolute w-full h-full opacity-20">
             <header class="relative">

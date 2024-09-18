@@ -12,6 +12,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
                 mono: ['Special Elite', ...defaultTheme.fontFamily.mono]
             },
         },

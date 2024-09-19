@@ -13,9 +13,7 @@ Route::get('/quotas', [PageController::class, 'quotas'])->name('quotas');
 Route::get('/brochure', [PageController::class, 'brochure'])->name('brochure');
 Route::get('/vote', [PageController::class, 'vote'])->name('vote');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [PageController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -2,8 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+
 class PageController extends Controller
 {
+    public function dashboard()
+    {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+        
+        return view('dashboard');
+    }
+
     public function index()
     {
         return view('index');

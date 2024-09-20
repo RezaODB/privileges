@@ -13,7 +13,7 @@
         </button>
         <div class="py-8" x-show="open === {{ $loop->index }}" x-transition.duration.500ms>
             <h1 class="uppercase text-4xl sm:text-5xl lg:text-7xl font-medium mb-8">{{ $item->title }}</h1>
-            <div class="prose font-serif marker:text-black columns-md max-w-none [column-rule:solid] gap-16 prose-h2:border-b-4 prose-h2:border-black prose-h2:font-sans prose-h3:font-sans prose-h3:font-normal">{!! $item->body !!}</div>
+            <div class="prose font-serif marker:text-black columns-lg max-w-none [column-rule:solid] gap-16 prose-h2:border-b-4 prose-h2:border-black prose-h2:font-sans prose-h3:font-sans prose-h3:font-normal">{!! $item->body !!}</div>
         </div>
     </div>
     @endforeach

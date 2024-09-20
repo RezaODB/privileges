@@ -5,7 +5,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="divide-y">
                         @foreach ($users as $item)
-                            <div class="py-1">{{ $item->name . ' ' . $item->lastname }}</div>
+                            <div class="flex gap-4 items-center p-1 hover:bg-gray-100">{{ $item->name . ' ' . $item->lastname }}</div>
                         @endforeach
                     </div>
                 </div>

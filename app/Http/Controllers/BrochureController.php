@@ -31,12 +31,14 @@ class BrochureController extends Controller
     {
         request()->validate([
             'lang' => ['required', 'string', 'max:255'],
+            'category' => ['required', 'string', 'max:255'],
             'title' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
         ]);
 
         Brochure::create([
             'lang' => request('lang'),
+            'category' => request('category'),
             'title' => request('title'),
             'body' => request('body'),
             'order' => Brochure::count()
@@ -49,6 +51,7 @@ class BrochureController extends Controller
     {
         $data = request()->validate([
             'lang' => ['sometimes', 'required', 'string', 'max:255'],
+            'category' => ['sometimes', 'required', 'string', 'max:255'],
             'title' => ['sometimes', 'required', 'string', 'max:255'],
             'body' => ['sometimes', 'required', 'string', 'max:255'],
             'order' => ['sometimes', 'required', 'integer'],

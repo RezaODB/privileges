@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('lang');
             $table->string('title');
+            $table->string('category');
             $table->text('body');
             $table->unsignedInteger('order');
             $table->timestamps();

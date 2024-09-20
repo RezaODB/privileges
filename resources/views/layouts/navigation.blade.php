@@ -16,6 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">Participants</x-nav-link>
+                    <x-nav-link :href="route('brochures.index')" :active="request()->routeIs('brochures.index')">Brochure Loterie Sociale</x-nav-link>
                 </div>
             </div>
 
@@ -72,6 +73,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">Participants</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('brochures.index')" :active="request()->routeIs('brochures.index')">Brochure Loterie Sociale</x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

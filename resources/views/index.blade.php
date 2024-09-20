@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="max-w-screen-xl mx-auto px-2 border-b-2 border-black py-12 sm:py-24 grid sm:grid-cols-2 gap-8 items-start">
+<section class="sm:px-4 border-b-2 border-black py-12 sm:py-24 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
     @guest
     @if (request()->query('login') === 'yes')
     <form action="{{ route('login') }}" method="post" class="grid grid-cols-1 gap-4 font-mono max-w-md">

@@ -15,13 +15,13 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-orange-100 relative">
+    <body class="font-sans antialiased bg-gray-100">
+        <div class="min-h-screen max-w-screen-2xl my-4 mx-auto bg-orange-100 shadow-2xl relative">
             <img src="{{ asset('texture.png') }}" class="absolute w-full h-full opacity-20">
             <header class="relative">
                 @include('includes.header')
             </header>
-            <main class="relative">
+            <main class="relative px-4">
                 @yield('content')
             </main>
         </div>

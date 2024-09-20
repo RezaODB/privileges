@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brochure;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
@@ -46,7 +47,9 @@ class PageController extends Controller
     
     public function brochure()
     {
-        return view('brochure');
+        return view('brochure', [
+            'brochures' => Brochure::where('lang', app()->getLocale())->orderBy('order')->get()
+        ]);
     }
     
     public function vote()

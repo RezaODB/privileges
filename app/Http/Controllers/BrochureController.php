@@ -53,7 +53,7 @@ class BrochureController extends Controller
             'lang' => ['sometimes', 'required', 'string', 'max:255'],
             'category' => ['sometimes', 'required', 'string', 'max:255'],
             'title' => ['sometimes', 'required', 'string', 'max:255'],
-            'body' => ['sometimes', 'required', 'string', 'max:255'],
+            'body' => ['sometimes', 'required', 'string'],
             'order' => ['sometimes', 'required', 'integer'],
         ]);
 

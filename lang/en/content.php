@@ -8,6 +8,8 @@ return [
     'sign_in' => 'Sign in',
     'sign_out' => 'Sign out',
     'create_account' => 'Create account',
-    'already_registered' => 'Already have an account?'
+    'already_registered' => 'Already have an account?',
+    'true' => 'True',
+    'false' => 'False'
 
 ];

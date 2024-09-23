@@ -51,7 +51,7 @@ class BrochureController extends Controller
             'category' => request('category'),
             'title' => request('title'),
             'body' => request('body'),
-            'order' => Brochure::count()
+            'order' => Brochure::count() + 1
         ]);
 
         return redirect()->route('brochures.index');

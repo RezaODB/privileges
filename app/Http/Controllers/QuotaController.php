@@ -47,7 +47,7 @@ class QuotaController extends Controller
         Quota::create([
             'question_fr' => request('question_fr'),
             'question_en' => request('question_en'),
-            'order' => Quota::count()
+            'order' => Quota::count() + 1
         ]);
 
         return redirect()->route('quotas.index');

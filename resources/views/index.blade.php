@@ -12,7 +12,7 @@
         <input type="password" name="password" id="password" placeholder="Mot de passe" class="border-none w-full focus:ring-0" required>
         @error('password')<div class="text-red-500">{{ $message }}</div>@enderror
         <input type="hidden" name="remember" value="yes">
-        <div class="flex gap-4 items-center">
+        <div class="flex gap-4 items-center mt-4">
             <button type="submit" class="bg-black text-white py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
             <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a>
         </div>
@@ -30,7 +30,7 @@
         @error('password')<div class="text-red-500">{{ $message }}</div>@enderror
         <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirmer le mot de passe" class="border-none w-full focus:ring-0" required>
         @error('password_confirmation')<div class="text-red-500">{{ $message }}</div>@enderror
-        <div class="flex gap-4 items-center">
+        <div class="flex gap-4 items-center mt-4">
             <button type="submit" class="bg-black text-white py-2 px-4 uppercase">{{ __('content.create_account') }}</button>
             <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>
         </div>

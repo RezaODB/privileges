@@ -14,6 +14,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body class="font-sans antialiased bg-gray-100">
         <div class="min-h-screen max-w-screen-2xl my-4 mx-auto bg-orange-100 shadow-2xl relative">
@@ -25,5 +26,6 @@
                 @yield('content')
             </main>
         </div>
+        @livewireScripts
     </body>
 </html>

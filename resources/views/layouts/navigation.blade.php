@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
@@ -16,6 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">Participants</x-nav-link>
+                    <x-nav-link :href="route('quotas.index')" :active="request()->routeIs('quotas.index')">Formulaire quotas privilèges</x-nav-link>
                     <x-nav-link :href="route('brochures.index')" :active="request()->routeIs('brochures.index')">Brochure Loterie Sociale</x-nav-link>
                 </div>
             </div>
@@ -73,6 +74,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">Participants</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('quotas.index')" :active="request()->routeIs('quotas.index')">Formulaire quotas privilèges</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('brochures.index')" :active="request()->routeIs('brochures.index')">Brochure Loterie Sociale</x-responsive-nav-link>
         </div>
 

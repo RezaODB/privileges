@@ -4,7 +4,7 @@
     <a href="{{ route('info') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'info' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Intro pratique</a>
     <a href="{{ route('stats') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'stats' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Statistiques discriminations</a>
     <a href="{{ route('id') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'id' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Formulaire I.D.</a>
-    <a href="{{ route('quotas') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'quotas' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Formulaire quotas privilèges</a>
+    <a href="{{ route('quota') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'quotas' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Formulaire quotas privilèges</a>
     <a href="{{ route('brochure') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'brochure' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Brochure loterie sociale</a>
     <a href="{{ route('vote') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'vote' ? '' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Formulaire vote final</a>
 </nav>

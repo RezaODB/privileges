@@ -14,7 +14,8 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
-                mono: ['Special Elite', ...defaultTheme.fontFamily.mono]
+                mono: ['Special Elite', ...defaultTheme.fontFamily.mono],
+                print: ['Cutive Mono', ...defaultTheme.fontFamily.mono],
             },
         },
     },

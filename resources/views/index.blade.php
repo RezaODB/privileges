@@ -13,8 +13,8 @@
         @error('password')<div class="text-red-500">{{ $message }}</div>@enderror
         <input type="hidden" name="remember" value="yes">
         <div class="flex gap-4 items-center">
-            <button type="submit" class="bg-black text-white py-2 px-4 uppercase">Se connecter</button>
-            <a href="{{ route('index', ['login' => 'no']) }}" class="underline">S'inscrire?</a>
+            <button type="submit" class="bg-black text-white py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
+            <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a>
         </div>
     </form>    
     @else
@@ -31,8 +31,8 @@
         <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirmer le mot de passe" class="border-none w-full focus:ring-0" required>
         @error('password_confirmation')<div class="text-red-500">{{ $message }}</div>@enderror
         <div class="flex gap-4 items-center">
-            <button type="submit" class="bg-black text-white py-2 px-4 uppercase">Soumettre</button>
-            <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">Déjà inscrit?</a>
+            <button type="submit" class="bg-black text-white py-2 px-4 uppercase">{{ __('content.create_account') }}</button>
+            <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>
         </div>
     </form>   
     @endif
@@ -45,7 +45,7 @@
         <li>
             <form action="{{ route('logout') }}" method="post">
                 @csrf
-                <button class="underline mt-4">Me déconnecter</button>    
+                <button class="underline mt-4">{{ __('content.sign_out') }}</button>    
             </form> 
         </li>
     </ul>   

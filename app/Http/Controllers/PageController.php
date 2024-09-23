@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brochure;
+use App\Models\Quota;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
@@ -42,7 +43,9 @@ class PageController extends Controller
     
     public function quotas()
     {
-        return view('quotas');
+        return view('quota', [
+            'quotas' => Quota::orderBy('order')->get()
+        ]);
     }
     
     public function brochure()

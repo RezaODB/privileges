@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Brochure;
+use Illuminate\Support\Facades\Gate;
 
 class BrochureController extends Controller
 {
     public function index()
     {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+        
         return view('brochures.index', [
             'brochures' => Brochure::orderBy('order')->get()
         ]);
@@ -15,6 +19,8 @@ class BrochureController extends Controller
 
     public function create()
     {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+        
         return view('brochures.create', [
             'brochure' => new Brochure
         ]);
@@ -22,6 +28,8 @@ class BrochureController extends Controller
 
     public function edit(Brochure $brochure)
     {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+        
         return view('brochures.edit', [
             'brochure' => $brochure
         ]);
@@ -29,6 +37,8 @@ class BrochureController extends Controller
 
     public function store()
     {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+        
         request()->validate([
             'lang' => ['required', 'string', 'max:255'],
             'category' => ['required', 'string', 'max:255'],
@@ -49,6 +59,8 @@ class BrochureController extends Controller
 
     public function update(Brochure $brochure)
     {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+        
         $data = request()->validate([
             'lang' => ['sometimes', 'required', 'string', 'max:255'],
             'category' => ['sometimes', 'required', 'string', 'max:255'],
@@ -64,6 +76,8 @@ class BrochureController extends Controller
 
     public function destroy(Brochure $brochure)
     {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+        
         $brochure->delete();
 
         return redirect()->back();

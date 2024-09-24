@@ -16,7 +16,7 @@
         <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
         <script>
             tinymce.init({
-                selector: 'textarea',
+                selector: '.editor',
                 plugins: 'link lists paste',
                 toolbar: 'h2 h3 bold italic numlist bullist link',
                 menubar: false,

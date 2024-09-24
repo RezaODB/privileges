@@ -12,7 +12,7 @@
     <input type="text" name="title" placeholder="Title" value="{{ old('title') ?? $brochure->title }}" class="border-gray-200 shadow rounded-md" required>
     @error('title')<div class="text-red-500">{{ $message }}</div>@enderror
 
-    <textarea name="body">{{ old('body') ?? $brochure->body }}</textarea>
+    <textarea name="body" class="editor">{{ old('body') ?? $brochure->body }}</textarea>
     @error('body')<div class="text-red-500">{{ $message }}</div>@enderror
 
     <button type="submit" class="px-4 py-2 bg-green-600 rounded-md text-white justify-self-start">Submit</button>

@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Quota;
-use App\Models\Brochure;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class PageController extends Controller
@@ -22,41 +19,39 @@ class PageController extends Controller
         return view('index');
     }
     
-    public function theory()
+    public function policy()
     {
-        return view('theory');
+        return view('policy');
     }
     
-    public function info()
+    public function step1()
     {
-        return view('info');
+        return view('step1');
+    }
+
+    public function step2()
+    {
+        return view('step2');
+    }
+
+    public function step3()
+    {
+        return view('step3');
+    }
+
+    public function step4()
+    {
+        return view('step4');
+    }
+
+    public function step5()
+    {
+        return view('step5');
     }
     
-    public function stats()
+    public function step6()
     {
-        return view('stats');
-    }
-    
-    public function id()
-    {
-        return view('id');
-    }
-    
-    public function quotas()
-    {
-        return view('quota');
-    }
-    
-    public function brochure()
-    {
-        return view('brochure', [
-            'brochures' => Brochure::where('lang', app()->getLocale())->orderBy('order')->get()
-        ]);
-    }
-    
-    public function vote()
-    {
-        return view('vote');
+        return view('step6');
     }
 
 }

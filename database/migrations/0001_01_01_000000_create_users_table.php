@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('lastname');
+            $table->date('birthday');
+            $table->string('birthplace');
+            $table->string('sex');
             $table->unsignedInteger('role');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

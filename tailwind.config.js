@@ -13,12 +13,15 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans],
-                mono: ['Special Elite', ...defaultTheme.fontFamily.mono],
-                print: ['Cutive Mono', ...defaultTheme.fontFamily.mono],
+                sans: ['Mulish', ...defaultTheme.fontFamily.sans],
+                serif: ['Young Serif', ...defaultTheme.fontFamily.serif],
+                title: ['Bebas Neue', ...defaultTheme.fontFamily.sans],
+                mono: ['Courier Prime', ...defaultTheme.fontFamily.mono],
             },
         },
     },
 
     plugins: [forms, typo],
 };
+
+

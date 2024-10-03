@@ -1,10 +1,11 @@
-<nav class="font-mono uppercase font-bold text-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 overflow-hidden">
-    <a href="{{ route('index') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'index' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Participant {{ Auth::id() ?? 'x' }}/250</a>
-    <a href="{{ route('theory') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'theory' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Intro théorique</a>
-    <a href="{{ route('info') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'info' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Intro pratique</a>
-    <a href="{{ route('stats') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'stats' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Statistiques discriminations</a>
-    <a href="{{ route('id') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'id' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Formulaire I.D.</a>
-    <a href="{{ route('quota') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'quota' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Formulaire quotas privilèges</a>
-    <a href="{{ route('brochure') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'brochure' ? 'shadow-[3px_0_3px_rgb(0,0,0,0.3)]' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Brochure loterie sociale</a>
-    <a href="{{ route('vote') }}" class="p-3 sm:pb-0 duration-150 hover:opacity-100 {{ Route::currentRouteName() === 'vote' ? '' : 'opacity-60 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)]' }}">Formulaire vote final</a>
-</nav>
+<header>
+    <nav class="font-mono uppercase text-sm grid grid-cols-1 md:grid-cols-7 overflow-hidden">
+        <a href="{{ route('index') }}" class="p-3 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:underline {{ Route::currentRouteName() === 'index' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">Participant {{ Auth::id() ?? 'x' }}/250</a>
+        <a href="{{ route('step1') }}" class="p-3 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:underline {{ Route::currentRouteName() === 'step1' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{{ __('content.step1') }}</a>
+        <a href="{{ route('step2') }}" class="p-3 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:underline {{ Route::currentRouteName() === 'step2' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{{ __('content.step2') }}</a>
+        <a href="{{ route('step3') }}" class="p-3 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:underline {{ Route::currentRouteName() === 'step3' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{{ __('content.step3') }}</a>
+        <a href="{{ route('step4') }}" class="p-3 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:underline {{ Route::currentRouteName() === 'step4' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{{ __('content.step4') }}</a>
+        <a href="{{ route('step5') }}" class="p-3 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:underline {{ Route::currentRouteName() === 'step5' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{{ __('content.step5') }}</a>
+        <a href="{{ route('step6') }}" class="p-3 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:underline {{ Route::currentRouteName() === 'step6' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{{ __('content.step6') }}</a>
+    </nav>
+</header>

@@ -23,7 +23,7 @@
 
     @guest
     @if (request()->query('login') === 'yes')
-    <form action="{{ route('login') }}" method="post" class="grid grid-cols-1 gap-2 bg-orange-200/50 p-4">
+    <form action="{{ route('login') }}" method="post" class="grid grid-cols-1 gap-2 bg-white/30 p-8">
         @csrf
         <div>
             <label for="email" class="uppercase text-sm font-bold">Email</label>
@@ -38,11 +38,11 @@
         <input type="hidden" name="remember" value="yes">
         <div class="flex gap-4 items-center mt-4">
             <button type="submit" class="bg-black text-white py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
-            <a href="{{ route('index', ['login' => 'no']) }}" class="underline font-mono">{{ __('content.create_account') }}</a>
+            <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a>
         </div>
     </form>    
     @else
-    <form action="{{ route('register') }}" method="post" class="grid grid-cols-1 gap-2 bg-orange-200/50 p-4">
+    <form action="{{ route('register') }}" method="post" class="grid grid-cols-1 gap-2 p-8 bg-white/30">
         @csrf
         <div>
             <label for="lastname" class="uppercase text-sm font-bold">{{ __('content.lastname') }}</label>
@@ -68,11 +68,11 @@
             <label class="uppercase text-sm font-bold">{{ __('content.sex') }}</label>
             <div class="flex gap-2 mt-2 items-center">
                 <input type="radio" id="male" name="sex" value="male" class="border-none rounded-none focus:ring-0 text-black checked:bg-none" {{ old('sex') === 'male' ? 'checked' : '' }} required>
-                <label for="male" class="font-mono mr-2">{{ __('content.male') }}</label>
+                <label for="male" class="mr-2">{{ __('content.male') }}</label>
                 <input type="radio" id="female" name="sex" value="female" class="border-none rounded-none focus:ring-0 text-black checked:bg-none" {{ old('sex') === 'female' ? 'checked' : '' }} required>
-                <label for="female" class="font-mono mr-2">{{ __('content.female') }}</label>
+                <label for="female" class="mr-2">{{ __('content.female') }}</label>
                 <input type="radio" id="other" name="sex" value="other" class="border-none rounded-none focus:ring-0 text-black checked:bg-none" {{ old('sex') === 'other' ? 'checked' : '' }} required>
-                <label for="other" class="font-mono mr-2">{{ __('content.other') }}</label>
+                <label for="other" class="mr-2">{{ __('content.other') }}</label>
             </div>
             @error('sex')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
         </div>
@@ -91,9 +91,9 @@
             <input type="password" name="password_confirmation" id="password_confirmation" class="border-none w-full focus:ring-0 font-mono" required autocomplete="new-password">
             @error('password_confirmation')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
         </div>
-        <div class="flex gap-4 mt-2 items-start">
+        <div class="flex gap-4 mt-2 items-center">
             <input type="checkbox" name="policy" id="policy" class="border-none focus:ring-0 text-black checked:bg-none">
-            <label for="policy" class="font-mono">
+            <label for="policy">
                 @if (app()->isLocale('fr'))
                     Je déclare avoir lu et approuvé les <a href="{{ route('policy') }}" class="underline">conditions d'utilisation</a> du site.
                 @else
@@ -104,7 +104,7 @@
         @error('policy')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
         <div class="flex gap-4 items-center mt-4">
             <button type="submit" class="bg-black text-white py-2 px-4 uppercase">{{ __('content.create_account') }}</button>
-            <a href="{{ route('index', ['login' => 'yes']) }}" class="underline font-mono">{{ __('content.already_registered') }}</a>
+            <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>
         </div>
     </form>   
     @endif

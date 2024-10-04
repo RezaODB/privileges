@@ -33,7 +33,7 @@
                                         </button>
                                     </form>
                                 </div>
-                                <span class="bg-green-100 text-green-600 font-bold px-2 whitespace-nowrap rounded">{{ $item->category }}</span>
+                                <span class="bg-green-100 text-green-600 uppercase font-bold px-2 whitespace-nowrap rounded">{{ $item->category }}</span>
                                 <a href="{{ route('quotas.edit', $item) }}" class="text-blue-600 hover:underline">{{ Str::limit($item->question_fr, 100, '...') }}</a>
                                 <form action="{{ route('quotas.destroy', $item) }}" method="post" class="ml-auto">
                                     @csrf

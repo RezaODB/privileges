@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brochure;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
@@ -36,7 +37,9 @@ class PageController extends Controller
 
     public function step3()
     {
-        return view('step3');
+        return view('step3', [
+            'brochures' => Brochure::orderBy('order')->where('lang', app()->getLocale())->get()
+        ]);
     }
 
     public function step4()

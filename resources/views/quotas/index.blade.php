@@ -10,6 +10,7 @@
                     <div class="divide-y">
                         @foreach ($quotas as $item)
                             <div class="flex gap-4 items-center p-1 hover:bg-gray-100">
+                                <span class="font-bold text-gray-600">{{ $loop->iteration }}</span>
                                 <form action="{{ route('quotas.update', $item) }}" method="post">
                                     @csrf
                                     @method('patch')

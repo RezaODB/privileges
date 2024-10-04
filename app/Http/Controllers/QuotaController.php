@@ -79,4 +79,32 @@ class QuotaController extends Controller
 
         return redirect()->back();
     }
+
+    public function export()
+    {
+        $data = quota::orderBy('order')->get();
+        $handle = fopen(storage_path('app/public/questions.csv'), 'w');
+
+        fputcsv($handle, [
+            "#",
+            "Catégorie",
+            "Question FR",
+            "Question EN",
+        ], ';');
+
+        $key = 0;
+
+        foreach ($data as $row) {
+            $key += 1;
+	        fputcsv($handle, [
+                $key,
+                $row->category,
+                $row->question_fr,
+                $row->question_en,
+            ], ';');
+        }
+
+        fclose($handle);
+        return response()->download(storage_path('app/public/questions.csv'));
+    }
 }

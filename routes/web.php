@@ -20,8 +20,9 @@ Route::get('/step6', [PageController::class, 'step6'])->name('step6');
 // BACK
 Route::get('/dashboard', [PageController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 Route::get('/users', [UserController::class, 'index'])->middleware('auth')->name('users.index');
-Route::resource('brochures', BrochureController::class)->except('show')->middleware('auth');
 Route::resource('quotas', QuotaController::class)->except('show')->middleware('auth');
+Route::get('/export', [QuotaController::class, 'export'])->middleware('auth')->name('export');
+Route::resource('brochures', BrochureController::class)->except('show')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

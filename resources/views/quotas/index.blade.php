@@ -9,7 +9,7 @@
                     </div>
                     <div class="divide-y">
                         @foreach ($quotas as $item)
-                            <div class="flex gap-4 items-center p-1 hover:bg-gray-100 text-sm">
+                            <div class="flex gap-4 items-center p-1 hover:bg-gray-100">
                                 <span class="font-bold text-gray-600">{{ $loop->iteration }}</span>
                                 <div class="flex flex-col gap-0 justify-center items-center">
                                     <form action="{{ route('quotas.update', $item) }}" method="post">
@@ -34,13 +34,13 @@
                                     </form>
                                 </div>
                                 @if ($item->category)
-                                <span class="bg-green-100 text-green-600 uppercase px-2 whitespace-nowrap rounded">{{ $item->category }}</span>
+                                <span class="bg-green-100 text-green-600 uppercase px-2 whitespace-nowrap rounded text-sm">{{ $item->category }}</span>
                                 @endif
                                 <a href="{{ route('quotas.edit', $item) }}" class="text-blue-600 hover:underline">{{ Str::limit($item->question_fr, 100, '...') }}</a>
                                 <form action="{{ route('quotas.destroy', $item) }}" method="post" class="ml-auto">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="text-red-600 uppercase hover:underline" onclick="return confirm('Delete item?')">Delete</button>
+                                    <button type="submit" class="text-red-600 text-sm uppercase hover:underline" onclick="return confirm('Delete item?')">Delete</button>
                                 </form>
                             </div>
                         @endforeach

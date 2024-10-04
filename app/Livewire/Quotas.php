@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Quota;
-use App\Models\Answer;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 

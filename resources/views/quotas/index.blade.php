@@ -12,6 +12,7 @@
                                     @method('patch')
                                     <input type="number" name="order" value="{{ $item->order }}" min="0" max="99" step="1" onchange="this.form.submit()" class="p-1 border-gray-200 shadow rounded-md">
                                 </form>
+                                <span class="bg-green-100 text-green-600 font-bold text-sm px-2 rounded">{{ $item->category }}</span>
                                 <a href="{{ route('quotas.edit', $item) }}" class="text-blue-600 hover:underline">{{ Str::limit($item->question_fr, 100, '...') }}</a>
                                 <a href="{{ route('quotas.edit', $item) }}" class="text-blue-600 hover:underline">{{ Str::limit($item->question_en, 100, '...') }}</a>
                                 <form action="{{ route('quotas.destroy', $item) }}" method="post" class="ml-auto">

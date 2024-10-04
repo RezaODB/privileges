@@ -42,11 +42,13 @@ class QuotaController extends Controller
         request()->validate([
             'question_fr' => ['required', 'string'],
             'question_en' => ['nullable', 'string'],
+            'category' => ['nullable', 'string'],
         ]);
 
         Quota::create([
             'question_fr' => request('question_fr'),
             'question_en' => request('question_en'),
+            'category' => request('category'),
             'order' => Quota::count() + 1
         ]);
 
@@ -59,7 +61,8 @@ class QuotaController extends Controller
         
         $data = request()->validate([
             'question_fr' => ['sometimes', 'required', 'string'],
-            'question_en' => ['sometimes', 'required', 'string'],
+            'question_en' => ['nullable', 'string'],
+            'category' => ['nullable', 'string'],
             'order' => ['sometimes', 'required', 'integer'],
         ]);
 

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('question_fr');
             $table->text('question_en')->nullable();
+            $table->text('category')->nullable();
             $table->unsignedInteger('order');
             $table->timestamps();
         });

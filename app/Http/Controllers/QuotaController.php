@@ -82,6 +82,8 @@ class QuotaController extends Controller
 
     public function export()
     {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+        
         $data = quota::orderBy('order')->get();
         $handle = fopen(storage_path('app/public/questions.csv'), 'w');
 

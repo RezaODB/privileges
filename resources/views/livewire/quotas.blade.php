@@ -1,6 +1,6 @@
 <div>
     <section class="flex flex-wrap justify-between items-start gap-8">
-        <h1 class="text-6xl uppercase font-title border-t-8 border-black pt-2">Privileges<br>invisibles</h1>
+        <h1 class="text-6xl uppercase font-title border-t-8 border-black pt-2">Privilèges<br>invisibles</h1>
         <h2 class="text-4xl relative px-4 py-2">
             <span class="rounded-full w-2 h-2 bg-black absolute top-0 left-0"></span>
             <span class="rounded-full w-2 h-2 bg-black absolute top-0 right-0"></span>

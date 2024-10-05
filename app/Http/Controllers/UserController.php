@@ -13,7 +13,7 @@ class UserController extends Controller
         Gate::allowIf(fn (User $user) => $user->role === 2);
         
         return view('users.index', [
-            'users' => User::where('role', 1)->get(),
+            'users' => User::orderBy('lastname')->where('role', 1)->get(),
             'total' => Quota::count()
         ]);
     }

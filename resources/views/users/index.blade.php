@@ -10,6 +10,11 @@
                             <h1>{{ $item->name . ' ' . $item->lastname }}</h1>
                             <span class="bg-green-100 text-green-600 uppercase px-2 whitespace-nowrap rounded text-sm">Réponses: {{ count($item->answers->answers) }}/{{ $total }}</span>
                             <span class="bg-blue-100 text-blue-600 uppercase px-2 whitespace-nowrap rounded text-sm">Quota: {{ round(data_get(array_count_values($item->answers->answers), 'yes') / $total * 100) }}%</span>
+                            <form action="{{ route('users.destroy', $item) }}" method="post" class="ml-auto">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="text-red-600 text-sm uppercase hover:underline" onclick="return confirm('Delete item?')">Delete</button>
+                            </form>
                         </div>
                         @endforeach
                     </div>

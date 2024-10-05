@@ -17,4 +17,13 @@ class UserController extends Controller
             'total' => Quota::count()
         ]);
     }
+
+    public function destroy(User $user)
+    {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+
+        $user->delete();
+
+        return back();
+    }
 }

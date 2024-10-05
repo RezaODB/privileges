@@ -77,7 +77,7 @@ class QuotaController extends Controller
         
         $quota->delete();
 
-        return redirect()->back();
+        return back();
     }
 
     public function export()

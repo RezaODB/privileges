@@ -23,7 +23,7 @@
 
     @guest
     @if (request()->query('login') === 'yes')
-    <form action="{{ route('login') }}" method="post" class="grid grid-cols-1 gap-2 bg-white/30 p-8">
+    <form action="{{ route('login') }}" method="post" class="grid grid-cols-1 gap-2 bg-orange-100 p-4">
         @csrf
         <div>
             <label for="email" class="uppercase text-sm font-bold">Email</label>
@@ -42,7 +42,7 @@
         </div>
     </form>    
     @else
-    <form action="{{ route('register') }}" method="post" class="grid grid-cols-1 gap-2 p-8 bg-white/30">
+    <form action="{{ route('register') }}" method="post" class="grid grid-cols-1 gap-2 p-4 bg-orange-100">
         @csrf
         <div>
             <label for="lastname" class="uppercase text-sm font-bold">{{ __('content.lastname') }}</label>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brochure;
 use App\Models\User;
+use App\Models\Theory;
+use App\Models\Brochure;
 use Illuminate\Support\Facades\Gate;
 
 class PageController extends Controller
@@ -27,7 +28,9 @@ class PageController extends Controller
     
     public function step1()
     {
-        return view('step1');
+        return view('step1', [
+            'theories' => Theory::orderBy('order')->where('lang', app()->getLocale())->get()
+        ]);
     }
 
     public function step2()
@@ -55,6 +58,14 @@ class PageController extends Controller
     public function step6()
     {
         return view('step6');
+    }
+
+    public function upload()
+    {
+        $fileName = request()->file('file')->getClientOriginalName();
+        $path = request()->file('file')->storeAs('uploads', $fileName, 'public');
+        
+        return response()->json(['location'=>"/storage/$path"]); 
     }
 
 }

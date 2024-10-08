@@ -23,8 +23,8 @@
         <div class="font-bold pt-4 px-4">{{ sprintf('%03d', $loop->iteration) }}</div>
         <div class="font-mono pt-4 px-4">{{ $item->{'question_' . app()->getLocale()} }}</div>
         <div class="border-l-4 border-black pt-6 px-4 flex gap-4">
-            <input type="radio" wire:model.blur="answers.{{ $item->id }}" value="yes" class="rounded-none border-none w-8 h-3 text-black checked:bg-none focus:ring-0"> 
-            <input type="radio" wire:model.blur="answers.{{ $item->id }}" value="no" class="rounded-none border-none w-8 h-3 text-black checked:bg-none focus:ring-0"> 
+            <input type="radio" wire:model.blur="answers.{{ $item->id }}" value="yes" class="rounded-none w-8 h-3 text-black checked:bg-none focus:ring-0"> 
+            <input type="radio" wire:model.blur="answers.{{ $item->id }}" value="no" class="rounded-none w-8 h-3 text-black checked:bg-none focus:ring-0"> 
         </div>
         @endforeach
     </form>

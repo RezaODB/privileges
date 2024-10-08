@@ -17,7 +17,7 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased bg-gray-100">
-        <div class="max-w-screen-xl my-8 mx-auto bg-blue-100 h-[914px]  shadow-2xl rounded-bl-3xl">
+        <div class="max-w-screen-xl my-8 mx-auto bg-[#FCF5DB] shadow-2xl rounded-bl-3xl" style="aspect-ratio: 1.4/1">
             @include('includes.header')
             <main class="p-4 md:p-8">
                 @yield('content')

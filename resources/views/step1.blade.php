@@ -7,7 +7,7 @@
         <div class="space-y-8">
             @foreach ($theories as $item)
             <h1 class="uppercase border-b border-black pb-2" id="title{{ $loop->index }}" x-intersect.margin.-200px="title = {{ $loop->index }}">{{ $item->title }}</h1>
-            <div class="prose text-justify max-w-none mt-8 prose-blockquote:text-2xl prose-blockquote:font-serif prose-blockquote:not-italic prose-blockquote:border-l-0 prose-blockquote:max-w-lg prose-blockquote:pl-0 prose-blockquote:ml-auto prose-blockquote:text-right md:prose-blockquote:-mr-12">{!! $item->body !!}</div>
+            <div class="prose text-justify max-w-3xl mt-8 prose-blockquote:text-2xl prose-blockquote:font-serif prose-blockquote:not-italic prose-blockquote:border-l-0 prose-blockquote:max-w-lg prose-blockquote:pl-0 prose-blockquote:ml-auto prose-blockquote:text-right md:prose-blockquote:-mr-12">{!! $item->body !!}</div>
             @endforeach
         </div>
         <div class="sticky top-4">

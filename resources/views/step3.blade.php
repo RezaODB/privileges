@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="bg-white px-4 md:px-8 py-16 shadow-xl divide-y divide-black" x-data="{ open: false }">
+<section class="bg-stone-100 px-4 md:px-8 py-16 shadow-xl divide-y divide-black" x-data="{ open: false }">
     
     @foreach ($brochures as $item)
     <div class="py-4" x-on:click="open = {{ $loop->index }}">

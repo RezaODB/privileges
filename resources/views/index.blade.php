@@ -37,12 +37,12 @@
         </div>
         <input type="hidden" name="remember" value="yes">
         <div class="flex gap-4 items-center mt-4 text-[#469469]">
-            <button type="submit" class="border-4 bg-[#FCF5DB] border-[#469469] font-bold py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
+            <button type="submit" class="border-4 bg-orange-100 border-[#469469] font-bold py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
             <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a>
         </div>
     </form>    
     @else
-    <form action="{{ route('register') }}" method="post" class="grid grid-cols-1 gap-2 p-4 bg-[#D9E8DB]">
+    <form action="{{ route('register') }}" method="post" class="grid grid-cols-1 gap-2 bg-[#D9E8DB] p-4">
         @csrf
         <div>
             <label for="lastname" class="uppercase font-bold text-[#469469] text-sm">{{ __('content.lastname') }}</label>
@@ -103,7 +103,7 @@
         </div>
         @error('policy')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
         <div class="flex gap-4 items-center mt-4 text-[#469469]">
-            <button type="submit" class="border-4 bg-[#FCF5DB] border-[#469469] font-bold py-2 px-4 uppercase">{{ __('content.create_account') }}</button>
+            <button type="submit" class="border-4 bg-orange-100 border-[#469469] font-bold py-2 px-4 uppercase">{{ __('content.create_account') }}</button>
             <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>
         </div>
     </form>   

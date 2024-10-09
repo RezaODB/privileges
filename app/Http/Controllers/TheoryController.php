@@ -43,12 +43,14 @@ class TheoryController extends Controller
             'lang' => ['required', 'string', 'max:255'],
             'title' => ['required', 'string', 'max:255'],
             'body' => ['required', 'string'],
+            'quotes' => ['required', 'string'],
         ]);
 
         Theory::create([
             'lang' => request('lang'),
             'title' => request('title'),
             'body' => request('body'),
+            'quotes' => request('quote'),
             'order' => Theory::count() + 1
         ]);
 
@@ -63,6 +65,7 @@ class TheoryController extends Controller
             'lang' => ['sometimes', 'required', 'string', 'max:255'],
             'title' => ['sometimes', 'required', 'string', 'max:255'],
             'body' => ['sometimes', 'required', 'string'],
+            'quotes' => ['sometimes', 'required', 'string'],
             'order' => ['sometimes', 'required', 'integer'],
         ]);
 

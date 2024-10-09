@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 gap-4">
 
-    <input type="text" name="category" placeholder="Catégorie" value="{{ old('category') ?? $quota->category }}" class="border-gray-200 shadow rounded-md">
+    <input type="text" name="category" placeholder="Category" value="{{ old('category') ?? $quota->category }}" class="border-gray-200 shadow rounded-md">
 
     <textarea name="question_fr" rows="3" placeholder="Question FR" class="border-gray-200 shadow rounded-md" required>{{ old('question_fr') ?? $quota->question_fr }}</textarea>
     @error('question_fr')<div class="text-red-500">{{ $message }}</div>@enderror

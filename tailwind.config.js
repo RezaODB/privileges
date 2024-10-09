@@ -13,10 +13,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Mulish', ...defaultTheme.fontFamily.sans],
-                serif: ['Young Serif', ...defaultTheme.fontFamily.serif],
-                title: ['Bebas Neue', ...defaultTheme.fontFamily.sans],
                 mono: ['Courier Prime', ...defaultTheme.fontFamily.mono],
+                serif: ['Libre Baskerville', ...defaultTheme.fontFamily.serif],
             },
         },
     },

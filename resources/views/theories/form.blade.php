@@ -9,8 +9,11 @@
     <input type="text" name="title" placeholder="Title" value="{{ old('title') ?? $theory->title }}" class="border-gray-200 shadow rounded-md" required>
     @error('title')<div class="text-red-500">{{ $message }}</div>@enderror
 
-    <textarea name="body" class="editor">{{ old('body') ?? $theory->body }}</textarea>
+    <textarea name="body" class="editor" placeholder="Body">{{ old('body') ?? $theory->body }}</textarea>
     @error('body')<div class="text-red-500">{{ $message }}</div>@enderror
+   
+    <textarea name="quotes" class="editor" placeholder="Quotes">{{ old('quotes') ?? $theory->quotes }}</textarea>
+    @error('quotes')<div class="text-red-500">{{ $message }}</div>@enderror
 
     <button type="submit" class="px-4 py-2 bg-green-600 rounded-md text-white justify-self-start">Submit</button>
 

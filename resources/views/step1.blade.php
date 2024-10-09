@@ -3,24 +3,22 @@
 @section('content')
 
 <section class="bg-stone-100 px-4 md:px-8 py-16 shadow-xl">
-    <div class="flex gap-8 items-start justify-between" x-data="{ title: 0 }">
-        <div class="space-y-8">
-            @foreach ($theories as $item)
-            <h1 class="uppercase border-b border-black pb-2" id="title{{ $loop->index }}" x-intersect.margin.-200px="title = {{ $loop->index }}">{{ $item->title }}</h1>
-            <div class="prose text-justify max-w-3xl mt-8 prose-blockquote:text-2xl prose-blockquote:font-serif prose-blockquote:not-italic prose-blockquote:border-l-0 prose-blockquote:max-w-lg prose-blockquote:pl-0 prose-blockquote:ml-auto prose-blockquote:text-right md:prose-blockquote:-mr-12">{!! $item->body !!}</div>
-            @endforeach
-        </div>
-        <div class="sticky top-4">
-            <ul class="border-l-4 border-black space-y-4">
-                @foreach ($theories as $item)
-                <li class="flex items-center gap-4">
-                    <div class="bg-black w-8 h-1"></div>
-                    <a href="#title{{ $loop->index }}" class="uppercase hover:font-bold" x-bind:class="title === {{ $loop->index }} ? 'font-bold' : ''" x-on:click="title = {{ $loop->index }}">{{ $item->title }}</a>
-                </li>
-                @endforeach
-            </ul>
+
+<div>
+    @foreach ($theories as $item)
+    <div class="cursor-pointer border-b pb-16 border-black mb-8" x-data="{ open: false }" x-on:click="open = !open">
+        <h1 class="text-4xl font-serif">{{ $item->title }}</h1>
+        <div class="overflow-hidden relative" x-bind:class="open ? 'h-full pb-16' : 'h-0 pb-32'">
+            <div class="grid grid-cols-1 md:grid-cols-3 items-end gap-8">
+                <div class="prose max-w-none order-2 md:order-1">{!! $item->quotes !!}</div>
+                <div class="md:col-span-2 prose max-w-none text-justify font-serif order-1 md:order-2">{!! $item->body !!}</div>
+            </div>
+            <div class="bg-gradient-to-t from-stone-100 h-16 absolute bottom-0 w-full"></div>
         </div>
     </div>
+    @endforeach
+</div>
+    
 </section>
 
 @endsection

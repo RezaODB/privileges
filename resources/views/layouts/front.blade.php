@@ -17,9 +17,10 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased bg-gray-100">
-        <div class="max-w-screen-xl min-h-screen pb-16 my-8 mx-auto bg-orange-100 shadow-2xl rounded-bl-3xl">
+        <div class="max-w-screen-xl min-h-screen pb-16 my-8 mx-auto bg-orange-100 shadow-2xl rounded-bl-3xl relative">
+            <img src="{{ asset('noise.png') }}" class="absolute top-0 left-0 w-full h-full opacity-5 mix-blend-normal">
             @include('includes.header')
-            <main class="p-4 md:p-8">
+            <main class="p-4 md:p-8 relative">
                 @yield('content')
             </main>
         </div>

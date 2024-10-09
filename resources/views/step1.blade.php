@@ -2,11 +2,9 @@
 
 @section('content')
 
-<section class="bg-stone-100 px-4 md:px-8 py-16 shadow-xl relative">
+<section class="bg-stone-100 px-4 md:px-8 py-16 shadow-xl">
 
-    <img src="{{ asset('texture.png') }}" class="absolute top-0 left-0 w-full h-full opacity-10">
-
-    <div class="relative">
+    <div>
         @foreach ($theories as $item)
         <div class="cursor-pointer border-b border-black mb-8" x-data="{ open: false }" x-on:click="open = !open">
             <h1 class="text-4xl font-serif">{{ $item->title }}</h1>

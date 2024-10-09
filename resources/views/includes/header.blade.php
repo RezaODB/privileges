@@ -1,4 +1,4 @@
-<header class="relative">
+<header>
     <nav class="font-mono uppercase text-sm grid grid-cols-1 md:grid-cols-7 overflow-hidden">
         <a href="{{ route('index') }}" class="p-3 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:underline {{ Route::currentRouteName() === 'index' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">Participant {{ Auth::id() ?? 'x' }}/250</a>
         <a href="{{ route('step1') }}" class="p-3 shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:underline {{ Route::currentRouteName() === 'step1' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{{ __('content.step1') }}</a>

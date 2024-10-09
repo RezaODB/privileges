@@ -16,6 +16,14 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
+    <style>
+        .img-responsive {
+            padding: 1rem;
+            border-radius: .6rem .5rem 1rem .4rem;
+            background-color: #e5decf;
+            rotate: 1deg;
+        }
+    </style>
     <body class="font-sans antialiased bg-gray-100">
         <div class="max-w-screen-xl min-h-screen pb-16 my-8 mx-auto bg-orange-100 shadow-2xl rounded-bl-3xl relative">
             <img src="{{ asset('noise.png') }}" class="absolute top-0 left-0 w-full h-full opacity-5 mix-blend-normal">

@@ -19,9 +19,7 @@
     <style>
         .img-responsive {
             padding: 2rem;
-            border-radius: .6rem .5rem 1rem .4rem;
             background-color: #e5decf;
-            rotate: 1deg;
         }
     </style>
     <body class="font-sans antialiased bg-gray-100">

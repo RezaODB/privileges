@@ -18,8 +18,6 @@ class Quotas extends Component
     public function updated()
     {
         Auth::user()->answers->update(['answers' => $this->answers]);
- 
-        return redirect()->back();
     }
 
     public function render()

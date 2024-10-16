@@ -18,8 +18,8 @@
     </head>
     <style>
         .img-responsive {
-            padding: 2rem;
-            background-color: #e5decf;
+            margin-left: auto;
+            margin-right: -2rem;
         }
     </style>
     <body class="font-sans antialiased bg-gray-100">

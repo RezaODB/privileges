@@ -8,6 +8,7 @@ return [
     'birthday' => 'Date de naissance',
     'password' => 'Mot de passe',
     'password_confirmation' => 'Confirmation du mot de passe',
+    'password_forgotten' => 'Mot de passe oublié?',
     'sex' => 'Sexe',
     'male' => 'Homme',
     'female' => 'Femme',

@@ -38,7 +38,8 @@
         <input type="hidden" name="remember" value="yes">
         <div class="flex gap-4 items-center mt-4 text-[#469469]">
             <button type="submit" class="border-4 bg-orange-100 border-[#469469] font-bold py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
-            <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a>
+            <a href="{{ route('password.request') }}" class="underline">{{ __('content.password_forgotten') }}</a>
+            {{-- <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a> --}}
         </div>
     </form>    
     @else

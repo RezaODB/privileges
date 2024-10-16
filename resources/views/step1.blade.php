@@ -7,9 +7,9 @@
     <div>
         @foreach ($theories as $item)
         <div class="cursor-pointer border-b border-black mb-8" x-data="{ open: false }" x-on:click="open = !open">
-            <div class="flex items-center justify-between gap-4">
+            <div class="flex items-start justify-between gap-4">
                 <h1 class="text-4xl font-serif">{{ $item->title }}</h1>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="duration-300" x-bind:class="open ? 'rotate-45' : ''" fill="currentColor" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="duration-300 shrink-0" x-bind:class="open ? 'rotate-45' : ''" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
                 </svg>
             </div>

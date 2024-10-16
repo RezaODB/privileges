@@ -16,12 +16,6 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <style>
-        .img-responsive {
-            margin-left: auto;
-            margin-right: -2rem;
-        }
-    </style>
     <body class="font-sans antialiased bg-gray-100">
         <div class="max-w-screen-xl min-h-screen pb-16 my-8 mx-auto bg-orange-100 shadow-2xl rounded-bl-3xl">
             @include('includes.header')

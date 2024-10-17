@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="bg-orange-50 py-16 shadow-xl relative">
+<section class="bg-white py-16 shadow-xl relative">
     <div class="absolute inset-0 opacity-30 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }})"></div>
     @foreach ($theories as $item)
     <div class="cursor-pointer relative" x-data="{ open: false }" x-on:click="open = !open">
@@ -17,7 +17,7 @@
                 <div class="order-2 md:order-1 font-mono flex flex-col justify-between gap-4 text-gray-800 " id="postit">{!! $item->quotes !!}</div>
                 <div class="md:col-span-2 prose prose-img:ml-auto prose-img:-mr-2 sm:prose-img:-mr-4 max-w-none text-justify font-serif order-1 md:order-2 mr-4 sm:mr-8">{!! $item->body !!}</div>
             </div>
-            <div class="bg-gradient-to-t from-orange-50 h-32 absolute bottom-0 w-full"></div>
+            <div class="bg-gradient-to-t from-stone-100 h-32 absolute bottom-0 w-full"></div>
         </div>
     </div>
     @endforeach

@@ -18,7 +18,27 @@
     </head>
     <style>
         .img-responsive {
-            box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.4);
+            box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.1);
+        }
+        #postit p {
+            padding: 3rem 1rem 1rem 1rem;
+            margin-top: 2rem;
+            background-image: url("{{ asset('paper.png') }}");
+            background-size: cover;
+            position: relative;
+            box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.1);
+            transform: rotate(-1deg);
+        }
+        #postit p::after {
+            content: '';
+            position: absolute;
+            display: block;
+            background-image: url("{{ asset('tape.png') }}");
+            background-size: cover;
+            width: 200px;
+            height: 4rem;
+            top: -2rem;
+            left: 2rem;
         }
     </style>
     <body class="font-sans antialiased bg-gray-100">

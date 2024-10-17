@@ -21,7 +21,7 @@
                     {title: 'img-responsive', value: 'img-responsive'},
                 ],
                 plugins: 'link lists paste code image media wordcount',
-                toolbar: 'h2 h3 | bold italic | numlist bullist | link image media',
+                toolbar: 'h2 h3 | bold italic blockquote | numlist bullist | link image media',
                 menubar: false,
                 paste_as_text: true,
                 image_title: true,

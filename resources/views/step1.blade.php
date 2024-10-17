@@ -12,7 +12,7 @@
                 <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
             </svg>
         </div>
-        <div class="mt-8 overflow-hidden relative pb-32" x-bind:class="open ? 'h-full' : 'h-0'">
+        <div class="mt-12 overflow-hidden relative pb-32" x-bind:class="open ? 'h-full' : 'h-0'">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
                 <div class="prose max-w-none order-2 md:order-1">{!! $item->quotes !!}</div>
                 <div class="md:col-span-2 prose prose-img:ml-auto prose-img:-mr-4 sm:prose-img:-mr-8 max-w-none text-justify font-serif order-1 md:order-2 mr-4 sm:mr-8">{!! $item->body !!}</div>

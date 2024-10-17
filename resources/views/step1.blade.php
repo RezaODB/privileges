@@ -2,9 +2,10 @@
 
 @section('content')
 
-<section class="bg-stone-100 py-16 shadow-xl">
+<section class="bg-white py-16 shadow-xl relative">
+    <div class="absolute inset-0 opacity-30 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }})"></div>
     @foreach ($theories as $item)
-    <div class="cursor-pointer border-b border-black mb-8" x-data="{ open: false }" x-on:click="open = !open">
+    <div class="cursor-pointer border-b border-black mb-8 relative" x-data="{ open: false }" x-on:click="open = !open">
         <div class="flex items-center justify-between gap-4 px-4 md:px-8">
             <h1 class="text-2xl sm:text-4xl font-serif">{{ $item->title }}</h1>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="duration-300 shrink-0" x-bind:class="open ? 'rotate-45' : ''" fill="currentColor" viewBox="0 0 16 16">

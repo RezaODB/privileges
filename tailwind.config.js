@@ -15,6 +15,7 @@ export default {
             fontFamily: {
                 mono: ['Courier Prime', ...defaultTheme.fontFamily.mono],
                 serif: ['Libre Baskerville', ...defaultTheme.fontFamily.serif],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
         },
     },

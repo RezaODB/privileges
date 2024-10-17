@@ -1,4 +1,4 @@
-<div>
+<div class="relative">
     <section class="flex flex-wrap justify-between items-start gap-8">
         <h1 class="text-6xl uppercase font-title border-t-8 border-black pt-2">Privilèges<br>invisibles</h1>
         <h2 class="text-4xl relative px-4 py-2">

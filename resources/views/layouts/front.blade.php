@@ -16,6 +16,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
+    <style>
+        .img-responsive {
+            box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.4);
+        }
+    </style>
     <body class="font-sans antialiased bg-gray-100">
         <div class="max-w-screen-xl min-h-screen pb-16 my-8 mx-auto bg-orange-100 shadow-2xl relative">
             <div class="absolute inset-0 opacity-30 mix-blend-multiply pointer-events-none" style="background-image: url({{ asset('texture.png') }})"></div>

@@ -28,7 +28,7 @@ export default {
                             "border-left": "none",
                             "font-size": "1.8rem",
                             "line-height": 1.2,
-                            "text-align": "center",
+                            "text-align": "right",
                             "color": "#374151",
                             "font-weight": 400,
                             "text-transform": "uppercase",

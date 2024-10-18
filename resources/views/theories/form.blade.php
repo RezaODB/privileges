@@ -11,9 +11,6 @@
 
     <textarea name="body" class="editor" placeholder="Body">{{ old('body') ?? $theory->body }}</textarea>
     @error('body')<div class="text-red-500">{{ $message }}</div>@enderror
-   
-    <textarea name="quotes" class="editor" placeholder="Quotes">{{ old('quotes') ?? $theory->quotes }}</textarea>
-    @error('quotes')<div class="text-red-500">{{ $message }}</div>@enderror
 
     <button type="submit" class="px-4 py-2 bg-green-600 rounded-md text-white justify-self-start">Submit</button>
 

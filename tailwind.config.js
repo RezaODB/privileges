@@ -27,15 +27,15 @@ export default {
                             "border-bottom": "1px solid black",
                             "border-left": "none",
                             "font-size": "1.5rem",
-                            "line-height": 1.5,
-                            "font-style": "normal",
+                            "line-height": 1.4,
+                            "text-align": "center",
                             "color": "#374151",
                             "text-transform": "uppercase",
-                            "font-family": "font-serif"
+                            "font-family": "Inter"
                         },
                         "blockquote strong": {
-                            "font-size": "2rem",
-                            "line-height": 1,
+                            "font-size": "2.2rem",
+                            "line-height": 0,
                         }
                     },
                 },

@@ -30,7 +30,7 @@ export default {
                             "line-height": 1.4,
                             "text-align": "center",
                             "color": "#374151",
-                            "font-weight": 300,
+                            "font-weight": 400,
                             "text-transform": "uppercase",
                             "font-family": "Inter"
                         },

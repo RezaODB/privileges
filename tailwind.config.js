@@ -23,8 +23,11 @@ export default {
                         blockquote: {
                             quotes: "none",
                             padding: "1rem",
+                            "border-top": "1px solid black",
+                            "border-bottom": "1px solid black",
                             "border-left": "none",
-                            background: "white"
+                            "font-size": "1.3rem",
+                            "line-height": 1.6
                         },
                         "blockquote strong": {
                             "font-size": "2rem",

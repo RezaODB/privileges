@@ -28,6 +28,7 @@ export default {
                             "border-left": "none",
                             "font-size": "1.5rem",
                             "line-height": 1.5,
+                            "font-style": "normal",
                             "text-transform": "uppercase",
                             "font-family": "font-serif"
                         },

@@ -17,9 +17,25 @@ export default {
                 serif: ['Libre Baskerville', ...defaultTheme.fontFamily.serif],
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        blockquote: {
+                            quotes: "none",
+                            padding: "1rem",
+                            "border-left": "none",
+                            background: "white"
+                        },
+                        "blockquote strong": {
+                            "font-size": "2rem",
+                            "line-height": 1,
+                            "font-family": "font-serif"
+                        }
+                    },
+                },
+            },
         },
     },
-
     plugins: [forms, typo],
 };
 

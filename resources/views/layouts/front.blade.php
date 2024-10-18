@@ -18,16 +18,8 @@
     </head>
     <style>
         .img-responsive {
-            box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.1);
-        }
-        #postit p {
-            padding: 2rem 1rem;
-            margin-top: 2rem;
-            background-image: url("{{ asset('paper.png') }}");
-            background-size: cover;
-            position: relative;
-            box-shadow: 3px 3px 6px rgb(0, 0, 0, 0.1);
-            transform: rotate(-1deg);
+            background-image: url('{{ asset('textures/photo.png') }}');
+            padding: 1.5rem;  
         }
     </style>
     <body class="font-sans antialiased bg-gray-100">

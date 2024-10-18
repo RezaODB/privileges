@@ -50,7 +50,7 @@ class TheoryController extends Controller
             'lang' => request('lang'),
             'title' => request('title'),
             'body' => request('body'),
-            'quotes' => request('quote'),
+            'quotes' => request('quotes'),
             'order' => Theory::count() + 1
         ]);
 

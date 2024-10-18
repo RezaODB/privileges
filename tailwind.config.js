@@ -29,6 +29,7 @@ export default {
                             "font-size": "1.5rem",
                             "line-height": 1.4,
                             "text-align": "center",
+                            "color": "#374151",
                             "text-transform": "uppercase",
                             "font-family": "Inter"
                         },

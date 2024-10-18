@@ -11,7 +11,7 @@
             <h2 x-text="open ? '(- Close)' : '(+ Open)'"></h2>
         </div>
         <div class="overflow-hidden relative" x-bind:class="open ? 'h-full' : 'h-0'">
-            <div class="py-16 prose max-w-none first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:font-serif columns-sm gap-12 [column-rule:1px_solid_black] prose-h2:uppercase prose-h2:font-sans prose-h2:font-normal prose-h2:border-b-8 prose-h2:border-black prose-h3:uppercase prose-h3:font-sans prose-h3:font-normal">{!! $item->body !!}</div>
+            <div class="py-16 prose max-w-none first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:font-serif columns-sm gap-12 [column-rule:1px_solid_black] prose-h2:uppercase prose-h2:font-sans prose-h2:font-normal prose-h2:border-b-4 prose-h2:border-black prose-h3:uppercase prose-h3:font-sans prose-h3:font-normal">{!! $item->body !!}</div>
         </div>
     </div>
     @endforeach

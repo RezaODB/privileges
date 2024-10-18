@@ -22,12 +22,13 @@ export default {
                     css: {
                         blockquote: {
                             quotes: "none",
-                            padding: "1rem",
+                            padding: "1rem 0",
                             "border-top": "1px solid black",
                             "border-bottom": "1px solid black",
                             "border-left": "none",
-                            "font-size": "1.3rem",
-                            "line-height": 1.6,
+                            "font-size": "1.5rem",
+                            "line-height": 1.5,
+                            "text-transform": "uppercase",
                             "font-family": "font-serif"
                         },
                         "blockquote strong": {

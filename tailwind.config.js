@@ -29,6 +29,7 @@ export default {
                             "font-size": "1.5rem",
                             "line-height": 1.5,
                             "font-style": "normal",
+                            "color": "#374151",
                             "text-transform": "uppercase",
                             "font-family": "font-serif"
                         },

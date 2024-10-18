@@ -27,12 +27,12 @@ export default {
                             "border-bottom": "1px solid black",
                             "border-left": "none",
                             "font-size": "1.3rem",
-                            "line-height": 1.6
+                            "line-height": 1.6,
+                            "font-family": "font-serif"
                         },
                         "blockquote strong": {
                             "font-size": "2rem",
                             "line-height": 1,
-                            "font-family": "font-serif"
                         }
                     },
                 },

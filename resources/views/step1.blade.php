@@ -4,10 +4,11 @@
 
 <section class="bg-rose-100 py-16 px-4 sm:px-8 shadow-xl relative">
     <div class="absolute inset-0 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }})"></div>
+    <h1 class="relative text-2xl sm:text-4xl font-medium uppercase mb-12">Étude théorique</h1>
     @foreach ($theories as $item)
     <div class="cursor-pointer font-mono relative mb-4" x-data="{ open: false }" x-on:click="open = !open">
-        <div class="flex items-center justify-between gap-4 border-black border-b-2 pb-4">
-            <h1 class="text-xl sm:text-3xl font-sans uppercase">{{ $loop->iteration . '. ' . $item->title }}</h1>
+        <div class="flex items-center justify-between gap-4 border-black border-b-2 border-dashed pb-4">
+            <h1 class="text-xl sm:text-3xl font-sans">{{ $loop->iteration . '. ' . $item->title }}</h1>
             <h2 x-text="open ? '(- Close)' : '(+ Open)'" class="whitespace-nowrap"></h2>
         </div>
         <div class="overflow-hidden relative" x-bind:class="open ? 'h-full' : 'h-0'">

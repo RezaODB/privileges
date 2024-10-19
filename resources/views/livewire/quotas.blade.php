@@ -1,16 +1,5 @@
 <div class="relative">
-    <section class="flex flex-wrap justify-between items-start gap-8">
-        <h1 class="text-6xl uppercase font-title font-medium border-t-8 border-black pt-2">Privilèges<br>invisibles</h1>
-        <h2 class="text-4xl relative px-4 py-2">
-            <span class="rounded-full w-2 h-2 bg-black absolute top-0 left-0"></span>
-            <span class="rounded-full w-2 h-2 bg-black absolute top-0 right-0"></span>
-            <span class="rounded-full w-2 h-2 bg-black absolute bottom-0 left-0"></span>
-            <span class="rounded-full w-2 h-2 bg-black absolute bottom-0 right-0"></span>
-            N° {{ Auth::id() ?? 'x' }}/250
-        </h2>
-    </section>
-
-    <form wire:submit class="py-12 grid grid-cols-[auto_1fr_auto]">
+    <form wire:submit class="grid grid-cols-[auto_1fr_auto]">
         <div></div>
         <div class="border-b-4 border-black ml-4"></div>
         <div class="border-b-4 border-black text-3xl uppercase font-medium pb-8">

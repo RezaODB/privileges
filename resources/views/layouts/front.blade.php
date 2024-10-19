@@ -20,16 +20,17 @@
         .img-responsive {
             background-image: url('{{ asset('textures/photo.png') }}');
             padding: 1.5rem;  
+            margin: auto; 
         }
     </style>
     <body class="font-sans antialiased bg-gray-100">
         <div class="max-w-screen-2xl mx-auto sm:px-4">
-            <div class="min-h-screen pb-16 my-4 bg-yellow-100 shadow-2xl relative">
+            <div class="min-h-screen pb-16 sm:my-4 bg-yellow-100 shadow-2xl relative">
                 <div class="absolute inset-0 pointer-events-none" style="background-image: url({{ asset('paper.png') }})"></div>
                 <header class="relative">
                     @include('includes.header')
                 </header>
-                <main class="p-4 md:p-8 relative">
+                <main class="py-8 sm:px-8 relative">
                     @yield('content')
                 </main>
             </div>

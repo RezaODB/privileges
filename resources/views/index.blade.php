@@ -17,7 +17,7 @@
                 <h3>Étude socio-artistique</h3>
                 <h3 class="mt-2">Barbara Iweins</h3>
             </div>
-            <h3 class="p-4">2024/2025</h3>
+            <h3 class="p-4 self-center mx-auto">2024/2025</h3>
         </div>
     </div>
 

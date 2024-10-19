@@ -11,7 +11,7 @@
             <h2 x-text="open ? '(- Close)' : '(+ Open)'" class="whitespace-nowrap"></h2>
         </div>
         <div class="overflow-hidden relative" x-bind:class="open ? 'h-full' : 'h-0'">
-            <div class="py-16 prose max-w-none columns-sm gap-12 [column-rule:1px_solid_black] prose-h2:font-sans prose-h2:uppercase prose-h2:font-medium prose-h2:border-b-4 prose-h2:border-black prose-h3:font-sans prose-h3:uppercase prose-h3:font-medium prose-blockquote:font-sans prose-blockquote:border-y prose-blockquote:border-x-0 prose-blockquote:py-2 prose-blockquote:border-black prose-blockquote:not-italic prose-blockquote:text-2xl prose-blockquote:font-light prose-blockquote:text-right">{!! $item->body !!}</div>
+            <div class="py-16 prose max-w-none columns-md gap-12 [column-rule:1px_solid_black] prose-h2:font-sans prose-h2:uppercase prose-h2:font-medium prose-h2:border-b-4 prose-h2:border-black prose-h3:font-sans prose-h3:uppercase prose-h3:font-medium prose-blockquote:font-sans prose-blockquote:border-y prose-blockquote:border-x-0 prose-blockquote:py-2 prose-blockquote:border-black prose-blockquote:not-italic prose-blockquote:text-2xl prose-blockquote:font-light prose-blockquote:text-center">{!! $item->body !!}</div>
         </div>
     </div>
     @endforeach

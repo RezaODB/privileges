@@ -14,7 +14,7 @@ export default {
         extend: {
             fontFamily: {
                 mono: ['Courier Prime', ...defaultTheme.fontFamily.mono],
-                serif: ['Libre Baskerville', ...defaultTheme.fontFamily.serif],
+                serif: ['Tinos', ...defaultTheme.fontFamily.serif],
                 sans: ['Mulish', ...defaultTheme.fontFamily.sans],
             },
             typography: {
@@ -23,16 +23,12 @@ export default {
                         blockquote: {
                             quotes: "none",
                             padding: "1rem 0",
+                            "font-size": "1.5rem",
+                            "line-height": 1.2,
+                            "font-style": "normal",
                             "border-top": "1px solid black",
                             "border-bottom": "1px solid black",
                             "border-left": "none",
-                            "font-size": "1.8rem",
-                            "line-height": 1.2,
-                            "text-align": "right",
-                            "color": "#374151",
-                            "font-weight": 400,
-                            "text-transform": "uppercase",
-                            "font-family": "Inter"
                         },
                         "blockquote strong": {
                             "font-size": "2.2rem",

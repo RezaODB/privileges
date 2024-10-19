@@ -10,7 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -23,8 +23,8 @@
         }
     </style>
     <body class="font-sans antialiased bg-gray-100">
-        <div class="max-w-screen-xl min-h-screen pb-16 my-8 mx-auto bg-orange-100 shadow-2xl relative">
-            <div class="absolute inset-0 opacity-30 mix-blend-multiply pointer-events-none" style="background-image: url({{ asset('texture.png') }})"></div>
+        <div class="max-w-screen-xl min-h-screen pb-16 my-8 mx-auto bg-[orange-100] shadow-2xl relative">
+            <div class="absolute inset-0 pointer-events-none" style="background-image: url({{ asset('textures/folder.png') }})"></div>
             <header class="relative">
                 @include('includes.header')
             </header>

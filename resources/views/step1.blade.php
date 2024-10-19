@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="bg-white py-16 px-4 sm:px-8 shadow-xl relative">
-    <div class="absolute inset-0 opacity-30 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }})"></div>
+    <div class="absolute inset-0 pointer-events-none" style="background-image: url({{ asset('textures/paper.png') }})"></div>
     @foreach ($theories as $item)
     <div class="cursor-pointer font-mono relative mb-4" x-data="{ open: false }" x-on:click="open = !open">
         <div class="flex items-center justify-between gap-4 border-black border-dotted border-b-2 pb-4">

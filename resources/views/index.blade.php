@@ -9,7 +9,7 @@
         <a href="{{ route('index', ['lang' => 'en']) }}" class="hover:underline {{ App::getLocale() === 'en' ? 'font-bold' : '' }}">EN</a>
     </div>
 
-    <div class="uppercase font-semibold border-2 border-black md:justify-self-start">
+    <div class="uppercase font-medium border-2 border-black md:justify-self-start">
         <h1 class="text-3xl sm:text-4xl p-2 text-center">Les privilèges invisibles</h1>
         <h2 class="text-5xl sm:text-6xl text-center p-4 border-y-2 border-black"><span class="text-3xl">N°</span> {{ Auth::id() ?? 'x' }}/250</h2>
         <div class="flex text-xl">
@@ -111,7 +111,7 @@
     @endif
     @endguest
     @auth
-    <ul class="font-mono p-4 bg-white">
+    <ul class="font-mono p-4 bg-gray-50">
         <li>{{ __('content.lastname') }}: {{ Auth::user()->lastname }}</li>
         <li>{{ __('content.firstname') }}: {{ Auth::user()->name }}</li>
         <li>Email: {{ Auth::user()->email }}</li>

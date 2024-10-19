@@ -7,7 +7,7 @@
     @foreach ($theories as $item)
     <div class="cursor-pointer font-mono relative mb-4" x-data="{ open: false }" x-on:click="open = !open">
         <div class="flex items-center justify-between gap-4 border-black border-b-2 pb-4">
-            <h1 class="text-2xl sm:text-3xl font-semibold font-sans uppercase">{{ $loop->iteration . '. ' . $item->title }}</h1>
+            <h1 class="text-2xl sm:text-3xl font-sans uppercase">{{ $loop->iteration . '. ' . $item->title }}</h1>
             <h2 x-text="open ? '(- Close)' : '(+ Open)'"></h2>
         </div>
         <div class="overflow-hidden relative" x-bind:class="open ? 'h-full' : 'h-0'">

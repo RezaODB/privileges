@@ -15,27 +15,7 @@ export default {
             fontFamily: {
                 mono: ['Courier Prime', ...defaultTheme.fontFamily.mono],
                 sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
-            },
-            typography: {
-                DEFAULT: {
-                    css: {
-                        blockquote: {
-                            quotes: "none",
-                            padding: "1rem 0",
-                            "font-size": "1.5rem",
-                            "line-height": 1.2,
-                            "font-style": "normal",
-                            "border-top": "1px solid black",
-                            "border-bottom": "1px solid black",
-                            "border-left": "none",
-                        },
-                        "blockquote strong": {
-                            "font-size": "2.2rem",
-                            "line-height": 0,
-                        }
-                    },
-                },
-            },
+            }
         },
     },
     plugins: [forms, typo],

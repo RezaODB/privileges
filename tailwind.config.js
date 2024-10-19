@@ -14,8 +14,7 @@ export default {
         extend: {
             fontFamily: {
                 mono: ['Courier Prime', ...defaultTheme.fontFamily.mono],
-                serif: ['Tinos', ...defaultTheme.fontFamily.serif],
-                sans: ['Mulish', ...defaultTheme.fontFamily.sans],
+                sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
             },
             typography: {
                 DEFAULT: {

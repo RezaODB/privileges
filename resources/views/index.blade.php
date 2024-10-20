@@ -24,7 +24,7 @@
     @guest
     @if (request()->query('login') === 'yes')
     <form action="{{ route('login') }}" method="post" class="bg-rose-100 p-4 relative">
-        <div class="absolute inset-0 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }})"></div>
+        <div class="absolute inset-0 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }}); background-size: 100% auto;"></div>
         @csrf
         <div class="grid grid-cols-1 gap-2 relative">
             <div>
@@ -48,7 +48,7 @@
     </form>    
     @else
     <form action="{{ route('register') }}" method="post" class="bg-rose-100 p-4 relative">
-        <div class="absolute inset-0 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }})"></div>
+        <div class="absolute inset-0 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }}); background-size: 100% auto;"></div>
         @csrf
         <div class="grid grid-cols-1 gap-2 relative">
             <div>

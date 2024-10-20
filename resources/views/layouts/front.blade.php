@@ -26,7 +26,7 @@
     <body class="font-sans antialiased bg-gray-100">
         <div class="max-w-screen-2xl mx-auto sm:px-4">
             <div class="min-h-screen pb-16 sm:my-4 bg-yellow-100 shadow-2xl relative">
-                <div class="absolute inset-0 pointer-events-none" style="background-image: url({{ asset('paper.png') }})"></div>
+                <div class="absolute inset-0 pointer-events-none" style="background-image: url({{ asset('paper.png') }}); background-size: 100% auto;"></div>
                 <header class="relative">
                     @include('includes.header')
                 </header>

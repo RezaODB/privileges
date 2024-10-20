@@ -21,6 +21,7 @@
             background-image: url('{{ asset('textures/photo.png') }}');
             padding: 1.5rem;  
             margin: auto; 
+            background-color: papayawhip; 
         }
     </style>
     <body class="font-sans antialiased bg-gray-100">

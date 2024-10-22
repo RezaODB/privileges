@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="bg-white py-16 px-4 sm:px-8 shadow-xl relative">
-    <div class="absolute inset-0 pointer-events-none" style="background-image: url({{ asset('textures/paperw.png') }}); background-size: 100% auto"></div>
+    <div class="absolute inset-0 brightness-110 pointer-events-none" style="background-image: url({{ asset('textures/paperw.png') }}); background-size: 100% auto"></div>
     <h1 class="relative text-2xl sm:text-4xl font-medium uppercase mb-12">Étude théorique</h1>
     @foreach ($theories as $item)
     <div class="font-mono relative mb-4" x-data="{ open: false }">

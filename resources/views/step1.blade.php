@@ -13,7 +13,7 @@
         </div>
         <div class="relative grid duration-500" x-bind:class="open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">
             <div class="overflow-hidden">
-                <div class="flex divide-x divide-black">
+                <div class="flex lg:divide-x divide-black">
                     <div class="h-12 flex-1"></div>
                     <div class="h-12 flex-1"></div>
                 </div>

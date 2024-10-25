@@ -2,11 +2,11 @@
 
 @section('content')
 
-<section class="grid grid-cols-1 md:grid-cols-2 items-start gap-8">
+<section class="grid grid-cols-1 md:grid-cols-2 items-start gap-8 border-b-2 border-black pb-12 px-2">
 
-    <div class="md:col-span-2 text-right">
-        <a href="{{ route('index', ['lang' => 'fr']) }}" class="hover:underline {{ App::getLocale() === 'fr' ? 'font-medium' : '' }}">FR</a> |
-        <a href="{{ route('index', ['lang' => 'en']) }}" class="hover:underline {{ App::getLocale() === 'en' ? 'font-medium' : '' }}">EN</a>
+    <div class="md:col-span-2 text-right font-mono">
+        <a href="{{ route('index', ['lang' => 'fr']) }}" class="hover:underline {{ App::getLocale() === 'fr' ? 'font-bold' : '' }}">FR</a> |
+        <a href="{{ route('index', ['lang' => 'en']) }}" class="hover:underline {{ App::getLocale() === 'en' ? 'font-bold' : '' }}">EN</a>
     </div>
 
     <div class="uppercase font-medium border-2 border-black md:justify-self-start">
@@ -25,7 +25,7 @@
     @if (request()->query('login') === 'yes')
     <form action="{{ route('login') }}" method="post" class="font-mono">
         @csrf
-        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-2 border-black">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-black border-2 border-black">
             <div class="p-2">
                 <label for="email" class="uppercase font-bold text-sm">1. Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" class="border-none w-full focus:ring-0" required>
@@ -40,14 +40,14 @@
         <input type="hidden" name="remember" value="yes">
         <div class="flex flex-wrap gap-4 items-center mt-4">
             <button type="submit" class="border-2 border-black font-bold py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
-            <a href="{{ route('password.request') }}" class="underline">{{ __('content.password_forgotten') }}</a>
             <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a>
+            <a href="{{ route('password.request') }}" class="underline">{{ __('content.password_forgotten') }}</a>
         </div>
     </form>    
     @else
     <form action="{{ route('register') }}" method="post" class="font-mono">
         @csrf
-        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-2 border-black">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-black border-2 border-black">
             <div class="p-2">
                 <label for="lastname" class="uppercase font-bold text-sm">1. {{ __('content.lastname') }}</label>
                 <input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" class="border-none w-full focus:ring-0" autofocus required>
@@ -59,7 +59,7 @@
                 @error('name')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-x-2 border-black">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-black border-x-2 border-black">
             <div class="p-2">
                 <label for="birthday" class="uppercase font-bold text-sm">3. {{ __('content.birthday') }}</label>
                 <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" class="border-none w-full focus:ring-0" required>
@@ -71,7 +71,7 @@
                 @error('birthplace')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-x-2 border-t-2 border-black">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-black border-x-2 border-t-2 border-black">
             <div class="p-2">
                 <label class="uppercase font-bold text-sm">5. {{ __('content.sex') }}</label>
                 <div class="flex gap-2 items-center">
@@ -85,14 +85,14 @@
                 @error('sex')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-x-2 border-t-2 border-black">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-black border-x-2 border-t-2 border-black">
             <div class="p-2">
                 <label for="email" class="uppercase font-bold text-sm">6. Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" class="border-none w-full focus:ring-0" required>
                 @error('email')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-2 border-black">
+        <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-black border-2 border-black">
             <div class="p-2">
                 <label for="password" class="uppercase font-bold text-sm">7. {{ __('content.password') }}</label>
                 <input type="password" name="password" id="password" class="border-none w-full focus:ring-0" required autocomplete="new-password">

@@ -22,6 +22,10 @@
             margin: auto; 
             background-color: #fdf2e3; 
         }
+        blockquote p {
+            text-align: center !important;
+            quotes: none !important;
+        }
     </style>
     <body class="font-sans antialiased bg-gray-100">
         <div class="max-w-screen-2xl mx-auto sm:px-4">

@@ -18,10 +18,9 @@
     </head>
     <style>
         .img-responsive {
-            background-image: url('{{ asset('textures/photo.png') }}');
             padding: 1.5rem;
             margin: auto; 
-            background-color: papayawhip; 
+            background-color: #fdf2e3; 
         }
     </style>
     <body class="font-sans antialiased bg-gray-100">

@@ -2,7 +2,7 @@
 
 return [
 
-    'firstname' => 'Given names',
+    'firstname' => 'Given name',
     'lastname' => 'Surname',
     'birthplace' => 'Place of birth',
     'birthday' => 'Date of birth',

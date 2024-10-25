@@ -23,96 +23,101 @@
 
     @guest
     @if (request()->query('login') === 'yes')
-    <form action="{{ route('login') }}" method="post" class="bg-rose-100 p-4 relative">
-        <div class="absolute inset-0 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }}); background-size: 100% auto;"></div>
+    <form action="{{ route('login') }}" method="post" class="font-mono">
         @csrf
-        <div class="grid grid-cols-1 gap-2 relative">
-            <div>
-                <label for="email" class="uppercase font-medium text-sm">Email</label>
-                <input type="email" name="email" id="email" value="{{ old('email') }}" class="border-none w-full focus:ring-0 font-mono" required>
+        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-2 border-black">
+            <div class="p-2">
+                <label for="email" class="uppercase font-bold text-sm">1. Email</label>
+                <input type="email" name="email" id="email" value="{{ old('email') }}" class="border-none w-full focus:ring-0" required>
                 @error('email')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <div>
-                <label for="password" class="uppercase font-medium text-sm">{{ __('content.password') }}</label>
-                <input type="password" name="password" id="password" class="border-none w-full focus:ring-0 font-mono" required>
+            <div class="p-2">
+                <label for="password" class="uppercase font-bold text-sm">2. {{ __('content.password') }}</label>
+                <input type="password" name="password" id="password" class="border-none w-full focus:ring-0" required>
                 @error('password')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <input type="hidden" name="remember" value="yes">
-            <div class="flex gap-4 items-center mt-4">
-                <button type="submit" class="border-2 border-black font-medium py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
-                <a href="{{ route('password.request') }}" class="underline">{{ __('content.password_forgotten') }}</a>
-                {{-- <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a> --}}
-            </div>
         </div>
-
+        <input type="hidden" name="remember" value="yes">
+        <div class="flex flex-wrap gap-4 items-center mt-4">
+            <button type="submit" class="border-2 border-black font-bold py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
+            <a href="{{ route('password.request') }}" class="underline">{{ __('content.password_forgotten') }}</a>
+            <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a>
+        </div>
     </form>    
     @else
-    <form action="{{ route('register') }}" method="post" class="bg-rose-100 p-4 relative">
-        <div class="absolute inset-0 mix-blend-luminosity pointer-events-none" style="background-image: url({{ asset('paper.png') }}); background-size: 100% auto;"></div>
+    <form action="{{ route('register') }}" method="post" class="font-mono">
         @csrf
-        <div class="grid grid-cols-1 gap-2 relative">
-            <div>
-                <label for="lastname" class="uppercase font-medium text-sm">{{ __('content.lastname') }}</label>
-                <input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" class="border-none w-full focus:ring-0 font-mono" autofocus required>
+        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-2 border-black">
+            <div class="p-2">
+                <label for="lastname" class="uppercase font-bold text-sm">1. {{ __('content.lastname') }}</label>
+                <input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" class="border-none w-full focus:ring-0" autofocus required>
                 @error('lastname')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <div>
-                <label for="name" class="uppercase font-medium text-sm">{{ __('content.firstname') }}</label>
-                <input type="text" name="name" id="name" value="{{ old('name') }}" class="border-none w-full focus:ring-0 font-mono" required>
+            <div class="p-2">
+                <label for="name" class="uppercase font-bold text-sm">2. {{ __('content.firstname') }}</label>
+                <input type="text" name="name" id="name" value="{{ old('name') }}" class="border-none w-full focus:ring-0" required>
                 @error('name')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <div>
-                <label for="birthday" class="uppercase font-medium text-sm">{{ __('content.birthday') }}</label>
-                <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" class="border-none w-full focus:ring-0 font-mono" required>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-x-2 border-black">
+            <div class="p-2">
+                <label for="birthday" class="uppercase font-bold text-sm">3. {{ __('content.birthday') }}</label>
+                <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" class="border-none w-full focus:ring-0" required>
                 @error('birthday')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <div>
-                <label for="birthplace" class="uppercase font-medium text-sm">{{ __('content.birthplace') }}</label>
-                <input type="text" name="birthplace" id="birthplace" value="{{ old('birthplace') }}" class="border-none w-full focus:ring-0 font-mono" required>
+            <div class="p-2">
+                <label for="birthplace" class="uppercase font-bold text-sm">4. {{ __('content.birthplace') }}</label>
+                <input type="text" name="birthplace" id="birthplace" value="{{ old('birthplace') }}" class="border-none w-full focus:ring-0" required>
                 @error('birthplace')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <div>
-                <label class="uppercase font-medium text-sm">{{ __('content.sex') }}</label>
-                <div class="flex gap-2 mt-2 items-center">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-x-2 border-t-2 border-black">
+            <div class="p-2">
+                <label class="uppercase font-bold text-sm">5. {{ __('content.sex') }}</label>
+                <div class="flex gap-2 items-center">
                     <input type="radio" id="male" name="sex" value="male" class="border-none rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'male' ? 'checked' : '' }} required>
-                    <label for="male" class="mr-2">{{ __('content.male') }}</label>
+                    <label for="male" class="mr-2 text-sm uppercase">{{ __('content.male') }}</label>
                     <input type="radio" id="female" name="sex" value="female" class="border-none rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'female' ? 'checked' : '' }} required>
-                    <label for="female" class="mr-2">{{ __('content.female') }}</label>
+                    <label for="female" class="mr-2 text-sm uppercase">{{ __('content.female') }}</label>
                     <input type="radio" id="other" name="sex" value="other" class="border-none rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'other' ? 'checked' : '' }} required>
-                    <label for="other" class="mr-2">{{ __('content.other') }}</label>
+                    <label for="other" class="mr-2 text-sm uppercase">{{ __('content.other') }}</label>
                 </div>
                 @error('sex')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <div>
-                <label for="email" class="uppercase font-medium text-sm">Email</label>
-                <input type="email" name="email" id="email" value="{{ old('email') }}" class="border-none w-full focus:ring-0 font-mono" required>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-x-2 border-t-2 border-black">
+            <div class="p-2">
+                <label for="email" class="uppercase font-bold text-sm">6. Email</label>
+                <input type="email" name="email" id="email" value="{{ old('email') }}" class="border-none w-full focus:ring-0" required>
                 @error('email')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <div>
-                <label for="password" class="uppercase font-medium text-sm">{{ __('content.password') }}</label>
-                <input type="password" name="password" id="password" class="border-none w-full focus:ring-0 font-mono" required autocomplete="new-password">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 divide-x-2 divide-black border-2 border-black">
+            <div class="p-2">
+                <label for="password" class="uppercase font-bold text-sm">7. {{ __('content.password') }}</label>
+                <input type="password" name="password" id="password" class="border-none w-full focus:ring-0" required autocomplete="new-password">
                 @error('password')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <div>
-                <label for="password_confirmation" class="uppercase font-medium text-sm">{{ __('content.password_confirmation') }}</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="border-none w-full focus:ring-0 font-mono" required autocomplete="new-password">
+            <div class="p-2">
+                <label for="password_confirmation" class="uppercase font-bold text-sm">8. {{ __('content.password_confirmation') }}</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="border-none w-full focus:ring-0" required autocomplete="new-password">
                 @error('password_confirmation')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
-            <div class="flex gap-4 mt-2 items-center">
-                <input type="checkbox" name="policy" id="policy" class="border-none focus:ring-0 checked:bg-none">
-                <label for="policy">
-                    @if (app()->isLocale('fr'))
-                        Je déclare avoir lu et approuvé les <a href="{{ route('policy') }}" class="underline">conditions d'utilisation</a> du site.
-                    @else
-                        I declare that I have read and approved the <a href="{{ route('policy') }}" class="underline">terms of use</a> of the site.
-                    @endif
-                </label>
-            </div>
-            @error('policy')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
-            <div class="flex gap-4 items-center mt-4">
-                <button type="submit" class="border-2 border-black font-medium py-2 px-4 uppercase">{{ __('content.create_account') }}</button>
-                <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>
-            </div>
+        </div>
+        <div class="flex gap-4 mt-4">
+            <input type="checkbox" name="policy" id="policy" class="border-none focus:ring-0 checked:bg-none">
+            <label for="policy" class="text-sm uppercase">
+                @if (app()->isLocale('fr'))
+                Je déclare avoir lu et approuvé les <a href="{{ route('policy') }}" class="underline">conditions d'utilisation</a> du site.
+                @else
+                I declare that I have read and approved the <a href="{{ route('policy') }}" class="underline">terms of use</a> of the site.
+                @endif
+            </label>
+        </div>
+        @error('policy')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+        <div class="flex gap-4 items-center mt-4">
+            <button type="submit" class="border-2 border-black font-bold py-2 px-4 uppercase">{{ __('content.create_account') }}</button>
+            <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>
         </div>
     </form>   
     @endif

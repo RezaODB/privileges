@@ -1,5 +1,5 @@
 <nav class="font-mono uppercase text-sm grid grid-cols-1 md:grid-cols-7 overflow-hidden">
-    <a href="{{ route('index') }}" class="p-2 rounded-t-md shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:font-bold {{ Route::currentRouteName() === 'index' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}"></a>
+    <a href="{{ route('index') }}" class="p-2 rounded-t-md shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:font-bold {{ Route::currentRouteName() === 'index' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">Index</a>
     <a href="{{ route('step1') }}" class="p-2 rounded-t-md shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:font-bold {{ Route::currentRouteName() === 'step1' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{!! __('content.step1') !!}</a>
     <a href="{{ route('step2') }}" class="p-2 rounded-t-md shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:font-bold {{ Route::currentRouteName() === 'step2' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{!! __('content.step2') !!}</a>
     <a href="{{ route('step3') }}" class="p-2 rounded-t-md shadow-[inset_0px_-3px_3px_rgb(0,0,0,0.3)] hover:font-bold {{ Route::currentRouteName() === 'step3' ? 'md:shadow-[3px_0_3px_rgb(0,0,0,0.3)] font-bold' : '' }}">{!! __('content.step3') !!}</a>

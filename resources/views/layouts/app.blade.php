@@ -18,7 +18,8 @@
             tinymce.init({
                 selector: '.editor',
                 image_class_list: [
-                    {title: 'img-responsive', value: 'img-responsive'},
+                    {title: 'one-column', value: 'one-col'},
+                    {title: 'two-column', value: 'two-col'},
                 ],
                 plugins: 'link lists paste code image media wordcount code',
                 toolbar: 'h2 h3 | bold italic blockquote | numlist bullist | link image media code',

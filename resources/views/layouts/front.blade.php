@@ -17,10 +17,16 @@
         @livewireStyles
     </head>
     <style>
-        .img-responsive {
+        .one-col {
             padding: 1.5rem;
             margin: auto; 
-            background-color: #fdf2e3; 
+            background-color: #fdf2e3;
+        }
+        .two-col {
+            padding: 1.5rem;
+            margin: 2rem auto; 
+            background-color: #fdf2e3;
+            column-span: all; 
         }
         blockquote p {
             text-align: center !important;

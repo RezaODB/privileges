@@ -75,11 +75,11 @@
             <div class="p-2">
                 <label class="uppercase font-bold text-sm">5. {{ __('content.sex') }}</label>
                 <div class="flex gap-2 items-center">
-                    <input type="radio" id="male" name="sex" value="male" class="border-none rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'male' ? 'checked' : '' }} required>
+                    <input type="radio" id="male" name="sex" value="male" class="border-none text-black rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'male' ? 'checked' : '' }} required>
                     <label for="male" class="mr-2 text-sm uppercase">{{ __('content.male') }}</label>
-                    <input type="radio" id="female" name="sex" value="female" class="border-none rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'female' ? 'checked' : '' }} required>
+                    <input type="radio" id="female" name="sex" value="female" class="border-none text-black rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'female' ? 'checked' : '' }} required>
                     <label for="female" class="mr-2 text-sm uppercase">{{ __('content.female') }}</label>
-                    <input type="radio" id="other" name="sex" value="other" class="border-none rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'other' ? 'checked' : '' }} required>
+                    <input type="radio" id="other" name="sex" value="other" class="border-none text-black rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'other' ? 'checked' : '' }} required>
                     <label for="other" class="mr-2 text-sm uppercase">{{ __('content.other') }}</label>
                 </div>
                 @error('sex')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="flex gap-4 mt-4">
-            <input type="checkbox" name="policy" id="policy" class="border-none focus:ring-0 checked:bg-none">
+            <input type="checkbox" name="policy" id="policy" class="border-none text-black focus:ring-0 checked:bg-none">
             <label for="policy" class="text-sm uppercase">
                 @if (app()->isLocale('fr'))
                 Je déclare avoir lu et approuvé les <a href="{{ route('policy') }}" class="underline">conditions d'utilisation</a> du site.

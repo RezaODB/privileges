@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
+use App\Models\Map;
 use App\Models\User;
 use App\Models\Photo;
 use App\Models\Theory;
 use App\Models\Brochure;
-use App\Models\Map;
 use App\Models\Sculpture;
 use Illuminate\Support\Facades\Gate;
 
@@ -31,7 +32,9 @@ class PageController extends Controller
 
     public function faq()
     {
-        return view('faq');
+        return view('faq', [
+            'faqs' => Faq::orderBy('order')->where('lang', app()->getLocale())->get()
+        ]);
     }
 
     public function instructions()
@@ -41,41 +44,41 @@ class PageController extends Controller
     
     public function step1()
     {
-        return view('step1', [
-            'theories' => Theory::orderBy('order')->where('lang', app()->getLocale())->get()
+        return view('step', [
+            'items' => Theory::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
 
     public function step2()
     {
-        return view('step2');
+        return view('quotas');
     }
 
     public function step3()
     {
-        return view('step3', [
-            'brochures' => Brochure::orderBy('order')->where('lang', app()->getLocale())->get()
+        return view('step', [
+            'items' => Brochure::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
 
     public function step4()
     {
-        return view('step4', [
-            'photos' => Photo::orderBy('order')->where('lang', app()->getLocale())->get()
+        return view('step', [
+            'items' => Photo::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
 
     public function step5()
     {
-        return view('step5', [
-            'maps' => Map::orderBy('order')->where('lang', app()->getLocale())->get()
+        return view('step', [
+            'items' => Map::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
     
     public function step6()
     {
-        return view('step6', [
-            'sculptures' => Sculpture::orderBy('order')->where('lang', app()->getLocale())->get()
+        return view('step', [
+            'items' => Sculpture::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
 

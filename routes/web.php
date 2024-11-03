@@ -1,15 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\QuotaController;
+use App\Http\Controllers\TheoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BrochureController;
-use App\Http\Controllers\MapController;
-use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\SculptureController;
-use App\Http\Controllers\TheoryController;
 
 // FRONT
 Route::get('/', [PageController::class, 'index'])->name('index');
@@ -35,6 +36,7 @@ Route::resource('brochures', BrochureController::class)->except('show')->middlew
 Route::resource('photos', PhotoController::class)->except('show')->middleware('auth');
 Route::resource('maps', MapController::class)->except('show')->middleware('auth');
 Route::resource('sculptures', SculptureController::class)->except('show')->middleware('auth');
+Route::resource('faqs', FaqController::class)->except('show')->middleware('auth');
 
 
 Route::middleware('auth')->group(function () {

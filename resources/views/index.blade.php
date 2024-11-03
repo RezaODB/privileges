@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="grid grid-cols-1 md:grid-cols-2 items-start gap-8 border-b-2 border-zinc-800 pb-12 px-2 mt-8">
+<section class="grid grid-cols-1 md:grid-cols-2 items-start gap-8 px-2 mt-8">
 
     <div class="md:justify-self-start">
         <div class="uppercase font-medium border-2 border-zinc-800">

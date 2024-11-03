@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -22,6 +22,7 @@
                     <x-nav-link :href="route('photos.index')" :active="request()->routeIs('photos.index')">Session photo</x-nav-link>
                     <x-nav-link :href="route('maps.index')" :active="request()->routeIs('maps.index')">Cartographie</x-nav-link>
                     <x-nav-link :href="route('sculptures.index')" :active="request()->routeIs('sculptures.index')">Étude sculpturale</x-nav-link>
+                    <x-nav-link :href="route('faqs.index')" :active="request()->routeIs('faqs.index')">FAQ</x-nav-link>
                 </div>
             </div>
 
@@ -84,6 +85,7 @@
             <x-responsive-nav-link :href="route('photos.index')" :active="request()->routeIs('photos.index')">Session photo</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('maps.index')" :active="request()->routeIs('maps.index')">Cartographie</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('sculptures.index')" :active="request()->routeIs('sculptures.index')">Étude sculpturale</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('faqs.index')" :active="request()->routeIs('faqs.index')">FAQ</x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

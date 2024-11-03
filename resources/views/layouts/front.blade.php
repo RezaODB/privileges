@@ -34,6 +34,9 @@
         }
     </style>
     <body class="font-sans antialiased bg-gray-100 text-zinc-800">
+        <div x-data="cursorTrail()" x-init="init()" class="relative z-50">
+            <div x-ref="circle" class="fixed top-0 left-0 w-4 h-4 bg-zinc-800 rounded-full pointer-events-none transition-transform duration-100"></div>
+        </div>
         <div class="max-w-screen-2xl mx-auto sm:px-4">
             <div class="min-h-screen pb-16 sm:my-4 bg-[#e5d0b5] shadow-2xl relative rounded-t-xl rounded-b-md overflow-hidden">
                 <div class="absolute inset-0 pointer-events-none opacity-50" style="background-image: url({{ asset('folder.png') }}); background-size: 100% auto;"></div>
@@ -47,4 +50,18 @@
         </div>
         @livewireScripts
     </body>
+    <script>
+        function cursorTrail() {
+          return {
+            init() {
+              window.addEventListener('mousemove', (event) => {
+                this.moveCircle(event);
+              });
+            },
+            moveCircle(event) {
+              this.$refs.circle.style.transform = `translate(${event.pageX}px, ${event.pageY}px)`;
+            }
+          };
+        }
+    </script>
 </html>

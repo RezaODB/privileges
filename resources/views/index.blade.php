@@ -4,27 +4,26 @@
 
 <section class="grid grid-cols-1 md:grid-cols-2 items-start gap-8 border-b-2 border-zinc-800 pb-12 px-2 mt-8">
 
-    <div>
-        <div class="uppercase font-medium border-2 border-zinc-800 md:justify-self-start">
+    <div class="md:justify-self-start">
+        <div class="uppercase font-medium border-2 border-zinc-800">
             <h1 class="text-3xl sm:text-4xl p-4 text-center">Les privilèges invisibles</h1>
             <h2 class="text-5xl text-center p-4 border-y-2 border-zinc-800"><span class="text-3xl">N°</span> {{ Auth::id() ?? 'x' }}/250</h2>
             <div class="flex text-xl border-b-2 border-zinc-800">
                 <a href="https://www.barbaraiweins.be/" target="_blank" class="border-r-2 border-zinc-800 p-4 text-right hover:bg-zinc-800/10">
-                    <h3>Étude socio-artistique</h3>
+                    <h3>{{ __('content.socioartystudy') }}</h3>
                     <h2 class="mt-2">Barbara Iweins</h2>
                 </a>
                 <h3 class="p-4 self-center mx-auto">2024/2025</h3>
             </div>
-            <div class="grid grid-cols-3 text-xl text-center uppercase">
+            <div class="flex text-xl justify-evenly text-center uppercase">
                 <a href="{{ route('instructions') }}" class="p-4 hover:bg-zinc-800/10">{{ __('content.instructions') }}</a>
                 <a href="{{ route('faq') }}" class="uppercase p-4 border-x-2 border-zinc-800 hover:bg-zinc-800/10">F.A.Q.</a>
-                <div class="flex gap-1 p-3 justify-center">
+                <div class="flex gap-1 p-3 items-center">
                     <a href="{{ route('index', ['lang' => 'fr']) }}" class="{{ App::getLocale() === 'fr' ? 'underline' : '' }}">FR</a>/
                     <a href="{{ route('index', ['lang' => 'en']) }}" class="{{ App::getLocale() === 'en' ? 'underline' : '' }}">EN</a>
                 </div>
             </div>
         </div>
-
         <div class="mt-8">
             <h2 class="font-bold mb-1">CONTACT: </h2>
             <div class="font-mono">
@@ -33,9 +32,7 @@
                 <a href="https://www.instagram.com/barbaraiweins/" target="_blank" class="block hover:underline">Instagram</a>
             </div>
         </div>
-
     </div>
-
 
     @guest
     @if (request()->query('login') === 'yes')

@@ -21,12 +21,13 @@ return [
     'already_registered' => 'Already have an account?',
     'true' => 'True',
     'false' => 'False',
-    'step1' => 'theoretical study',
-    'step2' => 'privilege quota',
-    'step3' => 'social lottery',
-    'step4' => 'photo session',
-    'step5' => 'mind map',
-    'step6' => 'sculptural study',
+    'step1' => 'Theoretical study',
+    'step2' => 'Step 1:<br>Privilege quota',
+    'step3' => 'Step 2:<br>Social lottery',
+    'step4' => 'Step 3:<br>Photo session',
+    'step5' => 'Step 4:<br>Mapping',
+    'step6' => 'Step 5:<br>Sculptural study',
     'instructions' => 'Instructions for use',
+    'socioartystudy' => "Socio-artistic study"
 
 ];

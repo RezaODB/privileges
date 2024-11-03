@@ -27,6 +27,7 @@ return [
     'step4' => 'Étape 3:<br>Session photo',
     'step5' => 'Étape 4:<br>Cartographie',
     'step6' => 'Étape 5:<br>Étude sculpturale',
-    'instructions' => "Mode d'emploi"
+    'instructions' => "Mode d'emploi",
+    'socioartystudy' => "Étude socio-artistique"
 
 ];

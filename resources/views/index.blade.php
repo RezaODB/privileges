@@ -141,7 +141,7 @@
     @endif
     @endguest
     @auth
-    <ul class="font-mono p-4 bg-gray-50">
+    <ul class="font-mono p-4 bg-[#fdf2e3] rounded-xl">
         <li>{{ __('content.lastname') }}: {{ Auth::user()->lastname }}</li>
         <li>{{ __('content.firstname') }}: {{ Auth::user()->name }}</li>
         <li>Email: {{ Auth::user()->email }}</li>

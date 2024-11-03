@@ -33,7 +33,7 @@
             quotes: none !important;
         }
     </style>
-    <body class="font-sans antialiased bg-gray-100 text-zinc-800">
+    <body class="font-sans antialiased bg-gray-100 text-zinc-800 overscroll-none">
         <div x-data="cursorTrail()" x-init="init()" class="relative z-50">
             <div x-ref="circle" class="fixed top-0 left-0 w-4 h-4 bg-zinc-800 rounded-full pointer-events-none transition-transform duration-100"></div>
         </div>

@@ -7,7 +7,7 @@
     @foreach ($theories as $item)
     <div class="font-mono mb-8 px-2 sm:px-8" x-data="{ open: false }">
         <div class="flex items-baseline justify-between gap-4 border-black border-b-4 pb-4 cursor-pointer" x-on:click="open = !open">
-            <h1 class="text-2xl sm:text-4xl font-sans uppercase">{{ $item->title }}</h1>
+            <h1 class="text-2xl sm:text-3xl font-sans uppercase">{{ $item->title }}</h1>
             <h2 x-text="open ? '(- Close)' : '(+ Open)'" class="whitespace-nowrap"></h2>
         </div>
         <div class="grid duration-500" x-bind:class="open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'">

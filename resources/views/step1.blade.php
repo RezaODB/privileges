@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="bg-[#f3e3d3] p-2 pb-16 shadow-xl">
+<section class="bg-[#fdf2e3] p-2 pb-16 shadow-xl">
     <h2 class="text-right text-2xl sm:text-4xl font-light mb-8">{{ Auth::id() ?? 'X' }}/250</h2>
     @foreach ($theories as $item)
     <div class="font-mono mb-8 px-2 sm:px-8" x-data="{ open: false }">

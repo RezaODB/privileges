@@ -20,12 +20,12 @@
         .one-col {
             padding: 1.5rem;
             margin: auto; 
-            background-color: #fdf2e3;
+            background-color: #f3e3d3;
         }
         .two-col {
             padding: 1.5rem;
             margin: 2rem auto; 
-            background-color: #fdf2e3;
+            background-color: #f3e3d3;
             column-span: all; 
         }
         blockquote p {

@@ -5,11 +5,11 @@
 <section class="bg-[#fdf2e3] p-3 pb-16 shadow-xl rounded-3xl">
     <h2 class="text-right text-2xl sm:text-4xl font-light mb-8">{{ Auth::id() ?? 'X' }}/250</h2>
     @foreach ($items as $item)
-    <div class="font-mono mb-8 px-2 sm:px-8" x-data="{ open: false }">
+    <div class="font-mono mb-4 px-2 sm:px-8" x-data="{ open: false }">
         <div class="flex items-baseline justify-between gap-4 border-zinc-800 border-b-2 pb-4 cursor-pointer" x-on:click="open = !open">
             <h1 class="text-2xl sm:text-3xl font-sans uppercase">
                 @if ($item->category)
-                <span class="font-mono text-xl">{{ $item->category }}: </span>
+                <span class="font-mono text-base">{{ $item->category }}: </span>
                 @endif
                 {{ $item->title }}
             </h1>

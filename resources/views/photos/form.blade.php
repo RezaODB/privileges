@@ -1,8 +1,8 @@
 <div class="grid grid-cols-1 gap-4">
 
     <select name="lang" class="justify-self-start border-gray-200 shadow rounded-md">
-        <option value="fr" {{ old('lang') ?? $photo->lang === 'fr' ? 'selected' : '' }}>FR</option>
-        <option value="en" {{ old('lang') ?? $photo->lang === 'en' ? 'selected' : '' }}>EN</option>
+        <option value="fr" {{ old('lang', $photo->lang) === 'fr' ? 'selected' : '' }}>FR</option>
+        <option value="en" {{ old('lang', $photo->lang) === 'en' ? 'selected' : '' }}>EN</option>
     </select>
     @error('lang')<div class="text-red-500">{{ $message }}</div>@enderror
 

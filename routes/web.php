@@ -6,7 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuotaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BrochureController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\SculptureController;
 use App\Http\Controllers\TheoryController;
 
 // FRONT
@@ -31,6 +33,8 @@ Route::get('/export', [QuotaController::class, 'export'])->middleware('auth')->n
 Route::resource('theories', TheoryController::class)->except('show')->middleware('auth');
 Route::resource('brochures', BrochureController::class)->except('show')->middleware('auth');
 Route::resource('photos', PhotoController::class)->except('show')->middleware('auth');
+Route::resource('maps', MapController::class)->except('show')->middleware('auth');
+Route::resource('sculptures', SculptureController::class)->except('show')->middleware('auth');
 
 
 Route::middleware('auth')->group(function () {

@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Photo;
 use App\Models\Theory;
 use App\Models\Brochure;
+use App\Models\Map;
+use App\Models\Sculpture;
 use Illuminate\Support\Facades\Gate;
 
 class PageController extends Controller
@@ -65,12 +67,16 @@ class PageController extends Controller
 
     public function step5()
     {
-        return view('step5');
+        return view('step5', [
+            'maps' => Map::orderBy('order')->where('lang', app()->getLocale())->get()
+        ]);
     }
     
     public function step6()
     {
-        return view('step6');
+        return view('step6', [
+            'sculptures' => Sculpture::orderBy('order')->where('lang', app()->getLocale())->get()
+        ]);
     }
 
     public function upload()

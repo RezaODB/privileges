@@ -2,7 +2,7 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
+            <div class="flex overflow-auto">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('index') }}">
@@ -18,6 +18,7 @@
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">Participants</x-nav-link>
                     <x-nav-link :href="route('theories.index')" :active="request()->routeIs('theories.index')">Théorie</x-nav-link>
                     <x-nav-link :href="route('quotas.index')" :active="request()->routeIs('quotas.index')">Quota privilèges</x-nav-link>
+                    <x-nav-link :href="route('votes.index')" :active="request()->routeIs('votes.index')">Vote</x-nav-link>
                     <x-nav-link :href="route('brochures.index')" :active="request()->routeIs('brochures.index')">Loterie Sociale</x-nav-link>
                     <x-nav-link :href="route('photos.index')" :active="request()->routeIs('photos.index')">Session photo</x-nav-link>
                     <x-nav-link :href="route('maps.index')" :active="request()->routeIs('maps.index')">Cartographie</x-nav-link>
@@ -81,6 +82,7 @@
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">Participants</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('theories.index')" :active="request()->routeIs('theories.index')">Théorie</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('quotas.index')" :active="request()->routeIs('quotas.index')">Quota privilèges</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('votes.index')" :active="request()->routeIs('votes.index')">Vote</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('brochures.index')" :active="request()->routeIs('brochures.index')">Loterie Sociale</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('photos.index')" :active="request()->routeIs('photos.index')">Session photo</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('maps.index')" :active="request()->routeIs('maps.index')">Cartographie</x-responsive-nav-link>

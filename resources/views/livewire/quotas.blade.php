@@ -2,7 +2,7 @@
     <form wire:submit class="grid grid-cols-[auto_1fr_auto]">
         <div></div>
         <div class="border-b-2 border-zinc-800 ml-4"></div>
-        <div class="border-b-2 border-zinc-800 text-3xl uppercase font-medium pb-8">
+        <div class="border-b-2 border-zinc-800 text-2xl uppercase font-medium pb-8">
             <div class="-rotate-90">
                 <h3>{{ __('content.true') }}</h3>
                 <h3 class="mt-4">{{ __('content.false') }}</h3>

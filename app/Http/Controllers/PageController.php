@@ -56,7 +56,7 @@ class PageController extends Controller
 
     public function step3()
     {
-        return view('step', [
+        return view('votes', [
             'items' => Brochure::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }

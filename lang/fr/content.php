@@ -28,6 +28,10 @@ return [
     'step5' => 'Étape 4:<br>Cartographie',
     'step6' => 'Étape 5:<br>Étude sculpturale',
     'instructions' => "Mode d'emploi",
-    'socioartystudy' => "Étude socio-artistique"
+    'socioartystudy' => "Étude socio-artistique",
+    'for' => 'Pour',
+    'against' => 'Contre',
+    'coinflip' => 'Pile ou face',
+
 
 ];

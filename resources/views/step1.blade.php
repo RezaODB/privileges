@@ -16,7 +16,7 @@
                     <div class="h-12 flex-1"></div>
                     <div class="h-12 flex-1"></div>
                 </div>
-                <div class="pb-12 prose max-w-none columns-md gap-12 [column-rule:1px_solid_black] prose-a:underline prose-p:text-justify prose-h2:font-sans prose-h2:uppercase prose-h2:font-medium prose-h3:font-sans prose-h3:uppercase prose-h3:font-medium prose-blockquote:border-y prose-blockquote:border-x-0  prose-blockquote:border-black prose-blockquote:-mx-6 prose-blockquote:text-xl prose-blockquote:uppercase prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-center prose-blockquote:text-[#374151]">{!! $item->body !!}</div>
+                <div class="pb-12 prose max-w-none columns-md gap-12 [column-rule:1px_solid_black] prose-a:underline prose-p:text-justify prose-h2:font-sans prose-h2:uppercase prose-h2:font-medium prose-h3:font-sans prose-h3:uppercase prose-h3:font-medium prose-blockquote:border-y prose-blockquote:border-x-0  prose-blockquote:border-black prose-blockquote:-mx-6 prose-blockquote:text-xl prose-blockquote:uppercase prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-center prose-blockquote:text-[#374151] prose-p:break-inside-avoid-page">{!! $item->body !!}</div>
             </div>
         </div>
     </div>

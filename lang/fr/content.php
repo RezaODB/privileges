@@ -6,6 +6,8 @@ return [
     'lastname' => 'Nom',
     'birthplace' => 'Lieu de naissance',
     'birthday' => 'Date de naissance',
+    'zip' => 'Code postal',
+    'phone' => 'Numéro de téléphone',
     'password' => 'Mot de passe',
     'password_confirmation' => 'Confirmation du mot de passe',
     'password_forgotten' => 'Mot de passe oublié?',
@@ -25,4 +27,6 @@ return [
     'step4' => 'Étape 3:<br>Session photo',
     'step5' => 'Étape 4:<br>Cartographie',
     'step6' => 'Étape 5:<br>Étude sculpturale',
+    'instructions' => "Mode d'emploi"
+
 ];

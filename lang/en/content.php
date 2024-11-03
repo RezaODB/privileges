@@ -6,6 +6,8 @@ return [
     'lastname' => 'Surname',
     'birthplace' => 'Place of birth',
     'birthday' => 'Date of birth',
+    'zip' => 'Postal code',
+    'phone' => 'Phone number',
     'password' => 'Password',
     'password_confirmation' => 'Password confirmation',
     'password_forgotten' => 'Forgot your password?',
@@ -25,5 +27,6 @@ return [
     'step4' => 'photo session',
     'step5' => 'mind map',
     'step6' => 'sculptural study',
+    'instructions' => 'Instructions for use',
 
 ];

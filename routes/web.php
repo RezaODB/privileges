@@ -10,7 +10,9 @@ use App\Http\Controllers\TheoryController;
 
 // FRONT
 Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/policy', [PageController::class, 'policy'])->name('policy');
+Route::get('/instructions', [PageController::class, 'instructions'])->name('instructions');
 Route::get('/step1', [PageController::class, 'step1'])->name('step1');
 Route::get('/step2', [PageController::class, 'step2'])->name('step2');
 Route::get('/step3', [PageController::class, 'step3'])->name('step3');

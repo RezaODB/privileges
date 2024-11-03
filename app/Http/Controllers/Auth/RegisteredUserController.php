@@ -33,7 +33,8 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'birthplace' => ['required', 'string', 'max:255'],
+            'zip' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
             'birthday' => ['required', 'date'],
             'sex' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
@@ -44,7 +45,9 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'lastname' => $request->lastname,
-            'birthplace' => $request->birthplace,
+            'birthplace' => 'NA',
+            'zip' => $request->zip,
+            'phone' => $request->phone,
             'birthday' => $request->birthday,
             'sex' => $request->sex,
             'role' => $request->email === 'info@flechette.be' ? 2 : 1,

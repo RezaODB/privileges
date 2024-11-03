@@ -14,7 +14,7 @@ export default {
         extend: {
             fontFamily: {
                 mono: ['Courier Prime', ...defaultTheme.fontFamily.mono],
-                sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
             }
         },
     },

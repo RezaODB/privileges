@@ -25,6 +25,16 @@ class PageController extends Controller
     {
         return view('policy');
     }
+
+    public function faq()
+    {
+        return view('faq');
+    }
+
+    public function instructions()
+    {
+        return view('instructions');
+    }
     
     public function step1()
     {

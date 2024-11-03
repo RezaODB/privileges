@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Photo;
 use App\Models\Theory;
 use App\Models\Brochure;
 use Illuminate\Support\Facades\Gate;
@@ -57,7 +58,9 @@ class PageController extends Controller
 
     public function step4()
     {
-        return view('step4');
+        return view('step4', [
+            'photos' => Photo::orderBy('order')->where('lang', app()->getLocale())->get()
+        ]);
     }
 
     public function step5()

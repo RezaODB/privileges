@@ -19,6 +19,7 @@
                     <x-nav-link :href="route('theories.index')" :active="request()->routeIs('theories.index')">Théorie</x-nav-link>
                     <x-nav-link :href="route('quotas.index')" :active="request()->routeIs('quotas.index')">Quota privilèges</x-nav-link>
                     <x-nav-link :href="route('brochures.index')" :active="request()->routeIs('brochures.index')">Loterie Sociale</x-nav-link>
+                    <x-nav-link :href="route('photos.index')" :active="request()->routeIs('photos.index')">Session photo</x-nav-link>
                 </div>
             </div>
 
@@ -78,6 +79,7 @@
             <x-responsive-nav-link :href="route('theories.index')" :active="request()->routeIs('theories.index')">Théorie</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('quotas.index')" :active="request()->routeIs('quotas.index')">Quota privilèges</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('brochures.index')" :active="request()->routeIs('brochures.index')">Loterie Sociale</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('photos.index')" :active="request()->routeIs('photos.index')">Session photo</x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

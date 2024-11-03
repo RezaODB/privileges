@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuotaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BrochureController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\TheoryController;
 
 // FRONT
@@ -29,6 +30,7 @@ Route::resource('quotas', QuotaController::class)->except('show')->middleware('a
 Route::get('/export', [QuotaController::class, 'export'])->middleware('auth')->name('export');
 Route::resource('theories', TheoryController::class)->except('show')->middleware('auth');
 Route::resource('brochures', BrochureController::class)->except('show')->middleware('auth');
+Route::resource('photos', PhotoController::class)->except('show')->middleware('auth');
 
 
 Route::middleware('auth')->group(function () {

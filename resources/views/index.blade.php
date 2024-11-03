@@ -42,12 +42,12 @@
             <div class="p-2">
                 <label for="email" class="uppercase font-bold text-sm">1. Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" class="border-none w-full focus:ring-0" required>
-                @error('email')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('email')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
             <div class="p-2">
                 <label for="password" class="uppercase font-bold text-sm">2. {{ __('content.password') }}</label>
                 <input type="password" name="password" id="password" class="border-none w-full focus:ring-0" required>
-                @error('password')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('password')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
         <input type="hidden" name="remember" value="yes">
@@ -64,24 +64,24 @@
             <div class="p-2">
                 <label for="lastname" class="uppercase font-bold text-sm">1. {{ __('content.lastname') }}</label>
                 <input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" class="border-none w-full focus:ring-0" autofocus required>
-                @error('lastname')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('lastname')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
             <div class="p-2">
                 <label for="name" class="uppercase font-bold text-sm">2. {{ __('content.firstname') }}</label>
                 <input type="text" name="name" id="name" value="{{ old('name') }}" class="border-none w-full focus:ring-0" required>
-                @error('name')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('name')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-zinc-800 border-x-2 border-zinc-800">
             <div class="p-2">
                 <label for="birthday" class="uppercase font-bold text-sm">3. {{ __('content.birthday') }}</label>
                 <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" class="border-none w-full focus:ring-0" required>
-                @error('birthday')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('birthday')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
             <div class="p-2">
                 <label for="zip" class="uppercase font-bold text-sm">4. {{ __('content.zip') }}</label>
                 <input type="text" name="zip" id="zip" value="{{ old('zip') }}" class="border-none w-full focus:ring-0" required>
-                @error('zip')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('zip')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-zinc-800 border-x-2 border-t-2 border-zinc-800">
@@ -95,31 +95,31 @@
                     <input type="radio" id="other" name="sex" value="other" class="border-none text-zinc-800 rounded-none focus:ring-0 checked:bg-none" {{ old('sex') === 'other' ? 'checked' : '' }} required>
                     <label for="other" class="mr-2 text-sm uppercase">{{ __('content.other') }}</label>
                 </div>
-                @error('sex')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('sex')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
             <div class="p-2">
                 <label for="phone" class="uppercase font-bold text-sm">6. {{ __('content.phone') }}</label>
                 <input type="text" name="phone" id="phone" value="{{ old('phone') }}" class="border-none w-full focus:ring-0" required>
-                @error('phone')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('phone')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-zinc-800 border-x-2 border-t-2 border-zinc-800">
             <div class="p-2">
                 <label for="email" class="uppercase font-bold text-sm">7. Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" class="border-none w-full focus:ring-0" required>
-                @error('email')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('email')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-zinc-800 border-2 border-zinc-800">
             <div class="p-2">
                 <label for="password" class="uppercase font-bold text-sm">8. {{ __('content.password') }}</label>
                 <input type="password" name="password" id="password" class="border-none w-full focus:ring-0" required autocomplete="new-password">
-                @error('password')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('password')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
             <div class="p-2">
                 <label for="password_confirmation" class="uppercase font-bold text-sm">9. {{ __('content.password_confirmation') }}</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" class="border-none w-full focus:ring-0" required autocomplete="new-password">
-                @error('password_confirmation')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+                @error('password_confirmation')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
             </div>
         </div>
         <div class="flex gap-4 mt-4">
@@ -132,7 +132,7 @@
                 @endif
             </label>
         </div>
-        @error('policy')<div class="text-red-500 uppercase text-sm">{{ $message }}</div>@enderror
+        @error('policy')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
         <div class="flex gap-4 items-center mt-4">
             <button type="submit" class="border-2 border-zinc-800 font-bold py-2 px-4 uppercase hover:bg-zinc-800/10">{{ __('content.create_account') }}</button>
             <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>

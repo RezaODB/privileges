@@ -9,15 +9,15 @@
             <h1 class="text-3xl sm:text-4xl p-4 text-center">Les privilèges invisibles</h1>
             <h2 class="text-5xl text-center p-4 border-y-2 border-zinc-800"><span class="text-3xl">N°</span> {{ Auth::id() ?? 'x' }}/250</h2>
             <div class="flex text-xl border-b-2 border-zinc-800">
-                <a href="https://www.barbaraiweins.be/" target="_blank" class="border-r-2 border-zinc-800 p-4 text-right hover:bg-zinc-800/10">
+                <a href="https://www.barbaraiweins.be/" target="_blank" class="border-r-2 border-zinc-800 p-4 text-right hover:underline">
                     <h3>{{ __('content.socioartystudy') }}</h3>
                     <h2 class="mt-2">Barbara Iweins</h2>
                 </a>
                 <h3 class="p-4 self-center mx-auto">2024/2025</h3>
             </div>
             <div class="flex text-xl justify-evenly text-center uppercase">
-                <a href="{{ route('instructions') }}" class="p-4 hover:bg-zinc-800/10">{{ __('content.instructions') }}</a>
-                <a href="{{ route('faq') }}" class="uppercase p-4 border-x-2 border-zinc-800 hover:bg-zinc-800/10">F.A.Q.</a>
+                <a href="{{ route('instructions') }}" class="p-4 hover:underline">{{ __('content.instructions') }}</a>
+                <a href="{{ route('faq') }}" class="uppercase p-4 border-x-2 border-zinc-800 hover:underline">F.A.Q.</a>
                 <div class="flex gap-1 p-3 items-center">
                     <a href="{{ route('index', ['lang' => 'fr']) }}" class="{{ App::getLocale() === 'fr' ? 'underline' : '' }}">FR</a>/
                     <a href="{{ route('index', ['lang' => 'en']) }}" class="{{ App::getLocale() === 'en' ? 'underline' : '' }}">EN</a>
@@ -134,7 +134,7 @@
         </div>
         @error('policy')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
         <div class="flex gap-4 items-center mt-4">
-            <button type="submit" class="border-2 border-zinc-800 font-bold py-2 px-4 uppercase hover:bg-zinc-800/10">{{ __('content.create_account') }}</button>
+            <button type="submit" class="border-2 border-zinc-800 font-bold py-2 px-4 uppercase hover:underline">{{ __('content.create_account') }}</button>
             <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>
         </div>
     </form>   

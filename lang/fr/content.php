@@ -32,6 +32,6 @@ return [
     'for' => 'Pour',
     'against' => 'Contre',
     'coinflip' => 'Pile ou face',
-
+    'comment' => 'Commentaire'
 
 ];

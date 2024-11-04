@@ -31,6 +31,7 @@ return [
     'socioartystudy' => "Socio-artistic study",
     'for' => 'In favor',
     'against' => 'Against',
-    'coinflip' => 'Coin flip',
+    'coinflip' => 'Flip a coin',
+    'comment' => 'Comment'
 
 ];

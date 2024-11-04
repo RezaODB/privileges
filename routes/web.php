@@ -6,6 +6,7 @@ use App\Http\Controllers\MapController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\IntroController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\QuotaController;
 use App\Http\Controllers\TheoryController;
@@ -37,6 +38,7 @@ Route::resource('theories', TheoryController::class)->except('show')->middleware
 Route::resource('brochures', BrochureController::class)->except('show')->middleware('auth');
 Route::resource('photos', PhotoController::class)->except('show')->middleware('auth');
 Route::resource('maps', MapController::class)->except('show')->middleware('auth');
+Route::resource('intros', IntroController::class)->except('show')->middleware('auth');
 Route::resource('sculptures', SculptureController::class)->except('show')->middleware('auth');
 Route::resource('faqs', FaqController::class)->except('show')->middleware('auth');
 

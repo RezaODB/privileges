@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Faq;
 use App\Models\Map;
 use App\Models\User;
+use App\Models\Intro;
 use App\Models\Photo;
 use App\Models\Theory;
 use App\Models\Brochure;
@@ -51,7 +52,9 @@ class PageController extends Controller
 
     public function step2()
     {
-        return view('quotas');
+        return view('quotas', [
+            'items' => Intro::orderBy('order')->where('lang', app()->getLocale())->get()
+        ]);
     }
 
     public function step3()

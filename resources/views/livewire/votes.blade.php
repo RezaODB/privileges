@@ -21,6 +21,6 @@
     </div>
     <div class="flex flex-col gap-4">
         <label for="comment" class="text-xl uppercase font-medium">{{ __('content.comment') }}</label>
-        <textarea name="comment" id="comment" class="w-full h-full border-none focus:ring-0"></textarea>
+        <textarea wire:model.blur="votes.comment" id="comment" class="w-full h-full border-none focus:ring-0"></textarea>
     </div>
 </form>

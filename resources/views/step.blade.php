@@ -4,6 +4,7 @@
 
 <section class="bg-[#fdf2e3] p-3 pb-16 shadow-xl rounded-3xl">
     <h2 class="text-right text-2xl sm:text-4xl font-light mb-8">{{ Auth::id() ?? 'X' }}/250</h2>
+    
     @foreach ($items as $item)
     <div class="font-mono mb-4 px-2 sm:px-8" x-data="{ open: false }">
         <div class="flex items-baseline justify-between gap-4 border-zinc-800 border-b-2 pb-4 cursor-pointer" x-on:click="open = !open">
@@ -21,7 +22,7 @@
                     <div class="h-12 flex-1"></div>
                     <div class="h-12 flex-1"></div>
                 </div>
-                <div class="pb-12 prose max-w-none columns-md gap-12 [column-rule:2px_solid_black] prose-a:underline prose-p:text-justify prose-h2:font-sans prose-h2:uppercase prose-h2:font-medium prose-h3:font-sans prose-h3:uppercase prose-h3:font-medium prose-blockquote:border-y-2 prose-blockquote:border-x-0  prose-blockquote:border-zinc-800 prose-blockquote:-mx-6 prose-blockquote:text-xl prose-blockquote:uppercase prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-center prose-blockquote:text-[#374151]">{!! $item->body !!}</div>
+                <div class="pb-12 prose max-w-none columns-md gap-12 [column-rule:2px_solid_black] prose-a:underline prose-p:text-justify prose-h2:font-sans prose-h2:uppercase prose-h2:font-medium prose-h2:border-b-2 prose-h2:border-zinc-800 prose-h2:pb-4 prose-h2:-mx-6 prose-h2:px-6 prose-h3:font-sans prose-h3:uppercase prose-h3:font-medium prose-blockquote:border-y-2 prose-blockquote:border-x-0 prose-blockquote:border-zinc-800 prose-blockquote:-mx-6 prose-blockquote:text-xl prose-blockquote:uppercase prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-center prose-blockquote:text-[#374151]">{!! $item->body !!}</div>
             </div>
         </div>
     </div>

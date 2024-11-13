@@ -52,14 +52,14 @@ class PageController extends Controller
 
     public function step2()
     {
-        return view('step_with_form', [
+        return view('step', [
             'items' => Intro::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
 
     public function step3()
     {
-        return view('step_with_form', [
+        return view('step', [
             'items' => Brochure::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }

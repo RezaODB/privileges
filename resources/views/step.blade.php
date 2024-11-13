@@ -3,8 +3,21 @@
 @section('content')
 
 <section class="bg-[#fdf2e3] p-3 pb-16 shadow-xl rounded-3xl">
+
     <h2 class="text-right text-2xl sm:text-4xl font-light mb-8">{{ Auth::id() ?? 'X' }}/250</h2>
-    
+
+    @guest
+    <div class="max-w-md font-mono px-2 sm:px-8">
+        @if (App::isLocale('en'))
+        Please <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">sign in</a> before proceeding to the vote.
+        @endif
+        @if (App::isLocale('fr'))
+        Merci de vous <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">connecter à votre compte</a> afin de répondre au questionnaire.
+        @endif
+    </div>
+    @endguest
+
+    @auth
     @foreach ($items as $item)
     <div class="font-mono mb-4 px-2 sm:px-8" x-data="{ open: false }">
         <div class="flex items-baseline justify-between gap-4 border-zinc-800 border-b-2 pb-4 cursor-pointer" x-on:click="open = !open">
@@ -27,6 +40,13 @@
         </div>
     </div>
     @endforeach
+    @if (Route::currentRouteName() === 'step2')
+    @livewire('quotas')
+    @endif
+    @if (Route::currentRouteName() === 'step3')
+    @livewire('votes')
+    @endif
+    @endauth
 </section>
 
 @endsection

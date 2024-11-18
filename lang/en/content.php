@@ -27,7 +27,7 @@ return [
     'step4' => 'Step 3:<br>Photo session',
     'step5' => 'Step 4:<br>Mapping',
     'step6' => 'Step 5:<br>Sculptural study',
-    'instructions' => 'Instructions for use',
+    'instructions' => 'Checklist',
     'socioartystudy' => "Socio-artistic study",
     'for' => 'In favor',
     'against' => 'Against',

@@ -10,7 +10,7 @@
             <div class="h-8 sm:border-r-2 border-zinc-800"></div>
             <div class="sm:col-span-2"></div>
             @foreach ($faqs as $item)
-            <h3 class="text-xl font-sans sm:border-r-2 border-zinc-800 pb-4 sm:pr-4">{{ $item->title }}</h3>
+            <h3 class="text-xl font-sans uppercase sm:border-r-2 border-zinc-800 pb-4 sm:pr-4">{{ $item->title }}</h3>
             <div class="sm:pl-4 sm:col-span-2 pb-8 prose max-w-none prose-a:underline prose-h2:font-sans prose-h2:uppercase prose-h2:font-medium prose-h3:font-sans prose-h3:uppercase prose-h3:font-medium">{!! $item->body !!}</div>
             @endforeach
         </div>

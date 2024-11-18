@@ -19,8 +19,8 @@ return [
     'sign_out' => 'Me déconnecter',
     'create_account' => 'Créer mon compte',
     'already_registered' => 'Déjà enregistré?',
-    'true' => 'Vrai',
-    'false' => 'Faux',
+    'true' => 'Oui',
+    'false' => 'Non',
     'step1' => 'Étude théorique',
     'step2' => 'Étape 1:<br>Quota privilèges',
     'step3' => 'Étape 2:<br>Loterie sociale',
@@ -32,6 +32,8 @@ return [
     'for' => 'Pour',
     'against' => 'Contre',
     'coinflip' => 'Pile ou face',
-    'comment' => 'Commentaire'
+    'comment' => 'Commentaire',
+    'form' => 'Questionnaire',
+    'ballot' => 'Bulletin de vote'
 
 ];

@@ -19,8 +19,8 @@ return [
     'sign_out' => 'Sign out',
     'create_account' => 'Create account',
     'already_registered' => 'Already have an account?',
-    'true' => 'True',
-    'false' => 'False',
+    'true' => 'Yes',
+    'false' => 'No',
     'step1' => 'Theoretical study',
     'step2' => 'Step 1:<br>Privilege quota',
     'step3' => 'Step 2:<br>Social lottery',
@@ -32,6 +32,8 @@ return [
     'for' => 'In favor',
     'against' => 'Against',
     'coinflip' => 'Flip a coin',
-    'comment' => 'Comment'
+    'comment' => 'Comment',
+    'form' => 'Form',
+    'ballot' => 'Ballot'
 
 ];

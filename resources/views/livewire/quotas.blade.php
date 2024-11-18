@@ -1,6 +1,8 @@
 <form wire:submit class="grid grid-cols-[auto_1fr_auto] px-2 sm:px-8">
     <div></div>
-    <div class="border-b-2 border-zinc-800 sm:ml-4"></div>
+    <div class="border-b-2 border-zinc-800 sm:ml-4 flex items-end pb-4">
+        <h2 class="text-3xl uppercase">{{ __('content.form') }}</h2>
+    </div>
     <div class="border-b-2 border-zinc-800 text-2xl uppercase font-medium pb-8">
         <div class="-rotate-90">
             <h3>{{ __('content.true') }}</h3>

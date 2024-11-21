@@ -15,7 +15,16 @@ export default {
             fontFamily: {
                 mono: ['Courier Prime', ...defaultTheme.fontFamily.mono],
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
-            }
+            },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        'li::marker': {
+                            color: '#27272a' 
+                        }
+                    },
+                },
+            },
         },
     },
     plugins: [forms, typo],

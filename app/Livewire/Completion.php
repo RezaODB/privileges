@@ -11,14 +11,14 @@ class Completion extends Component
 
     public function mount()
     {
-        $this->completion = Auth::user()->answers->completion ?? []; 
-
+        $this->completion = Auth::user()->answers->completion ?? [];
+        
         $this->completion[1] = Auth::user() ? true : false;
     }
 
     public function updated()
     {
-        Auth::user()->answers->update(['completion' => $this->completion]);
+        Auth::user()?->answers->update(['completion' => $this->completion]);
     }
 
     public function render()

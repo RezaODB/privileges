@@ -10,6 +10,7 @@ use App\Models\Photo;
 use App\Models\Theory;
 use App\Models\Brochure;
 use App\Models\Sculpture;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class PageController extends Controller
@@ -23,7 +24,18 @@ class PageController extends Controller
 
     public function index()
     {
-        return view('index');
+        $total = 0;
+        $completion = array_filter(Auth::user()?->answers->completion);
+        if (array_key_exists(1, $completion)) { $total = $total + 10; }
+        if (array_key_exists(2, $completion)) { $total = $total + 20; }
+        if (array_key_exists(3, $completion)) { $total = $total + 30; }
+        if (array_key_exists(5, $completion)) { $total = $total + 30; }
+        if (array_key_exists(6, $completion)) { $total = $total + 30; }
+        if (array_key_exists(7, $completion)) { $total = $total + 120; }
+
+        return view('index', [
+            'total' => $total / 24 * 10
+        ]);
     }
     
     public function policy()

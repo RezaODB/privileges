@@ -22,7 +22,7 @@
                     {title: 'two-column', value: 'two-col'},
                 ],
                 plugins: 'link lists paste code image media wordcount code',
-                toolbar: 'h2 h3 | bold italic blockquote indent | numlist bullist | link image media code',
+                toolbar: 'h2 h3 | bold italic blockquote indent aligncenter | numlist bullist | link image media code',
                 menubar: false,
                 paste_as_text: true,
                 image_title: true,

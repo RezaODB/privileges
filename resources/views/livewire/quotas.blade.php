@@ -17,5 +17,10 @@
         <input type="radio" wire:model.live="answers.{{ $item->id }}" value="no" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0"> 
     </div>
     @endforeach
+    <div></div>
+    <div class="flex flex-col gap-4 mt-12 col-span-2 sm:px-4">
+        <label for="comment" class="text-3xl uppercase">{{ __('content.comment') }}</label>
+        <textarea wire:model.live.debounce.1000ms="answers.comment" id="comment" class="w-full h-full border-none focus:ring-0"></textarea>
+    </div>
 </form>
 

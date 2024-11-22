@@ -7,7 +7,7 @@
     <div class="md:justify-self-start">
         <div class="uppercase font-medium border-2 border-zinc-800">
             <h1 class="text-3xl sm:text-4xl p-4 text-center">Les privilèges invisibles</h1>
-            <h2 class="text-5xl text-center p-4 border-y-2 border-zinc-800"><span class="text-3xl">N°</span> {{ Auth::id() ?? 'x' }}/250</h2>
+            <h2 class="text-5xl text-center p-4 border-y-2 border-zinc-800"><span class="text-3xl">N°</span> {{ Auth::user()->order ?? 'x' }}/250</h2>
             <div class="flex text-xl border-b-2 border-zinc-800">
                 <a href="https://www.barbaraiweins.be/" target="_blank" class="border-r-2 border-zinc-800 p-4 text-right hover:underline">
                     <h3>{{ __('content.socioartystudy') }}</h3>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Vote;
 use App\Models\Quota;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,8 +14,20 @@ class UserController extends Controller
         Gate::allowIf(fn (User $user) => $user->role === 2);
         
         return view('users.index', [
-            'users' => User::orderBy('lastname')->where('role', 1)->get(),
-            'total' => Quota::count()
+            'users' => User::orderBy('order')->where('role', 1)->get(),
+            'quotas' => Quota::count(),
+            'votes' => Vote::count()
+        ]);
+    }
+
+    public function show(User $user)
+    {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+        
+        return view('users.show', [
+            'user' => $user,
+            'quotas' => Quota::count(),
+            'votes' => Vote::count()
         ]);
     }
 

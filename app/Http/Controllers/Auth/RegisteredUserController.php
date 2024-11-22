@@ -50,6 +50,7 @@ class RegisteredUserController extends Controller
             'birthday' => $request->birthday,
             'sex' => $request->sex,
             'role' => $request->email === 'info@flechette.be' ? 2 : 1,
+            'order' => User::count(),
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

@@ -14,6 +14,7 @@ class Answer extends Model
         return [
             'answers' => 'array',
             'votes' => 'array',
+            'completion' => 'array',
         ];
     }
     

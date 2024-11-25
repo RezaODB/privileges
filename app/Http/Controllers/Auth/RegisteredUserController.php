@@ -38,7 +38,8 @@ class RegisteredUserController extends Controller
             'sex' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'policy' => ['required', 'accepted']
+            'policy' => ['required', 'accepted'],
+            'video' => ['nullable', 'boolean'],
         ]);
 
         $user = User::create([
@@ -48,6 +49,7 @@ class RegisteredUserController extends Controller
             'zip' => $request->zip,
             'phone' => $request->phone,
             'birthday' => $request->birthday,
+            'video' => $request->video,
             'sex' => $request->sex,
             'role' => $request->email === 'info@flechette.be' ? 2 : 1,
             'order' => User::count(),

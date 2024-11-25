@@ -13,6 +13,7 @@
                        <div class="flex gap-4"><span class="w-60">DATE OF BIRTH: </span>{{ $user->birthday->isoFormat('DD MMMM YYYY') }}</div>
                        <div class="flex gap-4"><span class="w-60">SEX: </span>{{ Str::ucfirst($user->sex) }}</div>
                        <div class="flex gap-4"><span class="w-60">POSTAL CODE: </span>{{ $user->zip }}</div>
+                       <div class="flex gap-4"><span class="w-60">VIDEO RECORDING: </span>{{ $user->video ? 'NO' : 'YES' }}</div>
                        <br>
                        <div class="flex gap-4"><span class="w-60">ANSWERS: </span>{{ count($user->answers->answers) - array_key_exists('comment', $user->answers->answers) }}/{{ $quotas }}</div>
                        <div class="flex gap-4"><span class="w-60">QUOTA OF PRIVILEGES: </span>{{ round(data_get(array_count_values($user->answers->answers), 'yes') / $quotas * 100) }}%</div>

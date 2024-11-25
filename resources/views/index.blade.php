@@ -137,6 +137,17 @@
             </label>
         </div>
         @error('policy')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
+        <div class="flex gap-4 mt-4">
+            <input type="checkbox" name="video" id="video" value="1" class="border-none text-zinc-800 focus:ring-0 checked:bg-none">
+            <label for="video" class="text-sm uppercase">
+                @if (app()->isLocale('fr'))
+                Je préfère ne pas être filmé mais qu'on enregistre seulement ma voix.
+                @else
+                I prefer not to be filmed but only for my voice to be recorded.
+                @endif
+            </label>
+        </div>
+        @error('video')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror
         <div class="flex gap-4 items-center mt-4">
             <button type="submit" class="border-2 border-zinc-800 font-bold py-2 px-4 uppercase hover:underline">{{ __('content.create_account') }}</button>
             <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>

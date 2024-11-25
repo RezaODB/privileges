@@ -26,8 +26,8 @@ class UserController extends Controller
         
         return view('users.show', [
             'user' => $user,
-            'quotas' => Quota::count(),
-            'votes' => Vote::count()
+            'votes' => Vote::count(),
+            'quotas' => Quota::orderBy('order')->get(),
         ]);
     }
 

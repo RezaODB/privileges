@@ -15,13 +15,19 @@
                        <div class="flex gap-4"><span class="w-60">POSTAL CODE: </span>{{ $user->zip }}</div>
                        <div class="flex gap-4"><span class="w-60">VIDEO RECORDING: </span>{{ $user->video ? 'NO' : 'YES' }}</div>
                        <br>
-                       <div class="flex gap-4"><span class="w-60">ANSWERS: </span>{{ count($user->answers->answers) - array_key_exists('comment', $user->answers->answers) }}/{{ $quotas }}</div>
-                       <div class="flex gap-4"><span class="w-60">QUOTA OF PRIVILEGES: </span>{{ round(data_get(array_count_values($user->answers->answers), 'yes') / $quotas * 100) }}%</div>
+                       <div class="flex gap-4"><span class="w-60">ANSWERS: </span>{{ count($user->answers->answers) - array_key_exists('comment', $user->answers->answers) }}/{{ $quotas->count() }}</div>
+                       <div class="flex gap-4"><span class="w-60">QUOTA OF PRIVILEGES: </span>{{ round(data_get(array_count_values($user->answers->answers), 'yes') / $quotas->count() * 100) }}%</div>
                        <div class="flex gap-4"><span class="w-60">COMMENT: </span>{{ data_get($user->answers->answers, 'comment') }}</div>
                        <br>
                        <div class="flex gap-4"><span class="w-60">VOTES: </span>{{ count($user->answers->votes) - array_key_exists('comment', $user->answers->votes) }}/{{ $votes }}</div>
                        <div class="flex gap-4"><span class="w-60">LOTERIE: </span>{{ data_get(array_count_values($user->answers->votes), 'yes') ?? 0 }} IN FAVOR</div>
                        <div class="flex gap-4"><span class="w-60">COMMENT: </span>{{ data_get($user->answers->votes, 'comment') }}</div>
+                    </div>
+                    <h2 class="font-bold">FORM: </h2>
+                    <div class="divide-y">
+                        @foreach ($quotas as $quota)
+                        <div>{{ $quota->question_fr }}: {{ data_get($user->answers['answers'], $quota->id) }}</div>
+                        @endforeach
                     </div>
                 </div>
             </div>

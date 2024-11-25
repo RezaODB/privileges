@@ -49,7 +49,7 @@ class RegisteredUserController extends Controller
             'zip' => $request->zip,
             'phone' => $request->phone,
             'birthday' => $request->birthday,
-            'video' => $request->video,
+            'video' => $request->video ?? false,
             'sex' => $request->sex,
             'role' => $request->email === 'info@flechette.be' ? 2 : 1,
             'order' => User::count(),

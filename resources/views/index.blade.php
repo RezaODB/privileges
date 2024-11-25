@@ -129,9 +129,9 @@
             <input type="checkbox" name="policy" id="policy" class="border-none text-zinc-800 focus:ring-0 checked:bg-none">
             <label for="policy" class="text-sm uppercase">
                 @if (app()->isLocale('fr'))
-                Je déclare avoir lu et approuvé les <a href="{{ route('policy') }}" class="underline">conditions d'utilisation</a> du site.
+                J'ai lu et accepté la <a href="{{ route('policy') }}" class="underline">politique de protection des données et les conditions générales</a>. 
                 @else
-                I declare that I have read and approved the <a href="{{ route('policy') }}" class="underline">terms of use</a> of the site.
+                I have read and accepted the <a href="{{ route('policy') }}" class="underline">data protection policy and the terms and conditions</a>.
                 @endif
             </label>
         </div>

@@ -13,6 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>

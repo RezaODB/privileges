@@ -36,7 +36,7 @@
     </style>
     <body class="font-sans antialiased bg-gray-100 text-zinc-800 overscroll-none">
         {{-- <div x-data="cursorTrail()" x-init="init()" class="relative z-50">
-            <div x-ref="circle" class="fixed top-0 left-0 w-4 h-4 bg-zinc-800 rounded-full pointer-events-none transition-transform duration-100"></div>
+            <div x-ref="circle" class="fixed top-4 left-4 w-4 h-4 bg-zinc-800 rounded-full pointer-events-none transition-transform duration-300"></div>
         </div> --}}
         <div class="max-w-screen-2xl mx-auto sm:px-4">
             <div class="min-h-screen pb-16 sm:my-4 bg-[#e5d0b5] shadow-2xl relative rounded-t-xl rounded-b-md overflow-hidden">

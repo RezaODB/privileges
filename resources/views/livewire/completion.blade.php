@@ -1,4 +1,4 @@
-<section class="p-4 sm:p-8 bg-[#fdf2e3] rounded-xl">
+<section class="px-2 sm:px-8">
     <h1 class="uppercase text-3xl">{{ __('content.instructions') }}</h1>
     <form class="font-mono uppercase mt-8">
         <div class="py-3 border-b-2 border-dotted border-zinc-800 flex gap-4 items-center">

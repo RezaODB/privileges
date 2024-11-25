@@ -6,7 +6,7 @@
 
     <div class="md:justify-self-start">
         <div class="uppercase font-medium border-2 border-zinc-800">
-            <h1 class="text-3xl sm:text-4xl p-4 text-center">Les privilèges invisibles</h1>
+            <h1 class="text-3xl sm:text-4xl p-4">Les privilèges invisibles</h1>
             <h2 class="text-5xl text-center p-4 border-y-2 border-zinc-800"><span class="text-3xl">N°</span> {{ Auth::user()->order ?? 'x' }}/250</h2>
             <div class="flex text-xl border-b-2 border-zinc-800">
                 <a href="https://www.barbaraiweins.be/" target="_blank" class="border-r-2 border-zinc-800 p-4 text-right hover:underline">
@@ -21,8 +21,9 @@
                     <div class="h-9 w-9 zinc-800 rounded-full border-2 border-zinc-800" style="background: conic-gradient(#27272a {{ $total }}%, transparent 0%)"></div>
                 </a>
                 <a href="{{ route('faq') }}" class="uppercase p-4 border-x-2 border-zinc-800 hover:underline">F.A.Q.</a>
-                <div class="flex gap-1 p-3 items-center">
-                    <a href="{{ route('index', ['lang' => 'fr']) }}" class="{{ App::getLocale() === 'fr' ? 'underline' : '' }}">FR</a>/
+                <div class="flex flex-wrap gap-1 p-3 items-center">
+                    <a href="{{ route('index', ['lang' => 'fr']) }}" class="{{ App::getLocale() === 'fr' ? 'underline' : '' }}">FR</a>
+                    <span class="hidden sm:block">/</span>
                     <a href="{{ route('index', ['lang' => 'en']) }}" class="{{ App::getLocale() === 'en' ? 'underline' : '' }}">EN</a>
                 </div>
             </div>

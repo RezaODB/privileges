@@ -5,7 +5,7 @@
         <h3 class="[writing-mode:vertical-lr]">{{ __('content.false') }}</h3>
     </div>
     @foreach ($quotas as $item)
-    <div class="font-mono py-3 border-b-2 border-zinc-800 border-dotted flex items-start gap-4">
+    <div class="font-mono py-3 border-b-2 border-zinc-800 border-dotted flex items-start gap-4 pr-4">
         <span class="hidden sm:block font-bold">{{ sprintf('%03d', $loop->iteration) }}</span>
         {{ $item->{'question_' . app()->getLocale()} }}
     </div>

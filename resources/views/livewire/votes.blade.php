@@ -6,7 +6,7 @@
         <h3 class="[writing-mode:vertical-lr]">{{ __('content.coinflip') }}</h3>
     </div>
     @foreach ($questions as $item)
-    <div class="font-mono py-3 border-b-2 border-zinc-800 border-dotted">{{ $item->{'question_' . app()->getLocale()} }}</div>
+    <div class="font-mono py-3 border-b-2 border-zinc-800 border-dotted pr-4">{{ $item->{'question_' . app()->getLocale()} }}</div>
     <div class="py-3 border-b-2 border-zinc-800 border-dotted flex items-center justify-end gap-4">
         <input type="radio" wire:model.live="votes.{{ $item->id }}" value="yes" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0"> 
         <input type="radio" wire:model.live="votes.{{ $item->id }}" value="no" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0">

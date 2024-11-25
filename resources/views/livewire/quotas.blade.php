@@ -5,11 +5,11 @@
         <h3 class="[writing-mode:vertical-lr]">{{ __('content.false') }}</h3>
     </div>
     @foreach ($quotas as $item)
-    <div class="font-mono py-3 border-b-2 border-zinc-800 border-dotted flex items-center gap-4">
+    <div class="font-mono py-3 border-b-2 border-zinc-800 border-dotted flex items-start gap-4">
         <span class="hidden sm:block font-bold">{{ sprintf('%03d', $loop->iteration) }}</span>
         {{ $item->{'question_' . app()->getLocale()} }}
     </div>
-    <div class="py-3 border-b-2 border-zinc-800 border-dotted flex items-center justify-end gap-4">
+    <div class="py-3 border-b-2 border-zinc-800 border-dotted flex items-start justify-end gap-4">
         <input type="radio" wire:model.live="answers.{{ $item->id }}" value="yes" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0"> 
         <input type="radio" wire:model.live="answers.{{ $item->id }}" value="no" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0"> 
     </div>

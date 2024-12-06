@@ -26,7 +26,7 @@
                     <h2 class="font-bold">FORM: </h2>
                     <div class="divide-y">
                         @foreach ($quotas as $quota)
-                        <div>{{ $quota->question_fr }}: {{ data_get($user->answers['answers'], $quota->id) }}</div>
+                        <div>{{ $quota->question_fr }}: {{ Str::upper(data_get($user->answers['answers'], $quota->id)) }}</div>
                         @endforeach
                     </div>
                 </div>

@@ -9,10 +9,10 @@
             <h1 class="text-3xl sm:text-4xl p-4">Les privilèges invisibles</h1>
             <h2 class="text-5xl text-center p-4 border-y-2 border-zinc-800"><span class="text-3xl">N°</span> {{ Auth::user()->order ?? 'x' }}/250</h2>
             <div class="flex text-xl border-b-2 border-zinc-800">
-                <a href="https://www.barbaraiweins.be/" target="_blank" class="border-r-2 border-zinc-800 p-4 text-right hover:underline">
+                <div class="border-r-2 border-zinc-800 p-4 text-right">
                     <h3>{{ __('content.socioartystudy') }}</h3>
                     <h2 class="mt-2">Barbara Iweins</h2>
-                </a>
+                </div>
                 <h3 class="p-4 self-center mx-auto">2024/2025</h3>
             </div>
             <div class="flex text-xl justify-evenly text-center uppercase">
@@ -33,6 +33,7 @@
             <div class="font-mono">
                 <a href="mailto:lesprivilegesinvisibles@gmail.com" target="_blank" class="block hover:underline">lesprivilegesinvisibles@gmail.com</a>
                 <a href="tel:0032472612641" target="_blank" class="block hover:underline">+32(0)472612641</a>
+                <a href="https://www.barbaraiweins.be/" target="_blank" class="block hover:underline">www.barbaraiweins.be</a>
                 <a href="https://www.instagram.com/barbaraiweins/" target="_blank" class="block hover:underline">Instagram</a>
             </div>
         </div>

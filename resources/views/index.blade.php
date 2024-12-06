@@ -11,15 +11,15 @@
             <div class="flex text-xl border-b-2 border-zinc-800">
                 <div class="border-r-2 border-zinc-800 p-4 text-right">
                     <h3>{{ __('content.socioartystudy') }}</h3>
-                    <h2 class="mt-2">Barbara Iweins</h2>
+                    <h2>Barbara Iweins</h2>
                 </div>
-                <h3 class="p-4 self-center mx-auto">2024/2025</h3>
-            </div>
-            <div class="flex text-xl justify-evenly text-center uppercase">
-                <a href="{{ route('instructions') }}" class="p-4 hover:underline flex gap-8 items-center">
-                    {{ __('content.instructions') }}
+                <a href="{{ route('instructions') }}" class="p-4 flex gap-8 items-center">
+                    <span class="pb-1 border-b-4 border-b-zinc-800">{{ __('content.instructions') }}</span>
                     <div class="h-9 w-9 zinc-800 rounded-full border-2 border-zinc-800" style="background: conic-gradient(#27272a {{ $total }}%, transparent 0%)"></div>
                 </a>
+            </div>
+            <div class="flex text-xl justify-evenly text-center uppercase">
+                <h3 class="p-4 self-center mx-auto">{{ __('content.dates') }}</h3>
                 <a href="{{ route('faq') }}" class="uppercase p-4 border-x-2 border-zinc-800 hover:underline">F.A.Q.</a>
                 <div class="flex flex-wrap gap-1 p-3 items-center">
                     <a href="{{ route('index', ['lang' => 'fr']) }}" class="{{ App::getLocale() === 'fr' ? 'underline' : '' }}">FR</a>

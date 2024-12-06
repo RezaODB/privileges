@@ -19,7 +19,7 @@
 
     @auth
     @foreach ($items as $item)
-    <div class="font-mono mb-4 px-2 sm:px-8" x-data="{ open: false }">
+    <div class="font-mono mb-4 px-2 sm:px-8" x-data="{ open: {{ Route::currentRouteName() === 'step5' ? 'true' : 'false' }} }">
         <div class="flex items-baseline justify-between gap-4 border-zinc-800 border-b-4 pb-4 cursor-pointer" x-on:click="open = !open">
             <h1 class="text-2xl sm:text-3xl font-sans uppercase">{{ $item->title }}</h1>
             <h2 x-text="open ? '(- Close)' : '(+ Open)'" class="whitespace-nowrap"></h2>

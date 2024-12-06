@@ -29,10 +29,9 @@ class PageController extends Controller
             $completion = array_filter(Auth::user()?->answers->completion);
             if (array_key_exists(1, $completion)) { $total = $total + 10; }
             if (array_key_exists(2, $completion)) { $total = $total + 20; }
-            if (array_key_exists(3, $completion)) { $total = $total + 30; }
+            if (array_key_exists(4, $completion)) { $total = $total + 60; }
             if (array_key_exists(5, $completion)) { $total = $total + 30; }
-            if (array_key_exists(6, $completion)) { $total = $total + 30; }
-            if (array_key_exists(7, $completion)) { $total = $total + 120; }
+            if (array_key_exists(6, $completion)) { $total = $total + 120; }
         }
 
         return view('index', [

@@ -27,13 +27,14 @@ return [
     'step4' => 'Étape 3:<br>Session photo',
     'step5' => 'Étape 4:<br>Cartographie',
     'step6' => 'Étape 5:<br>Étude sculpturale',
-    'instructions' => "Checklist",
+    'instructions' => "Start here!",
     'socioartystudy' => "Étude socio-artistique",
     'for' => 'Pour',
     'against' => 'Contre',
     'coinflip' => 'Pile ou face',
     'comment' => 'Commentaire',
     'form' => 'Questionnaire',
-    'ballot' => 'Bulletin de vote'
+    'ballot' => 'Bulletin de vote',
+    'dates' => 'Janvier 2025 - Juin 2026'
 
 ];

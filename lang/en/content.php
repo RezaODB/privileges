@@ -27,13 +27,14 @@ return [
     'step4' => 'Step 3:<br>Photo session',
     'step5' => 'Step 4:<br>Mapping',
     'step6' => 'Step 5:<br>Sculptural study',
-    'instructions' => 'Checklist',
+    'instructions' => 'Start here!',
     'socioartystudy' => "Socio-artistic study",
     'for' => 'In favor',
     'against' => 'Against',
     'coinflip' => 'Flip a coin',
     'comment' => 'Comment',
     'form' => 'Form',
-    'ballot' => 'Ballot'
+    'ballot' => 'Ballot',
+    'dates' => 'January 2025 - June 2026'
 
 ];

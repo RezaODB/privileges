@@ -25,7 +25,7 @@
                 @if (app()->isLocale('fr'))
                 <h3>Merci de participer à mon projet artistique Les Privilèges Invisibles !</h3>
                 <p>Je travaille sur ce projet en amont depuis 2 ans et j'ai tellement hâte de commencer cette étude titanesque avec toutes les personnes qui ont compté pour moi à un moment de ma vie.</p>
-                <p>À travers une étude photographique et plastique (ci-après, l' "Œuvre") impliquant 250 participants, je souhaite explorer comment le hasard, la chance et les privilèges façonnent nos vies de manière souvent inconsciente.</p>
+                <p>À travers une étude photographique et plastique (ci-après, l' "Œuvre") impliquant +/- 250 participants, je souhaite explorer comment le hasard, la chance et les privilèges façonnent nos vies de manière souvent inconsciente.</p>
                 <p>Dans la mesure où tu vas remplir un questionnaire reprenant des informations qui te concernent, cet accord est une simple formalité pour m'assurer que je peux utiliser ce contenu te concernant (photos/vidéos que je vais capturer en vue de les intégrer à l'Œuvre et les informations que tu m'auras partagées) dans le cadre du projet "Les Privilèges Invisibles", ci-après "le Projet". Ce que ça veut dire: </p>
                 <ol>
                     <li>En signant ce document, tu m'autorises à utiliser les photos et ou les vidéos que j'aurai prise de toi pour les besoins de la production et de la diffusion du Projet et de l'Œuvre. Tu m'autorises également à utiliser les informations que tu auras partagé sur toi dans le cadre de mon Projet. Il s'agit des informations personnelles en lien avec tes origines, ta vie, ton orientation, etc. Tu trouveras tous les détails dans la politique de protection des données que tu peux consulter en annexe. En ce qui concerne l'Œuvre, cela inclut des publications sur internet, dans la presse, pour des expositions, des musées, des festivals, vente de l'œuvre ou prints en édition numéroté, etc, et plus globalement toute exploitation utile de l' Œuvre, et ce partout dans le monde.</li>
@@ -36,6 +36,7 @@
                     <li>Pas de Rémunération: cette participation est bénévole. Il n'y a donc pas de compensation financière pour ta participation au Projet.</li>
                     <li>Où ça s'applique: cette autorisation est valable partout dans le monde.</li>
                 </ol>
+                <p>L'artiste se réserve la liberté artistique de décider des orientations et évolutions du projet, ce qui peut inclure des ajustements concernant les contributions individuelles, en fonction des besoins créatifs ou organisationnels.</p>    
                 <p>Encore merci pour ta participation à ce projet tellement personnel ! Pour le bon ordre, je reprends quelques conditions générales et la politique de protection des données ci-après.</p>
                 @endif
                 @if (app()->isLocale('en'))
@@ -53,6 +54,7 @@
                     <li>Scope of Application: This authorization is valid worldwide.
                     </li>
                 </ol>
+                <p>The artist reserves the artistic freedom to decide on the directions and developments of the project, which may include adjustments to individual contributions based on creative or organizational needs.</p>
                 <p>Thank you again for participating in this deeply personal project! To formalize everything, I include some general conditions and the data protection policy below.</p>
                 @endif
             </div>
@@ -85,7 +87,7 @@
                 <h3>Droit d'auteur ou de reproduction</h3>
                 <p>Le Projet, dont notamment l' Œuvre, créé par l'Artiste est protégé par les droits d'auteur. En aucun cas, tout ou partie de ces droits ne sont cédés au participant sauf accord expresse et écrit spécifique sur ce point entre les parties.</p>
                 <h3>Droit à l'image</h3>
-                <p>Le modèle concède une autorisation d'exploitation de son image sans limite de temps ni de durée pour les besoins du Projet, la création de l'Œuvre et sa diffusion/communication au public au sens le plus large.</p>
+                <p>Le Participant concède une autorisation d'exploitation de son image sans limite de temps ni de durée pour les besoins du Projet, la création de l'Œuvre et sa diffusion/communication au public au sens le plus large.</p>
                 <h3>Protection des données personnelles</h3>
                 <p>L'Artiste est le responsable du traitement des données personnelles collectées auprès de ses participants.</p>
                 <p>Les informations collectées auprès des participants sont les suivantes: nom, prénom, fonction, adresse mail, téléphone et mobile, ainsi que des données liées à l'âge, le genre, l'orientation sexuelle, la situation familiale, l'origine, la santé, l'opinion, le style vestimentaire (mode), et le comportement social.</p>
@@ -99,29 +101,35 @@
                 </p>
                 <p>Le participant dispose également du droit d'introduire une réclamation auprès de l'Autorité de protection des données (<a href="https://www.autoriteprotectiondonnees.be" target="_blank">www.autoriteprotectiondonnees.be</a>). Le cas échéant, le Participant peut adresser un simple e-mail afin d'exercer l'un ou l'autre de ses droits.</p>
                 <p>Les données personnelles collectées ne seront conservées que pendant le temps nécessaire pour rencontrer les finalités indiquées ou pour respecter les obligations légales. Une fois votre dossier clôturé, vos données sont stockées pour une durée de 10 ans maximum, à compter de la fin de la diffusion du Projet. Au-delà, elles seront détruites (effacement du fichier numérique contenant les données).</p>
-                <p class="underline">Dans les limites exposées ci-dessus, le Participant autorise donc expressément l'Artiste à conserver et à traiter les données personnelles communiquées dans le cadre du Projet et de la création et la diffusion de l'Œuvre.</p>
+                <p>Dans les limites exposées ci-dessus, le Participant autorise donc expressément l'Artiste à conserver et à traiter les données personnelles communiquées dans le cadre du Projet et de la création et la diffusion de l'Œuvre.</p>
                 <h3>Droit applicable et tribunaux compétents</h3>
                 <p>Les relations contractuelles entre parties auxquelles s'appliquent les présentes conditions sont régies exclusivement par le droit belge. Les parties conviennent de s'efforcer de régler à l'amiable tous les problèmes qui pourraient survenir concernant le présent contrat, par a minima une invitation en médiation. Passé ce délai les cours et tribunaux francophones de l'arrondissement judiciaire de Bruxelles seront seuls compétents.</p>
                 @endif
                 @if (app()->isLocale('en'))
                 <h3>Identification</h3>
-                <p>The general conditions apply between you as a participant model (hereafter referred to as "the participant") in the framework of the Project Les Privilèges Invisibles! and Ms. Barbara Iweins, whose contact details are 11, Rue Antoine Labarre, hereafter referred to as "the Artist."</p>
-                <h3>Application of These General Conditions</h3>
-                <p>By checking the box provided, the participant expressly and irrevocably accepts these general conditions, notwithstanding any contrary stipulations in correspondence originating from the participant unless formally and explicitly agreed upon in writing by the Artist. These general conditions prevail unless expressly written and agreed otherwise by the Artist.</p>
-                <h3>Ownership of the Work in the Framework of the Project</h3>
-                <p>The Artist's creations within the framework of the Project—such as writings, participants, sketches, drafts, photos regardless of their prints, quality, or medium—remain the exclusive material and intellectual property of the Artist.</p>
-                <h3>Copyright and Reproduction Rights</h3>
-                <p>The Project, including the Work created by the Artist, is protected by copyright. None of these rights are transferred to the participant unless explicitly agreed in writing between the parties.</p>
+                <p>The general terms and conditions are applicable between you as a participant (hereinafter referred to as the Participant) within the framework of the Les Privilèges Invisibles project and Ms. Barbara Iweins, whose contact details are 11, Rue Antoine Labarre – 1050 Brussels (hereinafter referred to as "the Artist").</p>
+                <h3>Application of These General Terms and Conditions</h3>
+                <p>By ticking the relevant box, the Participant expressly and irrevocably accepts these general terms and conditions, notwithstanding any contrary stipulations contained in correspondence from the Participant, unless formally and expressly accepted in writing by the Artist. These general terms and conditions take precedence unless expressly agreed otherwise in writing and in advance by the Artist.</p>
+                <h3>Ownership of the Artwork Within the Project Framework</h3>
+                <p>The Artist's creations within the framework of the Project, such as writings, models, sketches and preliminary projects, photos regardless of their prints, quality, or medium, are and remain the exclusive material and intellectual property of the Artist.</p>
+                <h3>Copyright or Reproduction Rights</h3>
+                <p>The Project, including but not limited to the Artwork created by the Artist, is protected by copyright. Under no circumstances are any of these rights, in whole or in part, transferred to the Participant unless specifically and expressly agreed upon in writing between the parties.</p>
                 <h3>Image Rights</h3>
-                <p>The participant grants authorization to use their image without time or duration limitations for the purposes of the Project, the creation of the Work, and its distribution/communication to the public in the broadest sense.</p>
-                <h3>Data Protection</h3>
-                <p>The Artist is responsible for the processing of personal data collected from the participants. The data collected includes: name, surname, job title, email address, phone number, as well as information related to age, gender, sexual orientation, family situation, origin, health, opinions, clothing style, and social behavior.</p>
-                <p>The data provided is communicated directly by the participant with their consent and is intended for the Artist's use in executing the contract, developing the Project, and creating and disseminating the Work. This data will not be shared with subcontractors or third parties. It will not be used for direct or indirect marketing. The Artist is not responsible for any potential misinterpretations or misuse of images or data by third parties outside their control.</p>
-                <p>The Artist ensures compliance with personal data protection regulations, in strict adherence to Regulation (EU) 2016/679 (GDPR).</p>
-                <p>Collected data will only be retained as long as necessary to meet the specified purposes or to comply with legal obligations. Once your file is closed, your data will be stored for a maximum of 10 years from the end of the Project's dissemination. After this period, it will be deleted.</p>
-                <p>The participant explicitly authorizes the Artist to retain and process their personal data within the limits described above for the Project's purposes and the creation and dissemination of the Work.</p>
-                <h3>Applicable Law and Jurisdiction</h3>
-                <p>The contractual relationship between the parties governed by these conditions is exclusively subject to Belgian law. The parties agree to attempt to resolve any disputes amicably, with at least an invitation to mediation. Failing this, the French-speaking courts of the Brussels judicial district shall have sole jurisdiction.</p>
+                <p>The Participant grants authorization for the use of their image without any time or duration limitation for the purposes of the Project, the creation of the Artwork, and its dissemination/communication to the public in the broadest sense.</p>
+                <h3>Personal Data Protection</h3>
+                <p>The Artist is the data controller for personal data collected from participants.</p>
+                <p>The information collected from participants includes: name, first name, function, email address, phone and mobile numbers, as well as data related to age, gender, sexual orientation, family situation, origin, health, opinions, clothing style (fashion), and social behavior.</p>
+                <p>The data is provided directly by the Participant with their consent. It is intended for the Artist's use concerning the execution of the contract, the development of the Project, the creation, and dissemination of the Artwork. This data will not, under any circumstances, be transmitted to subcontractors or third parties. It will also not be used for direct or indirect marketing purposes. The Artist is not responsible for any potential misinterpretation or misuse of images or data by third parties outside of their control.</p>
+                <p>The Artist ensures compliance with personal data protection and strictly adheres to Regulation (EU) 2016/679 of the European Parliament and Council of April 27, 2016, on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, repealing Directive 95/46/EC. Data is collected to meet contractual requirements between the parties within the Project's framework and to fulfill legal obligations.</p>
+                <p>In accordance with current regulations, as a natural person, the Participant has the right to access their personal data, correct it, request its deletion, limit its processing, and object to its processing for direct marketing purposes. The Participant also has the right to data portability, meaning the data can be provided in a commonly structured format. Exercising these rights is free of charge. If necessary, the Participant can send a request to exercise any of these rights or report an issue concerning their data using the following contact details: </p>
+                <p>Address: 11, Rue Antoine Labarre – 1050 Brussels <br>
+                    Phone: +32 472612641 <br>
+                    Email: barbara.iweins@gmail.com</p>
+               <p>The Participant also has the right to lodge a complaint with the Data Protection Authority (<a href="www.autoriteprotectiondonnees.be" target="_blank">www.autoriteprotectiondonnees.be</a> ). If necessary, the Participant can simply send an email to exercise any of their rights.</p>
+               <p>Collected personal data will only be kept as long as necessary to meet the stated purposes or fulfill legal obligations. Once the file is closed, the data will be stored for a maximum of 10 years from the end of the Project's dissemination. After that, it will be destroyed (deletion of the digital file containing the data).</p>
+               <p>Within the limits outlined above, the Participant expressly authorizes the Artist to retain and process the personal data provided within the framework of the Project and the creation and dissemination of the Artwork.</p>
+               <h3>Applicable Law and Competent Courts</h3>
+               <p>The contractual relationships between the parties to which these terms apply are governed exclusively by Belgian law. The parties agree to attempt to resolve any issues arising from this contract amicably, at a minimum through an invitation to mediation. Failing this, the French-speaking courts and tribunals of the judicial district of Brussels will have sole jurisdiction.</p>
                 @endif
             </div>
         </div>

@@ -15,7 +15,7 @@
                 </div>
                 <a href="{{ route('instructions') }}" class="p-4 flex gap-8 items-center">
                     <span class="pb-1 border-b-4 border-b-zinc-800">{{ __('content.instructions') }}</span>
-                    <div class="h-9 w-9 zinc-800 rounded-full border-2 border-zinc-800" style="background: conic-gradient(#27272a {{ $total }}%, transparent 0%)"></div>
+                    <div class="h-9 w-9 zinc-800 rounded-full border-2 border-zinc-800 shrink-0" style="background: conic-gradient(#27272a {{ $total }}%, transparent 0%)"></div>
                 </a>
             </div>
             <div class="flex text-xl justify-evenly text-center uppercase">
@@ -169,7 +169,8 @@
         </li>
     </ul>   
     @endauth
-
+    
 </section>
+
 
 @endsection

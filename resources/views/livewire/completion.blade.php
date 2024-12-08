@@ -12,9 +12,9 @@
         </div>
         <div class="py-3 border-b-2 border-dotted border-zinc-800 flex gap-4 items-center">
             @if (app()->isLocale('fr'))
-            <div>2. Lire <a href="{{ route('step1') }}" class="underline">L'ETUDE THEORIQUE</a> ou écouter les deux PODCASTS dans l'avant-propos</div>
+            <div>2. Ecouter le podcast ou lire l'explication du projet dans <a href="{{ route('step1') }}" class="underline">L'ETUDE THEORIQUE</a>.</div>
             @else
-            <div>2. Read the <a href="{{ route('step1') }}" class="underline">THEORETICAL STUDY</a> or listen to the two PODCASTS</div>
+            <div>2. Listen to the podcast or read the explanation of the project in the <a href="{{ route('step1') }}" class="underline">THEORETICAL STUDY</a>.</div>
             @endif
             <label for="check2" class="ml-auto">20min</label>
             <input type="checkbox" wire:model.live="completion.2" value="20" id="check2" class="text-zinc-800 focus:ring-0 checked:bg-none">

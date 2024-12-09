@@ -6,24 +6,25 @@
 
     <div class="md:justify-self-start">
         <div class="uppercase font-medium border-2 border-zinc-800">
-            <h1 class="text-3xl sm:text-4xl p-4">Les privilèges invisibles</h1>
+            <h1 class="text-3xl sm:text-4xl p-4 text-center">Les privilèges invisibles</h1>
             <h2 class="text-5xl text-center p-4 border-y-2 border-zinc-800"><span class="text-3xl">N°</span> {{ Auth::user()->order ?? 'x' }}/250</h2>
             <div class="flex text-xl border-b-2 border-zinc-800">
                 <div class="border-r-2 border-zinc-800 p-4 text-right">
                     <h3>{{ __('content.socioartystudy') }}</h3>
                     <h2>Barbara Iweins</h2>
                 </div>
-                <a href="{{ route('instructions') }}" class="p-4 flex gap-8 items-center">
+                <div class="flex mx-auto p-4 justify-center items-center">
+                    <a href="{{ route('faq') }}" class="uppercase text-3xl hover:underline">F.A.Q.</a>
+                </div>
+                {{-- <a href="{{ route('instructions') }}" class="p-4 flex gap-8 items-center">
                     <span class="pb-1 border-b-4 border-b-zinc-800">{{ __('content.instructions') }}</span>
                     <div class="h-9 w-9 zinc-800 rounded-full border-2 border-zinc-800 shrink-0" style="background: conic-gradient(#27272a {{ $total }}%, transparent 0%)"></div>
-                </a>
+                </a> --}}
             </div>
-            <div class="flex text-xl justify-evenly text-center uppercase">
-                <h3 class="p-4 self-center mx-auto">{{ __('content.dates') }}</h3>
-                <a href="{{ route('faq') }}" class="uppercase p-4 border-x-2 border-zinc-800 hover:underline">F.A.Q.</a>
-                <div class="flex flex-wrap gap-1 p-3 items-center">
-                    <a href="{{ route('index', ['lang' => 'fr']) }}" class="{{ App::getLocale() === 'fr' ? 'underline' : '' }}">FR</a>
-                    <span class="hidden sm:block">/</span>
+            <div class="flex text-xl text-center uppercase">
+                <h3 class="p-4 mx-auto">{{ __('content.dates') }}</h3>
+                <div class="p-4 flex justify-center gap-1 items-center border-l-2 border-zinc-800">
+                    <a href="{{ route('index', ['lang' => 'fr']) }}" class="{{ App::getLocale() === 'fr' ? 'underline' : '' }}">FR</a>/
                     <a href="{{ route('index', ['lang' => 'en']) }}" class="{{ App::getLocale() === 'en' ? 'underline' : '' }}">EN</a>
                 </div>
             </div>
@@ -157,17 +158,25 @@
     @endif
     @endguest
     @auth
-    <ul class="font-mono p-4 bg-[#fdf2e3] rounded-xl">
-        <li>{{ __('content.lastname') }}: {{ Auth::user()->lastname }}</li>
-        <li>{{ __('content.firstname') }}: {{ Auth::user()->name }}</li>
-        <li>Email: {{ Auth::user()->email }}</li>
-        <li>
-            <form action="{{ route('logout') }}" method="post">
-                @csrf
-                <button class="underline mt-4">{{ __('content.sign_out') }}</button>    
-            </form> 
-        </li>
-    </ul>   
+    <div>
+        <ul class="font-mono p-4 bg-[#fdf2e3] rounded-xl">
+            <li>{{ __('content.lastname') }}: {{ Auth::user()->lastname }}</li>
+            <li>{{ __('content.firstname') }}: {{ Auth::user()->name }}</li>
+            <li>Email: {{ Auth::user()->email }}</li>
+            <li>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="underline mt-4">{{ __('content.sign_out') }}</button>    
+                </form> 
+            </li>
+        </ul>   
+        @if (app()->isLocale('fr'))
+        <p class="font-mono mt-6">Bienvenue dans le projet Les Privilèges Invisibles ! Pour vous orienter dans cette étude et mieux comprendre son déroulement, je vous invite à consulter la <a href="{{ route('faq') }}" class="underline">page FAQ</a>.</p>
+        @endif
+        @if (app()->isLocale('en'))
+        <p class="font-mono mt-6">Welcome to The Invisible Privileges project! To help you navigate this study and better understand how it works, I invite you to consult the <a href="{{ route('faq') }}" class="underline">FAQ page</a>.</p>
+        @endif
+    </div>
     @endauth
     
 </section>

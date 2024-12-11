@@ -132,9 +132,9 @@
             <input type="checkbox" name="policy" id="policy" class="border-none text-zinc-800 focus:ring-0 checked:bg-none">
             <label for="policy" class="text-sm uppercase">
                 @if (app()->isLocale('fr'))
-                J'ai lu et accepté la <a href="{{ route('policy') }}" class="underline">politique de protection des données et les conditions générales</a>. 
+                J'ai lu et accepté <a href="{{ route('policy') }}" class="underline">l'accord de participation et la politique de protection des doonnées et les conditions générales</a>.
                 @else
-                I have read and accepted the <a href="{{ route('policy') }}" class="underline">data protection policy and the terms and conditions</a>.
+                I have read and accepted <a href="{{ route('policy') }}" class="underline">the participation agreement and the data protection policy and the general conditions</a>.
                 @endif
             </label>
         </div>

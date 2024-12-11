@@ -67,7 +67,7 @@ class RegisteredUserController extends Controller
         ]);
 
         if ($user->role === 1) {
-            return redirect(route('index'));
+            return redirect(route('faq'));
         }
 
         return redirect(route('dashboard', absolute: false));

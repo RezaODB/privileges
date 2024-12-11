@@ -135,7 +135,7 @@
                 J'ai lu et accepté <a href="{{ route('policy') }}" class="underline">l'accord de participation et la politique de protection des doonnées et les conditions générales</a>.
                 @else
                 I have read and accepted <a href="{{ route('policy') }}" class="underline">the participation agreement and the data protection policy and the general conditions</a>.
-                @endif
+`                @endif
             </label>
         </div>
         @error('policy')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror

@@ -45,7 +45,6 @@
                     @yield('content')
                 </main>
             </div>
-            <div class="text-sm text-right px-1 pb-1">Made with ❤️ by <a href="https://flechette.be/" target="_blank" class="underline">Fléchette</a></div>
         </div>
         @livewireScripts
     </body>

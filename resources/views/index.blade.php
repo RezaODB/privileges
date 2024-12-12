@@ -16,10 +16,6 @@
                 <div class="flex mx-auto p-4 justify-center items-center">
                     <a href="{{ route('faq') }}" class="uppercase text-3xl hover:underline">F.A.Q.</a>
                 </div>
-                {{-- <a href="{{ route('instructions') }}" class="p-4 flex gap-8 items-center">
-                    <span class="pb-1 border-b-4 border-b-zinc-800">{{ __('content.instructions') }}</span>
-                    <div class="h-9 w-9 zinc-800 rounded-full border-2 border-zinc-800 shrink-0" style="background: conic-gradient(#27272a {{ $total }}%, transparent 0%)"></div>
-                </a> --}}
             </div>
             <div class="flex text-xl text-center uppercase">
                 <h3 class="p-4 mx-auto">{{ __('content.dates') }}</h3>
@@ -36,6 +32,7 @@
                 <a href="tel:0032472612641" target="_blank" class="block hover:underline">+32(0)472612641</a>
                 <a href="https://www.barbaraiweins.be/" target="_blank" class="block hover:underline">www.barbaraiweins.be</a>
                 <a href="https://www.instagram.com/barbaraiweins/" target="_blank" class="block hover:underline">Instagram</a>
+                <a href="https://flechette.be/" target="_blank" class="mt-2 block hover:underline">Made by Fléchette © {{ date('Y') }}</a>
             </div>
         </div>
     </div>
@@ -135,7 +132,7 @@
                 J'ai lu et accepté <a href="{{ route('policy') }}" class="underline">l'accord de participation et la politique de protection des doonnées et les conditions générales</a>.
                 @else
                 I have read and accepted <a href="{{ route('policy') }}" class="underline">the participation agreement and the data protection policy and the general conditions</a>.
-`                @endif
+                @endif
             </label>
         </div>
         @error('policy')<div class="text-red-700 uppercase text-sm">{{ $message }}</div>@enderror

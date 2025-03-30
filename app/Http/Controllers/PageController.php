@@ -73,28 +73,28 @@ class PageController extends Controller
     public function step3()
     {
         return view('step', [
-            'items' => Brochure::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Photo::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
 
     public function step4()
     {
         return view('step', [
-            'items' => Photo::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Sculpture::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
 
     public function step5()
     {
         return view('step', [
-            'items' => Map::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Brochure::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
-    
+
     public function step6()
     {
         return view('step', [
-            'items' => Sculpture::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Map::orderBy('order')->where('lang', app()->getLocale())->get()
         ]);
     }
 

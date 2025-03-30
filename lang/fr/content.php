@@ -21,7 +21,7 @@ return [
     'already_registered' => 'Déjà enregistré?',
     'true' => 'Oui',
     'false' => 'Non',
-    'step1' => 'Cadre théorique',
+    'step1' => 'Cadre<br>théorique',
     'step2' => 'Étape 1:<br>Quota privilèges',
     'step3' => 'Étapes 2 & 3:<br>Photographie',
     'step4' => 'Étape 4:<br>Étude sculpturale',

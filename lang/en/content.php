@@ -21,7 +21,7 @@ return [
     'already_registered' => 'Already have an account?',
     'true' => 'Yes',
     'false' => 'No',
-    'step1' => 'Theoretical Framework',
+    'step1' => 'Theoretical<br>Framework',
     'step2' => 'Step 1:<br>Privilege Quota',
     'step3' => 'Steps 2 & 3:<br>Photography',
     'step4' => 'Step 4:<br>Sculptural Study',

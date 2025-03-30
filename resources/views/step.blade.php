@@ -36,7 +36,7 @@
     @if (Route::currentRouteName() === 'step2')
     @livewire('quotas')
     @endif
-    @if (Route::currentRouteName() === 'step3')
+    @if (Route::currentRouteName() === 'step5')
     @livewire('votes')
     @endif
     @endauth

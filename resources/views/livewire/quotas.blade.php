@@ -1,8 +1,11 @@
 <form wire:submit class="grid grid-cols-[1fr_auto] px-2 sm:px-8 mt-16">
     <h2 class="text-3xl uppercase border-b-2 border-zinc-800 pb-4 self-end">{{ __('content.form') }}</h2>
-    <div class="text-xl uppercase font-medium border-b-2 border-zinc-800 pb-6 flex gap-4 items-end justify-center">
-        <h3 class="[writing-mode:vertical-lr]">{{ __('content.true') }}</h3>
-        <h3 class="[writing-mode:vertical-lr]">{{ __('content.false') }}</h3>
+    <div class="text-xl uppercase font-medium border-b-2 border-zinc-800 pb-6 flex items-end justify-around">
+        <h3 class="[writing-mode:vertical-lr]">{{ __('content.always') }}</h3>
+        <h3 class="[writing-mode:vertical-lr]">{{ __('content.often') }}</h3>
+        <h3 class="[writing-mode:vertical-lr]">{{ __('content.sometimes') }}</h3>
+        <h3 class="[writing-mode:vertical-lr]">{{ __('content.rarely') }}</h3>
+        <h3 class="[writing-mode:vertical-lr]">{{ __('content.never') }}</h3>
     </div>
     @foreach ($quotas as $item)
     <div class="font-mono py-3 border-b-2 border-zinc-800 border-dotted flex items-start gap-4 pr-4">
@@ -10,8 +13,11 @@
         {{ $item->{'question_' . app()->getLocale()} }}
     </div>
     <div class="py-3 border-b-2 border-zinc-800 border-dotted flex items-center justify-end gap-4 ml-px">
-        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="yes" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none" disabled> 
-        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="no" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none" disabled> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="always" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="often" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="sometimes" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="rarely" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="never" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
     </div>
     @endforeach
     <div class="flex flex-col lg:flex-row gap-x-6 gap-y-4 mt-12 col-span-2">

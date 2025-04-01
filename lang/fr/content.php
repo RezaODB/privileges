@@ -35,6 +35,11 @@ return [
     'comment' => 'Commentaire',
     'form' => 'Questionnaire',
     'ballot' => 'Bulletin de vote',
-    'dates' => 'Janvier 2025 - Juin 2026'
+    'dates' => 'Janvier 2025 - Juin 2026',
+    'always' => 'toujours',
+    'often' => 'souvent',
+    'sometimes' => 'parfois',
+    'rarely' => 'rarement',
+    'never' => 'jamais',
 
 ];

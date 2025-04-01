@@ -35,6 +35,11 @@ return [
     'comment' => 'Comment',
     'form' => 'Form',
     'ballot' => 'Ballot',
-    'dates' => 'January 2025 - June 2026'
+    'dates' => 'January 2025 - June 2026',
+    'always' => 'always',
+    'often' => 'often',
+    'sometimes' => 'sometimes',
+    'rarely' => 'rarely',
+    'never' => 'never',
 
 ];

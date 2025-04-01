@@ -15,13 +15,13 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">{{ __('Dashboard') }}</x-nav-link>
                     <x-nav-link :href="route('users.index')" class="whitespace-nowrap" :active="request()->routeIs('users.index')">Participants</x-nav-link>
                     <x-nav-link :href="route('theories.index')" class="whitespace-nowrap" :active="request()->routeIs('theories.index')">Théorie</x-nav-link>
-                    <x-nav-link :href="route('intros.index')" class="whitespace-nowrap" :active="request()->routeIs('intros.index')">1. Quotas privilèges</x-nav-link>
-                    <x-nav-link :href="route('quotas.index')" class="whitespace-nowrap" :active="request()->routeIs('quotas.index')">1. Questionnaire</x-nav-link>
-                    <x-nav-link :href="route('brochures.index')" class="whitespace-nowrap" :active="request()->routeIs('brochures.index')">2. Loterie Sociale</x-nav-link>
-                    <x-nav-link :href="route('votes.index')" class="whitespace-nowrap" :active="request()->routeIs('votes.index')">2. Vote</x-nav-link>
-                    <x-nav-link :href="route('photos.index')" class="whitespace-nowrap" :active="request()->routeIs('photos.index')">3. Session photo</x-nav-link>
-                    <x-nav-link :href="route('maps.index')" class="whitespace-nowrap" :active="request()->routeIs('maps.index')">4. Cartographie</x-nav-link>
-                    <x-nav-link :href="route('sculptures.index')" class="whitespace-nowrap" :active="request()->routeIs('sculptures.index')">5. Étude sculpturale</x-nav-link>
+                    <x-nav-link :href="route('intros.index')" class="whitespace-nowrap" :active="request()->routeIs('intros.index')">Quota</x-nav-link>
+                    <x-nav-link :href="route('quotas.index')" class="whitespace-nowrap" :active="request()->routeIs('quotas.index')">Questionnaire</x-nav-link>
+                    <x-nav-link :href="route('brochures.index')" class="whitespace-nowrap" :active="request()->routeIs('brochures.index')">Loterie</x-nav-link>
+                    <x-nav-link :href="route('votes.index')" class="whitespace-nowrap" :active="request()->routeIs('votes.index')">Vote</x-nav-link>
+                    <x-nav-link :href="route('photos.index')" class="whitespace-nowrap" :active="request()->routeIs('photos.index')">Photo</x-nav-link>
+                    <x-nav-link :href="route('maps.index')" class="whitespace-nowrap" :active="request()->routeIs('maps.index')">Cartographie</x-nav-link>
+                    <x-nav-link :href="route('sculptures.index')" class="whitespace-nowrap" :active="request()->routeIs('sculptures.index')">Sculpture</x-nav-link>
                     <x-nav-link :href="route('faqs.index')" class="whitespace-nowrap" :active="request()->routeIs('faqs.index')">FAQ</x-nav-link>
                 </div>
             </div>
@@ -78,13 +78,13 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">{{ __('Dashboard') }}</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('users.index')" class="whitespace-nowrap" :active="request()->routeIs('users.index')">Participants</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('theories.index')" class="whitespace-nowrap" :active="request()->routeIs('theories.index')">Théorie</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('intros.index')" class="whitespace-nowrap" :active="request()->routeIs('intros.index')">1. Quotas privilèges</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('quotas.index')" class="whitespace-nowrap" :active="request()->routeIs('quotas.index')">1. Questionnaire</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('brochures.index')" class="whitespace-nowrap" :active="request()->routeIs('brochures.index')">2. Loterie Sociale</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('votes.index')" class="whitespace-nowrap" :active="request()->routeIs('votes.index')">2. Vote</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('photos.index')" class="whitespace-nowrap" :active="request()->routeIs('photos.index')">3. Session photo</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('maps.index')" class="whitespace-nowrap" :active="request()->routeIs('maps.index')">4. Cartographie</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('sculptures.index')" class="whitespace-nowrap" :active="request()->routeIs('sculptures.index')">5. Étude sculpturale</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('intros.index')" class="whitespace-nowrap" :active="request()->routeIs('intros.index')">Quota</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('quotas.index')" class="whitespace-nowrap" :active="request()->routeIs('quotas.index')">Questionnaire</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('brochures.index')" class="whitespace-nowrap" :active="request()->routeIs('brochures.index')">Loterie</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('votes.index')" class="whitespace-nowrap" :active="request()->routeIs('votes.index')">Vote</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('photos.index')" class="whitespace-nowrap" :active="request()->routeIs('photos.index')">SPhoto</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('maps.index')" class="whitespace-nowrap" :active="request()->routeIs('maps.index')">Cartographie</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('sculptures.index')" class="whitespace-nowrap" :active="request()->routeIs('sculptures.index')">Sculpture</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('faqs.index')" class="whitespace-nowrap" :active="request()->routeIs('faqs.index')">FAQ</x-responsive-nav-link>
         </div>
 

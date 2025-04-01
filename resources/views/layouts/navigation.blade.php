@@ -5,7 +5,7 @@
             <div class="flex overflow-auto">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('index') }}">SITE</a>
+                    <a href="{{ route('index') }}" class="underline">SITE</a>
                 </div>
 
                 <!-- Navigation Links -->

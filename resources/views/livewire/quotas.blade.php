@@ -13,11 +13,11 @@
         {{ $item->{'question_' . app()->getLocale()} }}
     </div>
     <div class="py-3 border-b-2 border-zinc-800 border-dotted flex items-center justify-end gap-4 ml-px">
-        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="always" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
-        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="often" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
-        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="sometimes" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
-        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="rarely" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
-        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="never" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="always" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none" disabled> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="often" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none" disabled> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="sometimes" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none" disabled> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="rarely" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none" disabled> 
+        <input type="radio" wire:model.live="answers.{{ $item->id }}" value="never" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none" disabled> 
     </div>
     @endforeach
     <div class="flex flex-col lg:flex-row gap-x-6 gap-y-4 mt-12 col-span-2">

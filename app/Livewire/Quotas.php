@@ -15,7 +15,7 @@ class Quotas extends Component
     public function mount()
     {
         $this->answers = Auth::user()->answers->answers; 
-        $this->boosters = Auth::user()->answers->answers['boosters']; 
+        $this->boosters = Auth::user()->answers->answers['boosters'] ?? []; 
     }
 
     public function updated()

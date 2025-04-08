@@ -41,5 +41,6 @@ return [
     'sometimes' => 'parfois',
     'rarely' => 'rarement',
     'never' => 'jamais',
+    'submit' => 'soumettre'
 
 ];

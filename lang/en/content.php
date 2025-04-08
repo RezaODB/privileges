@@ -41,5 +41,6 @@ return [
     'sometimes' => 'sometimes',
     'rarely' => 'rarely',
     'never' => 'never',
+    'submit' => 'submit'
 
 ];

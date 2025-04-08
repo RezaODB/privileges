@@ -4,18 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Quota;
 use Livewire\Component;
-use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 
 class Quotas extends Component
 {
-    #[Validate([
-        'answers' => 'required',
-        'answers.*' => 'required'
-    ])]
     public $answers = [];
-
-    public $boosters = []; 
+    public $boosters = [];
 
     public function mount()
     {
@@ -33,12 +27,9 @@ class Quotas extends Component
 
     public function submit()
     {
-        $this->validate();
-
-        Auth::user()->answers->update([
-            'answers' => $this->answers,
-            'answers->boosters' => $this->boosters
-        ]);
+        session()->flash('status', 'Form saved');
+ 
+        return redirect()->route('step2');
     }
 
     public function render()

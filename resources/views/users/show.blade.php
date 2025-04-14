@@ -17,15 +17,18 @@
                        <br>
                        <div class="flex gap-4"><span class="w-60">ANSWERS: </span>{{ count($user->answers->answers) - array_key_exists('comment', $user->answers->answers) - array_key_exists('boosters', $user->answers->answers) }}/{{ $quotas->count() }}</div>
                        <div class="flex gap-4"><span class="w-60">COMMENT: </span>{{ data_get($user->answers->answers, 'comment') }}</div>
-                       <br>
+                       {{-- <br>
                        <div class="flex gap-4"><span class="w-60">VOTES: </span>{{ count($user->answers->votes) - array_key_exists('comment', $user->answers->votes) }}/{{ $votes }}</div>
                        <div class="flex gap-4"><span class="w-60">LOTERIE: </span>{{ data_get(array_count_values($user->answers->votes), 'yes') ?? 0 }} IN FAVOR</div>
-                       <div class="flex gap-4"><span class="w-60">COMMENT: </span>{{ data_get($user->answers->votes, 'comment') }}</div>
+                       <div class="flex gap-4"><span class="w-60">COMMENT: </span>{{ data_get($user->answers->votes, 'comment') }}</div> --}}
                     </div>
-                    <h2 class="font-bold">FORM: </h2>
+                    <h2 class="font-bold">QUOTAS: </h2>
                     <div class="divide-y">
                         @foreach ($quotas as $quota)
-                        <div>{{ $quota->question_fr }}: {{ Str::upper(data_get($user->answers['answers'], $quota->id)) . ' ' . in_array($quota->id, $user->answers['boosters']) ? 'BOOSTER' : '' }}</div>
+                        <div>
+                            {{ $quota->question_fr }}: {{ Str::upper(data_get($user->answers->answers, $quota->id)) }}
+                            <span class="font-bold">{{ in_array($quota->id, data_get($user->answers->answers, 'boosters', [])) ? 'BOOSTER' : '' }}</span>
+                        </div>
                         @endforeach
                     </div>
                 </div>

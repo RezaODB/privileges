@@ -14,7 +14,7 @@ class UserController extends Controller
         Gate::allowIf(fn (User $user) => $user->role === 2);
         
         return view('users.index', [
-            'users' => User::with('answers')->orderBy('order')->where('role', 1)->get(),
+            'users' => User::with('answers')->orderBy('order')->get(),
             'quotas' => Quota::count(),
             'votes' => Vote::count()
         ]);

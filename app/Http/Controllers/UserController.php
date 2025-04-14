@@ -39,4 +39,35 @@ class UserController extends Controller
 
         return back();
     }
+
+    public function export(User $user)
+    {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+
+        $data = Quota::orderBy('order')->get();
+
+        $handle = fopen(storage_path('app/public/' . $user->name . '-' . $user->lastname . '.csv'), 'w');
+
+        fputcsv($handle, [
+            "#",
+            "Category",
+            "Question",
+            "Answer",
+            "Booster",
+        ], ';');
+
+        foreach ($data as $row) {
+	        fputcsv($handle, [
+                $row->order,
+                $row->category,
+                $row->question_fr,
+                strtoupper(data_get($user->answers->answers, $row->id)),
+                in_array($row->id, data_get($user->answers->answers, 'boosters', [])) ? 'YES' : '' 
+            ], ';');
+        }
+
+        fclose($handle);
+
+        return response()->download(storage_path('app/public/' . $user->name . '-' . $user->lastname . '.csv'));
+    }
 }

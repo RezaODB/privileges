@@ -25,14 +25,14 @@ class PageController extends Controller
     public function index()
     {
         $total = 0;
-        if (Auth::user()?->answers->completion) {
-            $completion = array_filter(Auth::user()?->answers->completion);
-            if (array_key_exists(1, $completion)) { $total = $total + 10; }
-            if (array_key_exists(2, $completion)) { $total = $total + 20; }
-            if (array_key_exists(4, $completion)) { $total = $total + 60; }
-            if (array_key_exists(5, $completion)) { $total = $total + 30; }
-            if (array_key_exists(6, $completion)) { $total = $total + 120; }
-        }
+        // if (Auth::user()?->answers->completion) {
+        //     $completion = array_filter(Auth::user()?->answers->completion);
+        //     if (array_key_exists(1, $completion)) { $total = $total + 10; }
+        //     if (array_key_exists(2, $completion)) { $total = $total + 20; }
+        //     if (array_key_exists(4, $completion)) { $total = $total + 60; }
+        //     if (array_key_exists(5, $completion)) { $total = $total + 30; }
+        //     if (array_key_exists(6, $completion)) { $total = $total + 120; }
+        // }
 
         return view('index', [
             'total' => $total / 24 * 10

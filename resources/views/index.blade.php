@@ -38,7 +38,7 @@
     </div>
 
     @guest
-    @if (request()->query('login') === 'yes')
+    {{-- @if (request()->query('login') === 'yes') --}}
     <form action="{{ route('login') }}" method="post" class="font-mono">
         @csrf
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-zinc-800 border-2 border-zinc-800">
@@ -56,11 +56,11 @@
         <input type="hidden" name="remember" value="yes">
         <div class="flex flex-wrap gap-4 items-center mt-4">
             <button type="submit" class="border-2 border-zinc-800 font-bold py-2 px-4 uppercase">{{ __('content.sign_in') }}</button>
-            <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a>
+            {{-- <a href="{{ route('index', ['login' => 'no']) }}" class="underline">{{ __('content.create_account') }}</a> --}}
             <a href="{{ route('password.request') }}" class="underline">{{ __('content.password_forgotten') }}</a>
         </div>
     </form>    
-    @else
+    {{-- @else
     <form action="{{ route('register') }}" method="post" class="font-mono">
         @csrf
         <div class="grid grid-cols-1 sm:grid-cols-2 sm:divide-x-2 divide-zinc-800 border-2 border-zinc-800">
@@ -152,7 +152,7 @@
             <a href="{{ route('index', ['login' => 'yes']) }}" class="underline">{{ __('content.already_registered') }}</a>
         </div>
     </form>   
-    @endif
+    @endif --}}
     @endguest
     @auth
     <div>

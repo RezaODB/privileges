@@ -16,6 +16,7 @@ use App\Http\Controllers\SculptureController;
 
 // FRONT
 Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/new', [PageController::class, 'new'])->name('new');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/policy', [PageController::class, 'policy'])->name('policy');
 Route::get('/instructions', [PageController::class, 'instructions'])->name('instructions');
@@ -43,7 +44,6 @@ Route::resource('maps', MapController::class)->except('show')->middleware('auth'
 Route::resource('intros', IntroController::class)->except('show')->middleware('auth');
 Route::resource('sculptures', SculptureController::class)->except('show')->middleware('auth');
 Route::resource('faqs', FaqController::class)->except('show')->middleware('auth');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

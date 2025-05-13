@@ -38,6 +38,11 @@ class PageController extends Controller
             'total' => $total / 24 * 10
         ]);
     }
+
+    public function new()
+    {
+        return view('new');
+    }
     
     public function policy()
     {

@@ -2,8 +2,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <a href="{{ route('users.export_users') }}" class="px-4 py-2 bg-gray-600 rounded-md text-white">Export to CSV</a>
+                <div class="p-6 text-gray-900 space-y-4">
+                    <a href="{{ route('users.export_users') }}" class="px-4 py-2 bg-gray-600 rounded-md text-white inline-block">Export to CSV</a>
                     <div class="divide-y">
                         @foreach ($users as $item)
                         <div class="flex gap-4 items-center p-1 hover:bg-gray-100 overflow-scroll">

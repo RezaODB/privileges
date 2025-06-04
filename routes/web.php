@@ -32,6 +32,7 @@ Route::get('/dashboard', [PageController::class, 'dashboard'])->middleware('auth
 Route::post('/upload', [PageController::class, 'upload'])->middleware('auth');
 Route::get('/users', [UserController::class, 'index'])->middleware('auth')->name('users.index');
 Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth')->name('users.show');
+Route::get('/export-users', [UserController::class, 'export_users'])->middleware('auth')->name('users.export_users');
 Route::get('/export-user/{user}', [UserController::class, 'export'])->middleware('auth')->name('users.export');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth')->name('users.destroy');
 Route::resource('quotas', QuotaController::class)->except('show')->middleware('auth');

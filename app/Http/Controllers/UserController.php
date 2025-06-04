@@ -40,6 +40,49 @@ class UserController extends Controller
         return back();
     }
 
+    public function export_users()
+    {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+
+        $data = User::orderBy('order')->get();
+
+        $handle = fopen(storage_path('app/public/participants.csv'), 'w');
+
+        fputcsv($handle, [
+            "Order",
+            "ID",
+            "Firstname",
+            "Lastname",
+            "Birthday",
+            "Birthplace",
+            "Gender",
+            "Email",
+            "Phone",
+            "Zip Code",
+            "Video Consent",
+        ], ';');
+
+        foreach ($data as $row) {
+	        fputcsv($handle, [
+                $row->order,
+                $row->id,
+                $row->name,
+                $row->lastname,
+                $row->birthday,
+                $row->birthplace,
+                $row->sex,
+                $row->email,
+                $row->phone,
+                $row->zip,
+                $row->video ? 'YES' : 'NO'
+            ], ';');
+        }
+
+        fclose($handle);
+
+        return response()->download(storage_path('app/public/participants.csv'));
+    }
+
     public function export(User $user)
     {
         Gate::allowIf(fn (User $user) => $user->role === 2);

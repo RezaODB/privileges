@@ -54,7 +54,6 @@ class UserController extends Controller
             "Firstname",
             "Lastname",
             "Birthday",
-            "Birthplace",
             "Gender",
             "Email",
             "Phone",
@@ -68,13 +67,12 @@ class UserController extends Controller
                 $row->id,
                 $row->name,
                 $row->lastname,
-                $row->birthday,
-                $row->birthplace,
+                $row->birthday->format('d-m-Y'),
                 $row->sex,
                 $row->email,
                 $row->phone,
                 $row->zip,
-                $row->video ? 'YES' : 'NO'
+                $row->video ? 'YES' : ''
             ], ';');
         }
 

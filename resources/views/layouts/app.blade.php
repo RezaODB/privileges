@@ -15,40 +15,56 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
         <script>
-            tinymce.init({
-                selector: '.editor',
-                image_class_list: [
-                    {title: 'one-column', value: 'one-col'},
-                    {title: 'two-column', value: 'two-col'},
-                ],
-                plugins: 'link lists paste code image media wordcount code',
-                toolbar: 'h2 h3 | bold italic blockquote indent aligncenter | numlist bullist | link image media code',
-                menubar: false,
-                paste_as_text: true,
-                image_title: true,
-                automatic_uploads: true,
-                images_upload_url: '/upload',
-                file_picker_types: 'image',
-                file_picker_callback: function(cb, value, meta) {
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'file');
-                    input.setAttribute('accept', 'image/*');
-                    input.onchange = function() {
-                        var file = this.files[0];
-                        var reader = new FileReader();
-                        reader.readAsDataURL(file);
-                        reader.onload = function () {
-                            var id = 'blobid' + (new Date()).getTime();
-                            var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-                            var base64 = reader.result.split(',')[1];
-                            var blobInfo = blobCache.create(id, file, base64);
-                            blobCache.add(blobInfo);
-                            cb(blobInfo.blobUri(), { title: file.name });
-                        };
-                    };
-                    input.click();
-                }
-            })
+        tinymce.init({
+        selector: '.editor',
+        image_class_list: [
+            { title: 'one-column', value: 'one-col' },
+            { title: 'two-column', value: 'two-col' },
+        ],
+        plugins: 'link lists paste code image media wordcount code',
+        toolbar: 'h2 h3 | bold italic blockquote indent aligncenter | numlist bullist | link image media code',
+        menubar: false,
+        paste_as_text: true,
+        image_title: true,
+        automatic_uploads: true,
+
+        // On gère l’upload proprement (CSRF + réponse JSON stable)
+        images_upload_url: null,
+
+        images_upload_handler: function (blobInfo, progress) {
+            return new Promise(function (resolve, reject) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '{{ route('upload') }}');
+
+            var token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+            if (token) xhr.setRequestHeader('X-CSRF-TOKEN', token);
+
+            xhr.upload.onprogress = function (e) {
+                if (e.lengthComputable) progress(Math.round((e.loaded / e.total) * 100));
+            };
+
+            xhr.onload = function () {
+                if (xhr.status === 403) return reject({ message: 'Forbidden (403)', remove: true });
+                if (xhr.status === 419) return reject({ message: 'CSRF expired (419). Refresh the page.', remove: true });
+                if (xhr.status < 200 || xhr.status >= 300) return reject('HTTP Error: ' + xhr.status);
+
+                var json;
+                try { json = JSON.parse(xhr.responseText); } catch (e) { return reject('Invalid JSON: ' + xhr.responseText); }
+                if (!json || typeof json.location !== 'string') return reject('Invalid response: missing "location".');
+
+                resolve(json.location);
+            };
+
+            xhr.onerror = function () {
+                reject('Upload failed (network error).');
+            };
+
+            var formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            xhr.send(formData);
+            });
+        }
+        });
         </script>
         @livewireStyles
     </head>

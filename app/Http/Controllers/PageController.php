@@ -10,6 +10,8 @@ use App\Models\Photo;
 use App\Models\Theory;
 use App\Models\Brochure;
 use App\Models\Sculpture;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -103,12 +105,27 @@ class PageController extends Controller
         ]);
     }
 
-    public function upload()
+    public function upload(Request $request)
     {
-        $fileName = request()->file('file')->getClientOriginalName();
-        $path = request()->file('file')->storeAs('uploads', $fileName, 'public');
-        
-        return response()->json(['location'=>"/storage/$path"]); 
+        $request->validate([
+            'file' => [
+                'required',
+                'file',
+                'image',
+                'mimes:jpg,jpeg,png,webp,gif',
+                'max:5120', // 5MB
+            ],
+        ]);
+
+        $file = $request->file('file');
+
+        $filename = Str::uuid()->toString().'.'.$file->getClientOriginalExtension();
+
+        $path = $file->storeAs('uploads/editor', $filename, 'public');
+
+        return response()->json([
+            'location' => asset('storage/'.$path),
+        ]);
     }
 
 }

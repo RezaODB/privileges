@@ -29,7 +29,7 @@ Route::get('/step6', [PageController::class, 'step6'])->name('step6');
 
 // BACK
 Route::get('/dashboard', [PageController::class, 'dashboard'])->middleware('auth')->name('dashboard');
-Route::post('/upload', [PageController::class, 'upload'])->middleware('auth');
+Route::post('/upload', [PageController::class, 'upload'])->middleware(['auth', 'throttle:10,1'])->name('upload');
 Route::get('/users', [UserController::class, 'index'])->middleware('auth')->name('users.index');
 Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth')->name('users.show');
 Route::get('/export-users', [UserController::class, 'export_users'])->middleware('auth')->name('users.export_users');

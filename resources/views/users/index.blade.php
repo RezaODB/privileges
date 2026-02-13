@@ -4,23 +4,116 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 space-y-4">
                     <a href="{{ route('users.export_users') }}" class="px-4 py-2 bg-gray-600 rounded-md text-white inline-block">Export to CSV</a>
-                    <div class="divide-y">
-                        @foreach ($users as $item)
-                        <div class="flex gap-4 items-center p-1 hover:bg-gray-100 overflow-scroll">
-                            <span class="font-bold text-gray-600">{{ $item->order ?? '0' }}</span>
-                            <a href="{{ route('users.show', $item) }}" class="text-blue-600 whitespace-nowrap hover:underline">{{ $item->lastname . ' ' . $item->name }}</a>
-                            <a href="mailto:{{ $item->email }}" class="whitespace-nowrap underline">{{ $item->email }}</a>
-                            <a href="tel:{{ $item->phone }}" class="whitespace-nowrap underline">{{ $item->phone }}</a>
-                            <span class="bg-slate-100 text-slate-600 uppercase px-2 whitespace-nowrap rounded text-sm">Réponses: {{ count($item->answers->answers) - array_key_exists('comment', $item->answers->answers) - array_key_exists('boosters', $item->answers->answers) }}/{{ $quotas }}</span>
-                            <span class="bg-slate-100 text-slate-600 uppercase px-2 whitespace-nowrap rounded text-sm">Votes: {{ count($item->answers->votes) - array_key_exists('comment', $item->answers->votes) }}/{{ $votes }}</span>
-                            {{-- <span class="bg-slate-300 text-slate-800 uppercase px-2 whitespace-nowrap rounded text-sm">Loterie: {{ data_get(array_count_values($item->answers->votes), 'yes') ?? 0 }} POUR</span> --}}
-                            <form action="{{ route('users.destroy', $item) }}" method="post" class="ml-auto">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="text-red-600 text-sm uppercase hover:underline" onclick="return confirm('Delete item?')">Delete</button>
-                            </form>
-                        </div>
-                        @endforeach
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Order</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">User</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Email</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Phone</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Answers</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Votes</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Important</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Shot</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Questionnaire</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Interviewed</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Eject</th>
+                                    <th class="px-3 py-2 text-right font-semibold text-gray-700">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 bg-white">
+                                @foreach ($users as $item)
+                                    @php
+                                        $answersData = data_get($item->answers, 'answers', []);
+                                        $votesData = data_get($item->answers, 'votes', []);
+                                        $answersCount = count($answersData) - (array_key_exists('comment', $answersData) ? 1 : 0) - (array_key_exists('boosters', $answersData) ? 1 : 0);
+                                        $votesCount = count($votesData) - (array_key_exists('comment', $votesData) ? 1 : 0);
+                                    @endphp
+                                    <tr class="hover:bg-gray-50 {{ $item->eject ? 'bg-red-50/40' : '' }}">
+                                        <td class="px-3 py-2 font-semibold text-gray-600">{{ $item->order ?? '0' }}</td>
+                                        <td class="px-3 py-2 whitespace-nowrap">
+                                            <a href="{{ route('users.show', $item) }}" class="text-blue-600 hover:underline">{{ $item->lastname . ' ' . $item->name }}</a>
+                                        </td>
+                                        <td class="px-3 py-2 whitespace-nowrap">
+                                            <a href="mailto:{{ $item->email }}" class="underline">{{ $item->email }}</a>
+                                        </td>
+                                        <td class="px-3 py-2 whitespace-nowrap">
+                                            <a href="tel:{{ $item->phone }}" class="underline">{{ $item->phone }}</a>
+                                        </td>
+                                        <td class="px-3 py-2 whitespace-nowrap">{{ $answersCount }}/{{ $quotas }}</td>
+                                        <td class="px-3 py-2 whitespace-nowrap">{{ $votesCount }}/{{ $votes }}</td>
+                                        <td class="px-3 py-2 text-center">
+                                            <form action="{{ route('users.flags.update', $item) }}" method="post">
+                                                @csrf
+                                                @method('patch')
+                                                <input type="hidden" name="important" value="0">
+                                                <input type="hidden" name="shot" value="{{ $item->shot ? 1 : 0 }}">
+                                                <input type="hidden" name="questionnaire" value="{{ $item->questionnaire ? 1 : 0 }}">
+                                                <input type="hidden" name="interviewed" value="{{ $item->interviewed ? 1 : 0 }}">
+                                                <input type="hidden" name="eject" value="{{ $item->eject ? 1 : 0 }}">
+                                                <input type="checkbox" name="important" value="1" {{ $item->important ? 'checked' : '' }} onchange="this.form.submit()">
+                                            </form>
+                                        </td>
+                                        <td class="px-3 py-2 text-center">
+                                            <form action="{{ route('users.flags.update', $item) }}" method="post">
+                                                @csrf
+                                                @method('patch')
+                                                <input type="hidden" name="important" value="{{ $item->important ? 1 : 0 }}">
+                                                <input type="hidden" name="shot" value="0">
+                                                <input type="hidden" name="questionnaire" value="{{ $item->questionnaire ? 1 : 0 }}">
+                                                <input type="hidden" name="interviewed" value="{{ $item->interviewed ? 1 : 0 }}">
+                                                <input type="hidden" name="eject" value="{{ $item->eject ? 1 : 0 }}">
+                                                <input type="checkbox" name="shot" value="1" {{ $item->shot ? 'checked' : '' }} onchange="this.form.submit()">
+                                            </form>
+                                        </td>
+                                        <td class="px-3 py-2 text-center">
+                                            <form action="{{ route('users.flags.update', $item) }}" method="post">
+                                                @csrf
+                                                @method('patch')
+                                                <input type="hidden" name="important" value="{{ $item->important ? 1 : 0 }}">
+                                                <input type="hidden" name="shot" value="{{ $item->shot ? 1 : 0 }}">
+                                                <input type="hidden" name="questionnaire" value="0">
+                                                <input type="hidden" name="interviewed" value="{{ $item->interviewed ? 1 : 0 }}">
+                                                <input type="hidden" name="eject" value="{{ $item->eject ? 1 : 0 }}">
+                                                <input type="checkbox" name="questionnaire" value="1" {{ $item->questionnaire ? 'checked' : '' }} onchange="this.form.submit()">
+                                            </form>
+                                        </td>
+                                        <td class="px-3 py-2 text-center">
+                                            <form action="{{ route('users.flags.update', $item) }}" method="post">
+                                                @csrf
+                                                @method('patch')
+                                                <input type="hidden" name="important" value="{{ $item->important ? 1 : 0 }}">
+                                                <input type="hidden" name="shot" value="{{ $item->shot ? 1 : 0 }}">
+                                                <input type="hidden" name="questionnaire" value="{{ $item->questionnaire ? 1 : 0 }}">
+                                                <input type="hidden" name="interviewed" value="0">
+                                                <input type="hidden" name="eject" value="{{ $item->eject ? 1 : 0 }}">
+                                                <input type="checkbox" name="interviewed" value="1" {{ $item->interviewed ? 'checked' : '' }} onchange="this.form.submit()">
+                                            </form>
+                                        </td>
+                                        <td class="px-3 py-2 text-center">
+                                            <form action="{{ route('users.flags.update', $item) }}" method="post">
+                                                @csrf
+                                                @method('patch')
+                                                <input type="hidden" name="important" value="{{ $item->important ? 1 : 0 }}">
+                                                <input type="hidden" name="shot" value="{{ $item->shot ? 1 : 0 }}">
+                                                <input type="hidden" name="questionnaire" value="{{ $item->questionnaire ? 1 : 0 }}">
+                                                <input type="hidden" name="interviewed" value="{{ $item->interviewed ? 1 : 0 }}">
+                                                <input type="hidden" name="eject" value="0">
+                                                <input type="checkbox" name="eject" value="1" {{ $item->eject ? 'checked' : '' }} onchange="this.form.submit()">
+                                            </form>
+                                        </td>
+                                        <td class="px-3 py-2 text-right">
+                                            <form action="{{ route('users.destroy', $item) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="text-red-600 text-xs uppercase hover:underline" onclick="return confirm('Delete item?')">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

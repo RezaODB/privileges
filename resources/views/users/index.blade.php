@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl 2xl:max-w-[1800px] mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 space-y-4">
                     <a href="{{ route('users.export_users') }}" class="px-4 py-2 bg-gray-600 rounded-md text-white inline-block">Export to CSV</a>
@@ -31,7 +31,7 @@
                                         $votesCount = count($votesData) - (array_key_exists('comment', $votesData) ? 1 : 0);
                                     @endphp
                                     <tr class="hover:bg-gray-50 {{ $item->eject ? 'bg-red-50/40' : '' }}">
-                                        <td class="px-3 py-2 font-semibold text-gray-600">{{ $item->order ?? '0' }}</td>
+                                        <td class="px-3 py-2 font-semibold text-gray-600">{{ $loop->iteration }}</td>
                                         <td class="px-3 py-2 whitespace-nowrap">
                                             <a href="{{ route('users.show', $item) }}" class="text-blue-600 hover:underline">{{ $item->lastname . ' ' . $item->name }}</a>
                                         </td>

@@ -32,7 +32,6 @@ Route::get('/dashboard', [PageController::class, 'dashboard'])->middleware('auth
 Route::post('/upload', [PageController::class, 'upload'])->middleware(['auth', 'throttle:10,1'])->name('upload');
 Route::get('/users', [UserController::class, 'index'])->middleware('auth')->name('users.index');
 Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth')->name('users.show');
-Route::patch('/users/{user}/flags', [UserController::class, 'updateFlags'])->middleware('auth')->name('users.flags.update');
 Route::get('/export-users', [UserController::class, 'export_users'])->middleware('auth')->name('users.export_users');
 Route::get('/export-user/{user}', [UserController::class, 'export'])->middleware('auth')->name('users.export');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth')->name('users.destroy');

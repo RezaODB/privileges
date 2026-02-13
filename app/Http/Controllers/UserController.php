@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateUserAdminFlagsRequest;
 use App\Models\Quota;
 use App\Models\User;
 use App\Models\Vote;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -17,14 +15,7 @@ class UserController extends Controller
     {
         Gate::allowIf(fn (User $user) => $user->role === 2);
 
-        return view('users.index', [
-            'users' => User::with('answers')
-                ->orderBy('eject')
-                ->orderBy('order')
-                ->get(),
-            'quotas' => Quota::count(),
-            'votes' => Vote::count(),
-        ]);
+        return view('users.index');
     }
 
     public function show(User $user)
@@ -43,15 +34,6 @@ class UserController extends Controller
         Gate::allowIf(fn (User $user) => $user->role === 2);
 
         $user->delete();
-
-        return back();
-    }
-
-    public function updateFlags(UpdateUserAdminFlagsRequest $request, User $user): RedirectResponse
-    {
-        Gate::allowIf(fn (User $authUser) => $authUser->role === 2);
-
-        $user->update($request->validated());
 
         return back();
     }

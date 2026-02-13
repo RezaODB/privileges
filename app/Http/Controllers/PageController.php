@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faq;
-use App\Models\Map;
-use App\Models\User;
-use App\Models\Intro;
-use App\Models\Photo;
-use App\Models\Theory;
+use App\Http\Requests\EditorImageUploadRequest;
 use App\Models\Brochure;
+use App\Models\Faq;
+use App\Models\Intro;
+use App\Models\Map;
+use App\Models\Photo;
 use App\Models\Sculpture;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+use App\Models\Theory;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class PageController extends Controller
 {
     public function dashboard()
     {
         Gate::allowIf(fn (User $user) => $user->role === 2);
-        
+
         return view('dashboard');
     }
 
@@ -37,7 +38,7 @@ class PageController extends Controller
         // }
 
         return view('index', [
-            'total' => $total / 24 * 10
+            'total' => $total / 24 * 10,
         ]);
     }
 
@@ -45,7 +46,7 @@ class PageController extends Controller
     {
         return view('new');
     }
-    
+
     public function policy()
     {
         return view('policy');
@@ -54,7 +55,7 @@ class PageController extends Controller
     public function faq()
     {
         return view('faq', [
-            'faqs' => Faq::orderBy('order')->where('lang', app()->getLocale())->get()
+            'faqs' => Faq::orderBy('order')->where('lang', app()->getLocale())->get(),
         ]);
     }
 
@@ -62,70 +63,66 @@ class PageController extends Controller
     {
         return view('instructions');
     }
-    
+
     public function step1()
     {
         return view('step', [
-            'items' => Theory::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Theory::orderBy('order')->where('lang', app()->getLocale())->get(),
         ]);
     }
 
     public function step2()
     {
         return view('step', [
-            'items' => Intro::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Intro::orderBy('order')->where('lang', app()->getLocale())->get(),
         ]);
     }
 
     public function step3()
     {
         return view('step', [
-            'items' => Photo::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Photo::orderBy('order')->where('lang', app()->getLocale())->get(),
         ]);
     }
 
     public function step4()
     {
         return view('step', [
-            'items' => Sculpture::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Sculpture::orderBy('order')->where('lang', app()->getLocale())->get(),
         ]);
     }
 
     public function step5()
     {
         return view('step', [
-            'items' => Brochure::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Brochure::orderBy('order')->where('lang', app()->getLocale())->get(),
         ]);
     }
 
     public function step6()
     {
         return view('step', [
-            'items' => Map::orderBy('order')->where('lang', app()->getLocale())->get()
+            'items' => Map::orderBy('order')->where('lang', app()->getLocale())->get(),
         ]);
     }
 
-    public function upload(Request $request)
+    public function upload(EditorImageUploadRequest $request)
     {
-        $request->validate([
-            'file' => [
-                'required',
-                'file',
-                'image',
-                'mimes:jpg,jpeg,png,webp,gif',
-                'max:5120', // 5MB
-            ],
-        ]);
-
         $file = $request->file('file');
+        $extension = $file->guessExtension();
 
-        $filename = Str::uuid()->toString().'.'.$file->getClientOriginalExtension();
+        if (! in_array($extension, ['jpg', 'jpeg', 'png', 'webp', 'gif'], true)) {
+            throw ValidationException::withMessages([
+                'file' => 'The uploaded image type is not supported.',
+            ]);
+        }
+
+        $filename = Str::uuid()->toString().'.'.$extension;
 
         $path = $file->storeAs('uploads/editor', $filename, 'public');
 
         return response()->json([
             'location' => asset('storage/'.$path),
-        ]);
+        ], 201);
     }
-
 }

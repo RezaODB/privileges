@@ -27,6 +27,7 @@
         paste_as_text: true,
         image_title: true,
         automatic_uploads: true,
+        images_file_types: 'jpg,jpeg,png,webp,gif',
 
         // On gère l’upload proprement (CSRF + réponse JSON stable)
         images_upload_url: null,

@@ -6,20 +6,20 @@
                     <a href="{{ route('users.export_users') }}" class="px-4 py-2 bg-gray-600 rounded-md text-white inline-block">Export to CSV</a>
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200 text-sm">
-                            <thead class="bg-gray-50">
+                            <thead class="sticky top-0 z-20 bg-gray-50">
                                 <tr>
-                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Order</th>
-                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">User</th>
-                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Email</th>
-                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Phone</th>
-                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Answers</th>
-                                    <th class="px-3 py-2 text-left font-semibold text-gray-700">Votes</th>
-                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Important</th>
-                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Shot</th>
-                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Questionnaire</th>
-                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Interviewed</th>
-                                    <th class="px-3 py-2 text-center font-semibold text-gray-700">Eject</th>
-                                    <th class="px-3 py-2 text-right font-semibold text-gray-700">Actions</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700 bg-gray-50">Order</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700 bg-gray-50">User</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700 bg-gray-50">Email</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700 bg-gray-50">Phone</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700 bg-gray-50">Answers</th>
+                                    <th class="px-3 py-2 text-left font-semibold text-gray-700 bg-gray-50">Votes</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700 bg-gray-50">Important</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700 bg-gray-50">Shot</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700 bg-gray-50">Questionnaire</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700 bg-gray-50">Interviewed</th>
+                                    <th class="px-3 py-2 text-center font-semibold text-gray-700 bg-gray-50">Eject</th>
+                                    <th class="px-3 py-2 text-right font-semibold text-gray-700 bg-gray-50">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100 bg-white">

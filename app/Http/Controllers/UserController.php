@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Vote;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class UserController extends Controller
 {
@@ -54,75 +56,129 @@ class UserController extends Controller
         return back();
     }
 
-    public function export_users()
+    public function export_users(): StreamedResponse
     {
         Gate::allowIf(fn (User $user) => $user->role === 2);
 
-        $data = User::orderBy('order')->get();
+        return response()->streamDownload(function (): void {
+            $handle = fopen('php://output', 'w');
 
-        $handle = fopen(storage_path('app/public/participants.csv'), 'w');
+            if ($handle === false) {
+                return;
+            }
 
-        fputcsv($handle, [
-            'Order',
-            'ID',
-            'Firstname',
-            'Lastname',
-            'Birthday',
-            'Gender',
-            'Email',
-            'Phone',
-            'Zip Code',
-            'Video Consent',
-        ], ';');
-
-        foreach ($data as $row) {
             fputcsv($handle, [
-                $row->order,
-                $row->id,
-                $row->name,
-                $row->lastname,
-                $row->birthday->format('d-m-Y'),
-                $row->sex,
-                $row->email,
-                $row->phone,
-                $row->zip,
-                $row->video ? 'YES' : '',
+                'Order',
+                'ID',
+                'Firstname',
+                'Lastname',
+                'Birthday',
+                'Gender',
+                'Email',
+                'Phone',
+                'Zip Code',
+                'Video Consent',
+                'Important',
+                'Shot',
+                'Questionnaire',
+                'Interviewed',
+                'Eject',
             ], ';');
-        }
 
-        fclose($handle);
+            User::orderBy('order')->chunk(500, function ($users) use ($handle): void {
+                foreach ($users as $row) {
+                    fputcsv($handle, [
+                        $this->sanitizeCsvCell($row->order),
+                        $this->sanitizeCsvCell($row->id),
+                        $this->sanitizeCsvCell($row->name),
+                        $this->sanitizeCsvCell($row->lastname),
+                        $this->sanitizeCsvCell($row->birthday?->format('d-m-Y')),
+                        $this->sanitizeCsvCell($row->sex),
+                        $this->sanitizeCsvCell($row->email),
+                        $this->sanitizeCsvCell($row->phone),
+                        $this->sanitizeCsvCell($row->zip),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $row->video)),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $row->important)),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $row->shot)),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $row->questionnaire)),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $row->interviewed)),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $row->eject)),
+                    ], ';');
+                }
+            });
 
-        return response()->download(storage_path('app/public/participants.csv'));
+            fclose($handle);
+        }, 'participants.csv', [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
     }
 
-    public function export(User $user)
+    public function export(User $user): StreamedResponse
     {
-        Gate::allowIf(fn (User $user) => $user->role === 2);
+        Gate::allowIf(fn (User $authUser) => $authUser->role === 2);
 
-        $data = Quota::orderBy('order')->get();
+        $filenameBase = Str::slug($user->name.'-'.$user->lastname);
+        $filename = ($filenameBase !== '' ? $filenameBase : 'user-'.$user->id).'.csv';
 
-        $handle = fopen(storage_path('app/public/'.$user->name.'-'.$user->lastname.'.csv'), 'w');
+        return response()->streamDownload(function () use ($user): void {
+            $handle = fopen('php://output', 'w');
 
-        fputcsv($handle, [
-            '#',
-            'Category',
-            'Question',
-            'Answer',
-            'Booster',
-        ], ';');
+            if ($handle === false) {
+                return;
+            }
 
-        foreach ($data as $row) {
+            $answers = data_get($user, 'answers.answers', []);
+            $boosters = data_get($answers, 'boosters', []);
+
             fputcsv($handle, [
-                $row->order,
-                $row->category,
-                $row->question_fr,
-                strtoupper(data_get($user->answers->answers, $row->id)),
-                in_array($row->id, data_get($user->answers->answers, 'boosters', [])) ? 'YES' : '',
+                '#',
+                'Category',
+                'Question',
+                'Answer',
+                'Booster',
+                'Important',
+                'Shot',
+                'Questionnaire',
+                'Interviewed',
+                'Eject',
             ], ';');
+
+            Quota::orderBy('order')->chunk(500, function ($quotas) use ($handle, $answers, $boosters, $user): void {
+                foreach ($quotas as $row) {
+                    fputcsv($handle, [
+                        $this->sanitizeCsvCell($row->order),
+                        $this->sanitizeCsvCell($row->category),
+                        $this->sanitizeCsvCell($row->question_fr),
+                        $this->sanitizeCsvCell(strtoupper((string) data_get($answers, $row->id, ''))),
+                        $this->sanitizeCsvCell(in_array($row->id, $boosters, true) ? 'YES' : ''),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $user->important)),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $user->shot)),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $user->questionnaire)),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $user->interviewed)),
+                        $this->sanitizeCsvCell($this->flagToCsvValue((bool) $user->eject)),
+                    ], ';');
+                }
+            });
+
+            fclose($handle);
+        }, $filename, [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
+    }
+
+    private function flagToCsvValue(bool $value): string
+    {
+        return $value ? 'YES' : '';
+    }
+
+    private function sanitizeCsvCell(mixed $value): string
+    {
+        $stringValue = (string) ($value ?? '');
+
+        if ($stringValue !== '' && in_array($stringValue[0], ['=', '+', '-', '@'], true)) {
+            return "'".$stringValue;
         }
 
-        fclose($handle);
-
-        return response()->download(storage_path('app/public/'.$user->name.'-'.$user->lastname.'.csv'));
+        return $stringValue;
     }
 }

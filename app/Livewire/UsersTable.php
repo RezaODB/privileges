@@ -11,13 +11,29 @@ use Livewire\Component;
 
 class UsersTable extends Component
 {
+    private const SEGMENT_FIELDS = [
+        'nl',
+        'fr',
+        'repro',
+        'doute',
+        'lgtb',
+        'senior',
+        'racises',
+    ];
+
     private const FLAG_FIELDS = [
         'important',
         'shot',
         'questionnaire',
         'interviewed',
         'eject',
+        ...self::SEGMENT_FIELDS,
     ];
+
+    public function segmentFields(): array
+    {
+        return self::SEGMENT_FIELDS;
+    }
 
     public function updateFlag(int $userId, string $field, bool $value): void
     {

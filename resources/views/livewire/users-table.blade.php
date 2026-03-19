@@ -13,6 +13,9 @@
                 <th class="px-3 py-2 text-center font-semibold text-gray-700 bg-gray-50">Questionnaire</th>
                 <th class="px-3 py-2 text-center font-semibold text-gray-700 bg-gray-50">Interviewed</th>
                 <th class="px-3 py-2 text-center font-semibold text-gray-700 bg-gray-50">Eject</th>
+                @foreach ($this->segmentFields() as $field)
+                    <th class="px-3 py-2 text-center font-semibold text-gray-700 bg-gray-50">{{ strtoupper($field) }}</th>
+                @endforeach
                 <th class="px-3 py-2 text-right font-semibold text-gray-700 bg-gray-50">Actions</th>
             </tr>
         </thead>
@@ -82,6 +85,17 @@
                             wire:target="updateFlag"
                         >
                     </td>
+                    @foreach ($this->segmentFields() as $field)
+                        <td class="px-3 py-2 text-center">
+                            <input
+                                type="checkbox"
+                                @checked(data_get($item, $field))
+                                wire:change="updateFlag({{ $item->id }}, '{{ $field }}', $event.target.checked)"
+                                wire:loading.attr="disabled"
+                                wire:target="updateFlag"
+                            >
+                        </td>
+                    @endforeach
                     <td class="px-3 py-2 text-right">
                         <form action="{{ route('users.destroy', $item) }}" method="post">
                             @csrf

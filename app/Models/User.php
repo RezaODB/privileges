@@ -30,6 +30,13 @@ class User extends Authenticatable
             'questionnaire' => 'boolean',
             'interviewed' => 'boolean',
             'eject' => 'boolean',
+            'nl' => 'boolean',
+            'fr' => 'boolean',
+            'repro' => 'boolean',
+            'doute' => 'boolean',
+            'lgtb' => 'boolean',
+            'senior' => 'boolean',
+            'racises' => 'boolean',
         ];
     }
 

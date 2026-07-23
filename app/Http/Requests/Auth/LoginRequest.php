@@ -49,6 +49,17 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        if (Auth::user()->isEjected()) {
+            Auth::guard('web')->logout();
+
+            $this->session()->invalidate();
+            $this->session()->regenerateToken();
+
+            throw ValidationException::withMessages([
+                'email' => trans('content.ejected'),
+            ]);
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 

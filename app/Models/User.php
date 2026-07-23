@@ -44,4 +44,13 @@ class User extends Authenticatable
     {
         return $this->hasOne(Answer::class);
     }
+
+    /**
+     * Determine whether the user has been ejected and may no longer access the site.
+     * Administrators are never ejected, so they can always undo the flag.
+     */
+    public function isEjected(): bool
+    {
+        return (bool) $this->eject && (int) $this->role !== 2;
+    }
 }

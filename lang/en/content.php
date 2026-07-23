@@ -28,7 +28,7 @@ return [
     'step5' => 'Step 5:<br>Social Lottery',
     'step6' => 'Step 6:<br>Mapping',
     'instructions' => 'Start here!',
-    'socioartystudy' => "Socio-artistic study",
+    'socioartystudy' => 'Socio-artistic study',
     'for' => 'In favor',
     'against' => 'Against',
     'coinflip' => 'Flip a coin',
@@ -41,6 +41,7 @@ return [
     'sometimes' => 'sometimes',
     'rarely' => 'rarely',
     'never' => 'never',
-    'submit' => 'submit'
+    'submit' => 'submit',
+    'ejected' => 'Thank you very much for taking part. Your access to the study has been closed, so signing in is no longer possible. If you have any question, please write to us at lesprivilegesinvisibles@gmail.com.',
 
 ];

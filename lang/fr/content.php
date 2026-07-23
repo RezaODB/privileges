@@ -27,8 +27,8 @@ return [
     'step4' => 'Étape 4:<br>Étude sculpturale',
     'step5' => 'Étape 5:<br>Loterie sociale',
     'step6' => 'Étape 6:<br>Cartographie',
-    'instructions' => "Start here!",
-    'socioartystudy' => "Étude socio-artistique",
+    'instructions' => 'Start here!',
+    'socioartystudy' => 'Étude socio-artistique',
     'for' => 'Pour',
     'against' => 'Contre',
     'coinflip' => 'Pile ou face',
@@ -41,6 +41,7 @@ return [
     'sometimes' => 'parfois',
     'rarely' => 'rarement',
     'never' => 'jamais',
-    'submit' => 'soumettre'
+    'submit' => 'soumettre',
+    'ejected' => "Merci beaucoup pour votre participation. Votre accès à l'étude a été clôturé, il n'est donc plus possible de vous connecter. Pour toute question, n'hésitez pas à nous écrire à lesprivilegesinvisibles@gmail.com.",
 
 ];

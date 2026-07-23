@@ -107,6 +107,90 @@ class UserController extends Controller
         ]);
     }
 
+    public function export_answers(): StreamedResponse
+    {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+
+        $quotas = Quota::orderBy('order')->get();
+
+        return response()->streamDownload(function () use ($quotas): void {
+            $handle = fopen('php://output', 'w');
+
+            if ($handle === false) {
+                return;
+            }
+
+            fputcsv($handle, [
+                'Order',
+                'ID',
+                'Firstname',
+                'Lastname',
+                'Birthday',
+                'Gender',
+                'Email',
+                'Phone',
+                'Zip Code',
+                'Answered',
+                'Boosters',
+                'Comment',
+                'Vote Comment',
+                ...array_keys(self::EXPORT_FLAG_COLUMNS),
+                ...$quotas->map(fn (Quota $quota): string => $quota->order.'. '.$quota->question_fr)->all(),
+            ], ';');
+
+            User::with('answers')
+                ->where('role', 1)
+                ->orderBy('order')
+                ->chunk(200, function ($users) use ($handle, $quotas): void {
+                    foreach ($users as $row) {
+                        $answers = data_get($row, 'answers.answers', []);
+                        $votes = data_get($row, 'answers.votes', []);
+                        $boosters = data_get($answers, 'boosters', []);
+
+                        $exportFlags = array_map(
+                            fn (string $field): string => $this->sanitizeCsvCell($this->flagToCsvValue((bool) data_get($row, $field))),
+                            array_values(self::EXPORT_FLAG_COLUMNS),
+                        );
+
+                        $answered = $quotas
+                            ->filter(fn (Quota $quota): bool => (string) data_get($answers, $quota->id, '') !== '')
+                            ->count();
+
+                        $boosterLabels = $quotas
+                            ->filter(fn (Quota $quota): bool => $this->isBooster($quota->id, $boosters))
+                            ->map(fn (Quota $quota): string => (string) $quota->order)
+                            ->implode(', ');
+
+                        $exportAnswers = $quotas
+                            ->map(fn (Quota $quota): string => $this->sanitizeCsvCell(strtoupper((string) data_get($answers, $quota->id, ''))))
+                            ->all();
+
+                        fputcsv($handle, [
+                            $this->sanitizeCsvCell($row->order),
+                            $this->sanitizeCsvCell($row->id),
+                            $this->sanitizeCsvCell($row->name),
+                            $this->sanitizeCsvCell($row->lastname),
+                            $this->sanitizeCsvCell($row->birthday?->format('d-m-Y')),
+                            $this->sanitizeCsvCell($row->sex),
+                            $this->sanitizeCsvCell($row->email),
+                            $this->sanitizeCsvCell($row->phone),
+                            $this->sanitizeCsvCell($row->zip),
+                            $this->sanitizeCsvCell($answered.'/'.$quotas->count()),
+                            $this->sanitizeCsvCell($boosterLabels),
+                            $this->sanitizeCsvCell(data_get($answers, 'comment')),
+                            $this->sanitizeCsvCell(data_get($votes, 'comment')),
+                            ...$exportFlags,
+                            ...$exportAnswers,
+                        ], ';');
+                    }
+                });
+
+            fclose($handle);
+        }, 'participants-answers.csv', [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
+    }
+
     public function export(User $user): StreamedResponse
     {
         Gate::allowIf(fn (User $authUser) => $authUser->role === 2);
@@ -145,7 +229,7 @@ class UserController extends Controller
                         $this->sanitizeCsvCell($row->category),
                         $this->sanitizeCsvCell($row->question_fr),
                         $this->sanitizeCsvCell(strtoupper((string) data_get($answers, $row->id, ''))),
-                        $this->sanitizeCsvCell(in_array($row->id, $boosters, true) ? '1' : ''),
+                        $this->sanitizeCsvCell($this->isBooster($row->id, $boosters) ? '1' : ''),
                         ...$exportFlags,
                     ], ';');
                 }
@@ -155,6 +239,17 @@ class UserController extends Controller
         }, $filename, [
             'Content-Type' => 'text/csv; charset=UTF-8',
         ]);
+    }
+
+    /**
+     * Boosters are stored as strings in the answers JSON, while quota ids are integers,
+     * so both sides have to be normalised before comparing.
+     *
+     * @param  array<int, mixed>  $boosters
+     */
+    private function isBooster(int $quotaId, array $boosters): bool
+    {
+        return in_array((string) $quotaId, array_map(strval(...), $boosters), true);
     }
 
     private function flagToCsvValue(bool $value): string

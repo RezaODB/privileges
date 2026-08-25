@@ -236,3 +236,13 @@ it('falls back to the french question when the english one is missing', function
         ->assertOk()
         ->assertSee('Question sans traduction.');
 });
+
+it('only advertises the dossier on the home page once a tab is published', function () {
+    $this->get(route('index'))->assertOk()->assertDontSee(__('content.pro_link'));
+
+    Section::factory()->unpublished()->create();
+    $this->get(route('index'))->assertOk()->assertDontSee(__('content.pro_link'));
+
+    Section::factory()->create(['slug' => 'en-bref']);
+    $this->get(route('index'))->assertOk()->assertSee(__('content.pro_link'));
+});

@@ -9,6 +9,7 @@ use App\Models\Intro;
 use App\Models\Map;
 use App\Models\Photo;
 use App\Models\Sculpture;
+use App\Models\Section;
 use App\Models\Theory;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,7 @@ class PageController extends Controller
 
         return view('index', [
             'total' => $total / 24 * 10,
+            'hasProDossier' => Section::query()->published()->exists(),
         ]);
     }
 

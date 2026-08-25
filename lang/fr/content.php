@@ -44,4 +44,9 @@ return [
     'submit' => 'soumettre',
     'ejected' => "Merci beaucoup pour votre participation. Votre accès à l'étude a été clôturé, il n'est donc plus possible de vous connecter. Pour toute question, n'hésitez pas à nous écrire à lesprivilegesinvisibles@gmail.com.",
 
+    'pro_link' => 'Pour les professionnels',
+    'pro_empty' => "Le contenu de cet onglet n'est pas encore disponible dans cette langue.",
+
+    'pro_quota_note' => "Voici le questionnaire soumis aux participants de l'étude, reproduit ici tel quel. Il n'est pas remplissable depuis cette page.",
+
 ];

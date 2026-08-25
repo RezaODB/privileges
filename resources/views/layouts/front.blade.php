@@ -18,6 +18,9 @@
         @livewireStyles
     </head>
     <style>
+        [x-cloak] {
+            display: none !important;
+        }
         .one-col {
             padding: 1.5rem;
             margin: auto; 
@@ -39,7 +42,7 @@
             <div class="min-h-screen pb-16 sm:my-4 bg-[#e5d0b5] shadow-2xl relative rounded-t-xl rounded-b-md overflow-hidden">
                 <div class="absolute inset-0 pointer-events-none opacity-50" style="background-image: url({{ asset('folder.png') }}); background-size: 100% auto;"></div>
                 <header class="relative">
-                    @include('includes.header')
+                    @include($header ?? 'includes.header')
                 </header>
                 <main class="py-8 sm:px-8 relative">
                     @yield('content')

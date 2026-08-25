@@ -1,14 +1,19 @@
 <?php
 
 use App\Http\Controllers\BrochureController;
+use App\Http\Controllers\ChapterController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\FilmController;
 use App\Http\Controllers\IntroController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ProController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuotaController;
 use App\Http\Controllers\SculptureController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\TheoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoteController;
@@ -26,6 +31,11 @@ Route::get('/step3', [PageController::class, 'step3'])->name('step3');
 Route::get('/step4', [PageController::class, 'step4'])->name('step4');
 Route::get('/step5', [PageController::class, 'step5'])->name('step5');
 Route::get('/step6', [PageController::class, 'step6'])->name('step6');
+
+// DOSSIER PRO (public)
+Route::get('/pro', [ProController::class, 'index'])->name('pro.index');
+Route::get('/pro/document/{document}', [DocumentController::class, 'download'])->name('pro.document');
+Route::get('/pro/{section:slug}', [ProController::class, 'show'])->name('pro.show');
 
 // BACK
 Route::get('/dashboard', [PageController::class, 'dashboard'])->middleware('auth')->name('dashboard');
@@ -46,6 +56,10 @@ Route::resource('maps', MapController::class)->except('show')->middleware('auth'
 Route::resource('intros', IntroController::class)->except('show')->middleware('auth');
 Route::resource('sculptures', SculptureController::class)->except('show')->middleware('auth');
 Route::resource('faqs', FaqController::class)->except('show')->middleware('auth');
+Route::resource('documents', DocumentController::class)->except('show')->middleware('auth');
+Route::resource('sections', SectionController::class)->except('show')->middleware('auth');
+Route::resource('sections.chapters', ChapterController::class)->shallow()->except('show')->middleware('auth');
+Route::resource('sections.films', FilmController::class)->shallow()->except('show')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

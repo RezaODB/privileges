@@ -9,7 +9,8 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-6 sm:-my-px sm:ms-10 sm:flex">
+                    <span class="self-center text-xs uppercase tracking-wider text-gray-400">Participants</span>
                     <x-nav-link :href="route('users.index')" class="whitespace-nowrap" :active="request()->routeIs('users.index')">Participants</x-nav-link>
                     <x-nav-link :href="route('theories.index')" class="whitespace-nowrap" :active="request()->routeIs('theories.index')">Théorie</x-nav-link>
                     <x-nav-link :href="route('intros.index')" class="whitespace-nowrap" :active="request()->routeIs('intros.index')">Quota</x-nav-link>
@@ -20,6 +21,10 @@
                     <x-nav-link :href="route('maps.index')" class="whitespace-nowrap" :active="request()->routeIs('maps.index')">Cartographie</x-nav-link>
                     <x-nav-link :href="route('sculptures.index')" class="whitespace-nowrap" :active="request()->routeIs('sculptures.index')">Sculpture</x-nav-link>
                     <x-nav-link :href="route('faqs.index')" class="whitespace-nowrap" :active="request()->routeIs('faqs.index')">FAQ</x-nav-link>
+                    <span class="self-center h-6 w-px bg-gray-300" aria-hidden="true"></span>
+                    <span class="self-center text-xs uppercase tracking-wider text-gray-400">Dossier pro</span>
+                    <x-nav-link :href="route('sections.index')" class="whitespace-nowrap" :active="request()->routeIs('sections.*', 'chapters.*')">Onglets</x-nav-link>
+                    <x-nav-link :href="route('documents.index')" class="whitespace-nowrap" :active="request()->routeIs('documents.*')">Documents</x-nav-link>
                 </div>
             </div>
 
@@ -72,16 +77,20 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <div class="px-4 py-1 text-xs uppercase tracking-wider text-gray-400">Participants</div>
             <x-responsive-nav-link :href="route('users.index')" class="whitespace-nowrap" :active="request()->routeIs('users.index')">Participants</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('theories.index')" class="whitespace-nowrap" :active="request()->routeIs('theories.index')">Théorie</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('intros.index')" class="whitespace-nowrap" :active="request()->routeIs('intros.index')">Quota</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('quotas.index')" class="whitespace-nowrap" :active="request()->routeIs('quotas.index')">Questionnaire</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('brochures.index')" class="whitespace-nowrap" :active="request()->routeIs('brochures.index')">Loterie</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('votes.index')" class="whitespace-nowrap" :active="request()->routeIs('votes.index')">Vote</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('photos.index')" class="whitespace-nowrap" :active="request()->routeIs('photos.index')">SPhoto</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('photos.index')" class="whitespace-nowrap" :active="request()->routeIs('photos.index')">Photo</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('maps.index')" class="whitespace-nowrap" :active="request()->routeIs('maps.index')">Cartographie</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('sculptures.index')" class="whitespace-nowrap" :active="request()->routeIs('sculptures.index')">Sculpture</x-responsive-nav-link>
             <x-responsive-nav-link :href="route('faqs.index')" class="whitespace-nowrap" :active="request()->routeIs('faqs.index')">FAQ</x-responsive-nav-link>
+            <div class="px-4 pt-3 py-1 text-xs uppercase tracking-wider text-gray-400 border-t border-gray-200 mt-2">Dossier pro</div>
+            <x-responsive-nav-link :href="route('sections.index')" class="whitespace-nowrap" :active="request()->routeIs('sections.*', 'chapters.*')">Onglets</x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('documents.index')" class="whitespace-nowrap" :active="request()->routeIs('documents.*')">Documents</x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

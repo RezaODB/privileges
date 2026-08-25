@@ -44,4 +44,9 @@ return [
     'submit' => 'submit',
     'ejected' => 'Thank you very much for taking part. Your access to the study has been closed, so signing in is no longer possible. If you have any question, please write to us at lesprivilegesinvisibles@gmail.com.',
 
+    'pro_link' => 'For professionals',
+    'pro_empty' => 'The content of this tab is not available in this language yet.',
+
+    'pro_quota_note' => 'This is the questionnaire handed to the participants of the study, reproduced here as is. It cannot be filled in from this page.',
+
 ];

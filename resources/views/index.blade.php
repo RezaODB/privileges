@@ -32,6 +32,7 @@
                 <a href="tel:0032472612641" target="_blank" class="block hover:underline">+32(0)472612641</a>
                 <a href="https://www.barbaraiweins.be/" target="_blank" class="block hover:underline">www.barbaraiweins.be</a>
                 <a href="https://www.instagram.com/barbaraiweins/" target="_blank" class="block hover:underline">Instagram</a>
+                <a href="{{ route('pro.index') }}" class="mt-2 block hover:underline">{{ __('content.pro_link') }} &rarr;</a>
                 <a href="https://flechette.be/" target="_blank" class="mt-2 block hover:underline">Made by Fléchette © {{ date('Y') }}</a>
             </div>
         </div>

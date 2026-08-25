@@ -1,121 +1,65 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex overflow-auto">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('index') }}" class="underline">SITE</a>
-                </div>
+@php($participantLinks = [
+    ['route' => 'users.index', 'pattern' => 'users.*', 'label' => 'Participants'],
+    ['route' => 'theories.index', 'pattern' => 'theories.*', 'label' => 'Théorie'],
+    ['route' => 'intros.index', 'pattern' => 'intros.*', 'label' => 'Quota'],
+    ['route' => 'quotas.index', 'pattern' => 'quotas.*', 'label' => 'Questionnaire'],
+    ['route' => 'brochures.index', 'pattern' => 'brochures.*', 'label' => 'Loterie'],
+    ['route' => 'votes.index', 'pattern' => 'votes.*', 'label' => 'Vote'],
+    ['route' => 'photos.index', 'pattern' => 'photos.*', 'label' => 'Photo'],
+    ['route' => 'maps.index', 'pattern' => 'maps.*', 'label' => 'Cartographie'],
+    ['route' => 'sculptures.index', 'pattern' => 'sculptures.*', 'label' => 'Sculpture'],
+    ['route' => 'faqs.index', 'pattern' => 'faqs.*', 'label' => 'FAQ'],
+])
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-6 sm:-my-px sm:ms-10 sm:flex">
-                    <span class="self-center text-xs uppercase tracking-wider text-gray-400">Participants</span>
-                    <x-nav-link :href="route('users.index')" class="whitespace-nowrap" :active="request()->routeIs('users.index')">Participants</x-nav-link>
-                    <x-nav-link :href="route('theories.index')" class="whitespace-nowrap" :active="request()->routeIs('theories.index')">Théorie</x-nav-link>
-                    <x-nav-link :href="route('intros.index')" class="whitespace-nowrap" :active="request()->routeIs('intros.index')">Quota</x-nav-link>
-                    <x-nav-link :href="route('quotas.index')" class="whitespace-nowrap" :active="request()->routeIs('quotas.index')">Questionnaire</x-nav-link>
-                    <x-nav-link :href="route('brochures.index')" class="whitespace-nowrap" :active="request()->routeIs('brochures.index')">Loterie</x-nav-link>
-                    <x-nav-link :href="route('votes.index')" class="whitespace-nowrap" :active="request()->routeIs('votes.index')">Vote</x-nav-link>
-                    <x-nav-link :href="route('photos.index')" class="whitespace-nowrap" :active="request()->routeIs('photos.index')">Photo</x-nav-link>
-                    <x-nav-link :href="route('maps.index')" class="whitespace-nowrap" :active="request()->routeIs('maps.index')">Cartographie</x-nav-link>
-                    <x-nav-link :href="route('sculptures.index')" class="whitespace-nowrap" :active="request()->routeIs('sculptures.index')">Sculpture</x-nav-link>
-                    <x-nav-link :href="route('faqs.index')" class="whitespace-nowrap" :active="request()->routeIs('faqs.index')">FAQ</x-nav-link>
-                    <span class="self-center h-6 w-px bg-gray-300" aria-hidden="true"></span>
-                    <span class="self-center text-xs uppercase tracking-wider text-gray-400">Dossier pro</span>
-                    <x-nav-link :href="route('sections.index')" class="whitespace-nowrap" :active="request()->routeIs('sections.*', 'chapters.*')">Onglets</x-nav-link>
-                    <x-nav-link :href="route('documents.index')" class="whitespace-nowrap" :active="request()->routeIs('documents.*')">Documents</x-nav-link>
-                </div>
-            </div>
+@php($proLinks = [
+    ['route' => 'sections.index', 'pattern' => 'sections.*|chapters.*|films.*', 'label' => 'Onglets'],
+    ['route' => 'documents.index', 'pattern' => 'documents.*', 'label' => 'Documents'],
+])
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+<aside x-bind:class="open ? 'translate-x-0' : '-translate-x-full'"
+       class="fixed inset-y-0 left-0 z-40 w-64 flex flex-col bg-white border-r border-gray-200 overflow-y-auto transform transition-transform duration-200 lg:translate-x-0">
 
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
+    <div class="flex items-start justify-between gap-2 px-4 py-5 border-b border-gray-200">
+        <div>
+            <div class="font-semibold leading-tight">Les privilèges invisibles</div>
+            <a href="{{ route('index') }}" target="_blank" class="text-sm text-blue-600 hover:underline">Voir le site &rarr;</a>
         </div>
+        <button type="button" x-on:click="open = false" class="lg:hidden -me-2 p-2 text-gray-400 hover:text-gray-600" aria-label="Fermer le menu">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
     </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <div class="px-4 py-1 text-xs uppercase tracking-wider text-gray-400">Participants</div>
-            <x-responsive-nav-link :href="route('users.index')" class="whitespace-nowrap" :active="request()->routeIs('users.index')">Participants</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('theories.index')" class="whitespace-nowrap" :active="request()->routeIs('theories.index')">Théorie</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('intros.index')" class="whitespace-nowrap" :active="request()->routeIs('intros.index')">Quota</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('quotas.index')" class="whitespace-nowrap" :active="request()->routeIs('quotas.index')">Questionnaire</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('brochures.index')" class="whitespace-nowrap" :active="request()->routeIs('brochures.index')">Loterie</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('votes.index')" class="whitespace-nowrap" :active="request()->routeIs('votes.index')">Vote</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('photos.index')" class="whitespace-nowrap" :active="request()->routeIs('photos.index')">Photo</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('maps.index')" class="whitespace-nowrap" :active="request()->routeIs('maps.index')">Cartographie</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('sculptures.index')" class="whitespace-nowrap" :active="request()->routeIs('sculptures.index')">Sculpture</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('faqs.index')" class="whitespace-nowrap" :active="request()->routeIs('faqs.index')">FAQ</x-responsive-nav-link>
-            <div class="px-4 pt-3 py-1 text-xs uppercase tracking-wider text-gray-400 border-t border-gray-200 mt-2">Dossier pro</div>
-            <x-responsive-nav-link :href="route('sections.index')" class="whitespace-nowrap" :active="request()->routeIs('sections.*', 'chapters.*')">Onglets</x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('documents.index')" class="whitespace-nowrap" :active="request()->routeIs('documents.*')">Documents</x-responsive-nav-link>
+    <nav class="flex-1 py-4 space-y-6">
+        <div>
+            <div class="px-4 pb-1 text-xs uppercase tracking-wider text-gray-400">Participants</div>
+            @foreach ($participantLinks as $link)
+                <x-responsive-nav-link :href="route($link['route'])" :active="request()->routeIs(explode('|', $link['pattern']))">{{ $link['label'] }}</x-responsive-nav-link>
+            @endforeach
         </div>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
+        <div>
+            <div class="px-4 pb-1 text-xs uppercase tracking-wider text-gray-400">Dossier pro</div>
+            @foreach ($proLinks as $link)
+                <x-responsive-nav-link :href="route($link['route'])" :active="request()->routeIs(explode('|', $link['pattern']))">{{ $link['label'] }}</x-responsive-nav-link>
+            @endforeach
         </div>
+    </nav>
+
+    <div class="border-t border-gray-200 py-4">
+        <div class="px-4 pb-2">
+            <div class="font-medium text-sm text-gray-800">{{ Auth::user()->name }}</div>
+            <div class="text-sm text-gray-500 truncate">{{ Auth::user()->email }}</div>
+        </div>
+        <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.*')">{{ __('Profile') }}</x-responsive-nav-link>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <x-responsive-nav-link :href="route('logout')"
+                    onclick="event.preventDefault(); this.closest('form').submit();">
+                {{ __('Log Out') }}
+            </x-responsive-nav-link>
+        </form>
     </div>
-</nav>
+
+</aside>

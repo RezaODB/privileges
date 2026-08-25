@@ -68,15 +68,30 @@
         });
         </script>
         @livewireStyles
+        <style>
+            [x-cloak] { display: none !important; }
+        </style>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100" x-data="{ open: false }" x-on:keydown.escape.window="open = false">
+
+            <div class="lg:hidden sticky top-0 z-30 flex items-center gap-3 h-16 px-4 bg-white border-b border-gray-200">
+                <button type="button" x-on:click="open = true" class="-ms-2 p-2 text-gray-500 hover:text-gray-700" aria-label="Ouvrir le menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <span class="font-semibold">Les privilèges invisibles</span>
+            </div>
+
+            <div x-cloak x-show="open" x-transition.opacity x-on:click="open = false" class="fixed inset-0 z-30 bg-black/30 lg:hidden"></div>
+
             @include('layouts.navigation')
 
-            <!-- Page Content -->
-            <main>
+            <main class="lg:ps-64">
                 {{ $slot }}
             </main>
+
         </div>
         @livewireScripts
     </body>

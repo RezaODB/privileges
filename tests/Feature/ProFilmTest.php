@@ -41,6 +41,57 @@ it('shows the gallery of a tab to a visitor who is not signed in', function () {
     $this->assertGuest();
 });
 
+it('heads the gallery with the title of the tab, in the language being read', function () {
+    Storage::fake('public');
+    $section = Section::factory()->create([
+        'slug' => 'cadre-pratique',
+        'order' => 1,
+        'films_title_fr' => "Galerie d'ambrotypes",
+        'films_title_en' => 'Ambrotype gallery',
+    ]);
+    Film::factory()->for($section)->create(['title_fr' => 'Plaque 01']);
+
+    $this->get(route('pro.show', ['section' => $section, 'lang' => 'fr']))
+        ->assertOk()
+        ->assertSee("Galerie d'ambrotypes")
+        ->assertDontSee('(+ Open)');
+
+    $this->get(route('pro.show', ['section' => $section, 'lang' => 'en']))
+        ->assertOk()
+        ->assertSee('Ambrotype gallery');
+});
+
+it('falls back to the french gallery title when the english one is missing', function () {
+    Storage::fake('public');
+    $section = Section::factory()->create(['slug' => 'cadre-pratique', 'films_title_fr' => "Galerie d'ambrotypes"]);
+    Film::factory()->for($section)->create();
+
+    $this->get(route('pro.show', ['section' => $section, 'lang' => 'en']))
+        ->assertOk()
+        ->assertSee("Galerie d'ambrotypes");
+});
+
+it('shows a gallery without any heading when the tab was given no title', function () {
+    Storage::fake('public');
+    $section = Section::factory()->create(['slug' => 'cadre-pratique']);
+    Film::factory()->for($section)->create(['title_fr' => 'Plaque 01']);
+
+    $this->get(route('pro.show', $section))->assertOk()->assertSee('Plaque 01');
+});
+
+it('lets an administrator name the gallery of a tab', function () {
+    Storage::fake('public');
+    $this->actingAs(makeFilmAdmin());
+    $section = Section::factory()->create();
+
+    $this->patch(route('sections.update', $section), [
+        'films_title_fr' => "Galerie d'ambrotypes",
+        'films_title_en' => 'Ambrotype gallery',
+    ])->assertRedirect(route('sections.index'));
+
+    expect($section->fresh()->films_title_fr)->toBe("Galerie d'ambrotypes");
+});
+
 it('keeps each gallery on its own tab', function () {
     Storage::fake('public');
     $withFilms = Section::factory()->create(['slug' => 'cadre-pratique', 'order' => 1]);

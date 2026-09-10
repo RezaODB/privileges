@@ -53,6 +53,8 @@ class SectionController extends Controller
             'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique('sections', 'slug')],
             'published' => ['required', 'boolean'],
             'shows_quota' => ['required', 'boolean'],
+            'films_title_fr' => ['nullable', 'string', 'max:255'],
+            'films_title_en' => ['nullable', 'string', 'max:255'],
         ]);
 
         Section::create([
@@ -80,6 +82,8 @@ class SectionController extends Controller
             'order' => ['sometimes', 'required', 'integer'],
             'published' => ['sometimes', 'required', 'boolean'],
             'shows_quota' => ['sometimes', 'required', 'boolean'],
+            'films_title_fr' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'films_title_en' => ['sometimes', 'nullable', 'string', 'max:255'],
         ]);
 
         $section->update($data);

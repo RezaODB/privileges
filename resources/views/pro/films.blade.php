@@ -1,5 +1,9 @@
 <section class="px-2 sm:px-8 mt-16" x-data="{ src: null, caption: null }" x-on:keydown.escape.window="src = null">
 
+    @if ($section->localizedFilmsTitle())
+        <h1 class="text-2xl sm:text-3xl font-sans uppercase border-zinc-800 border-b-4 pb-4 mb-8">{{ $section->localizedFilmsTitle() }}</h1>
+    @endif
+
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         @foreach ($films as $film)
             <button type="button" class="group text-left" x-on:click="src = @js($film->url()); caption = @js($film->localizedTitle())">

@@ -54,6 +54,14 @@ class Section extends Model
     }
 
     /**
+     * The heading shown above the film gallery, if the tab was given one.
+     */
+    public function localizedFilmsTitle(): ?string
+    {
+        return $this->{'films_title_'.app()->getLocale()} ?: $this->films_title_fr;
+    }
+
+    /**
      * @return array<string, string>
      */
     protected function casts(): array

@@ -38,6 +38,21 @@
     </label>
     @error('shows_quota')<div class="text-red-500">{{ $message }}</div>@enderror
 
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+            <input type="text" name="films_title_fr" placeholder="Titre de la galerie vid&eacute;o (FR)" value="{{ old('films_title_fr', $section->films_title_fr) }}" class="w-full border-gray-200 shadow rounded-md">
+            @error('films_title_fr')<div class="text-red-500">{{ $message }}</div>@enderror
+        </div>
+        <div>
+            <input type="text" name="films_title_en" placeholder="Video gallery title (EN)" value="{{ old('films_title_en', $section->films_title_en) }}" class="w-full border-gray-200 shadow rounded-md">
+            @error('films_title_en')<div class="text-red-500">{{ $message }}</div>@enderror
+        </div>
+        <p class="text-sm text-gray-500 sm:col-span-2">
+            Titre affich&eacute; au-dessus des vid&eacute;os, sans bouton d'ouverture&nbsp;: le contenu reste toujours visible.
+            Laissez vide pour afficher les vid&eacute;os sans titre.
+        </p>
+    </div>
+
     <button type="submit" class="px-4 py-2 bg-green-600 rounded-md text-white justify-self-start">Submit</button>
 
 </div>

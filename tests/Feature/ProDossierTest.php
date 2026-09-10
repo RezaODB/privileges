@@ -40,6 +40,18 @@ it('lets a visitor read the professional dossier without signing in', function (
     $this->assertGuest();
 });
 
+it('leaves every chapter folded when a tab is opened', function () {
+    $section = Section::factory()->create(['slug' => 'cadre-theorique', 'order' => 1]);
+    Chapter::factory()->for($section)->create(['lang' => 'fr', 'title' => 'Introduction', 'order' => 1]);
+    Chapter::factory()->for($section)->create(['lang' => 'fr', 'title' => 'Objectifs', 'order' => 2]);
+
+    $this->get(route('pro.show', $section))
+        ->assertOk()
+        ->assertSee('Introduction')
+        ->assertSee('Objectifs')
+        ->assertDontSee('{ open: true }', escape: false);
+});
+
 it('sends the bare /pro url to the first published tab', function () {
     Section::factory()->create(['slug' => 'about', 'order' => 9]);
     $first = Section::factory()->create(['slug' => 'en-bref', 'order' => 1]);

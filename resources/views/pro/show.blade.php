@@ -17,7 +17,7 @@
     </div>
 
     @foreach ($chapters as $chapter)
-        <x-chapter :title="$chapter->title" :body="$chapter->body" :open="$loop->first" />
+        <x-chapter :title="$chapter->title" :body="$chapter->body" />
     @endforeach
 
     @if ($films->isNotEmpty())

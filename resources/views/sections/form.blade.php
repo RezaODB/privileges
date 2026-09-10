@@ -1,5 +1,6 @@
 @php($isPublished = old('published', $section->exists ? $section->published : true))
 @php($showsQuota = old('shows_quota', $section->shows_quota ?? false))
+@php($showsPodcasts = old('shows_podcasts', $section->shows_podcasts ?? false))
 
 <div class="grid grid-cols-1 gap-4">
 
@@ -37,6 +38,16 @@
         </span>
     </label>
     @error('shows_quota')<div class="text-red-500">{{ $message }}</div>@enderror
+
+    <label class="flex items-start gap-2 justify-self-start">
+        <input type="hidden" name="shows_podcasts" value="0">
+        <input type="checkbox" name="shows_podcasts" value="1" @checked($showsPodcasts) class="mt-1 rounded border-gray-300">
+        <span>
+            Afficher les deux podcasts sous le contenu
+            <span class="block text-sm text-gray-500">Le podcast th&eacute;orique et le podcast pratique, servis dans la langue de lecture.</span>
+        </span>
+    </label>
+    @error('shows_podcasts')<div class="text-red-500">{{ $message }}</div>@enderror
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>

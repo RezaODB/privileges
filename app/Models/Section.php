@@ -69,6 +69,7 @@ class Section extends Model
         return [
             'published' => 'boolean',
             'shows_quota' => 'boolean',
+            'shows_podcasts' => 'boolean',
         ];
     }
 }

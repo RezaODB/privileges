@@ -47,6 +47,10 @@ return [
     'pro_link' => 'Pour les professionnels',
     'pro_empty' => "Le contenu de cet onglet n'est pas encore disponible dans cette langue.",
 
+    'podcasts' => 'Podcasts',
+    'podcast_theory' => 'Podcast théorique',
+    'podcast_practice' => 'Podcast pratique',
+
     'pro_quota_note' => "Voici le questionnaire soumis aux participants de l'étude, reproduit ici tel quel. Il n'est pas remplissable depuis cette page.",
 
 ];

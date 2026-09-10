@@ -118,6 +118,7 @@ it('lets an administrator create a tab and fill it with content', function () {
         'slug' => '',
         'published' => '1',
         'shows_quota' => '0',
+        'shows_podcasts' => '0',
     ])->assertRedirect(route('sections.index'));
 
     $section = Section::query()->sole();
@@ -147,6 +148,7 @@ it('refuses to give two tabs the same public address', function () {
         'slug' => 'About',
         'published' => '1',
         'shows_quota' => '0',
+        'shows_podcasts' => '0',
     ])->assertSessionHasErrors('slug');
 });
 
@@ -247,6 +249,48 @@ it('falls back to the french question when the english one is missing', function
     $this->get(route('pro.show', ['section' => $section, 'lang' => 'en']))
         ->assertOk()
         ->assertSee('Question sans traduction.');
+});
+
+it('plays the theoretical and the practical podcast on the tabs that ask for them', function () {
+    $withPodcasts = Section::factory()->create(['slug' => 'en-bref', 'order' => 1, 'shows_podcasts' => true]);
+    $plain = Section::factory()->create(['slug' => 'about', 'order' => 2]);
+
+    $this->get(route('pro.show', $withPodcasts))
+        ->assertOk()
+        ->assertSee(__('content.podcast_theory'))
+        ->assertSee(asset('theory.mp3'), escape: false)
+        ->assertSee(asset('practice.mp3'), escape: false);
+
+    $this->get(route('pro.show', $plain))
+        ->assertOk()
+        ->assertDontSee(asset('theory.mp3'), escape: false);
+});
+
+it('serves the podcasts in the language being read', function () {
+    $section = Section::factory()->create(['slug' => 'en-bref', 'order' => 1, 'shows_podcasts' => true]);
+
+    $this->get(route('pro.show', ['section' => $section, 'lang' => 'en']))
+        ->assertOk()
+        ->assertSee(asset('theoryEN.mp3'), escape: false)
+        ->assertSee(asset('practiceEN.mp3'), escape: false);
+});
+
+it('does not call a tab empty when all it carries is the podcasts', function () {
+    $section = Section::factory()->create(['slug' => 'en-bref', 'order' => 1, 'shows_podcasts' => true]);
+
+    $this->get(route('pro.show', $section))
+        ->assertOk()
+        ->assertDontSee(__('content.pro_empty'));
+});
+
+it('lets an administrator switch the podcasts on for a tab', function () {
+    $this->actingAs(makeDossierUser(role: 2));
+    $section = Section::factory()->create();
+
+    $this->patch(route('sections.update', $section), ['shows_podcasts' => '1'])
+        ->assertRedirect(route('sections.index'));
+
+    expect($section->fresh()->shows_podcasts)->toBeTrue();
 });
 
 it('only advertises the dossier on the home page once a tab is published', function () {

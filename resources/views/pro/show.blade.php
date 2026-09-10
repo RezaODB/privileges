@@ -20,6 +20,10 @@
         <x-chapter :title="$chapter->title" :body="$chapter->body" />
     @endforeach
 
+    @if ($section->shows_podcasts)
+        @include('pro.podcasts')
+    @endif
+
     @if ($films->isNotEmpty())
         @include('pro.films')
     @endif
@@ -28,7 +32,7 @@
         @include('pro.quota')
     @endif
 
-    @if ($chapters->isEmpty() && $films->isEmpty() && $quotas->isEmpty())
+    @if ($chapters->isEmpty() && $films->isEmpty() && $quotas->isEmpty() && ! $section->shows_podcasts)
         <div class="max-w-md font-mono px-2 sm:px-8 py-8">{{ __('content.pro_empty') }}</div>
     @endif
 

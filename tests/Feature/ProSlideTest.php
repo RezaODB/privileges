@@ -126,6 +126,42 @@ it('keeps the two languages of a carousel numbered apart', function () {
     expect($section->slides()->forLocale('en')->sole()->order)->toBe(1);
 });
 
+it('records the shape of each image it is given', function () {
+    Storage::fake('public');
+    $this->actingAs(makeSlideAdmin());
+    $section = Section::factory()->create();
+
+    $this->post(route('sections.slides.store', $section), [
+        'lang' => 'fr',
+        'files' => [UploadedFile::fake()->image('slide.jpg', 863, 1080)],
+    ]);
+
+    $slide = Slide::query()->sole();
+    expect($slide->width)->toBe(863)
+        ->and($slide->height)->toBe(1080)
+        ->and($slide->aspectRatio())->toBe('863 / 1080');
+});
+
+it('reserves the height of the carousel so the page below never jumps', function () {
+    Storage::fake('public');
+    $section = Section::factory()->create(['slug' => 'en-bref', 'order' => 1]);
+    Slide::factory()->for($section)->create(['width' => 863, 'height' => 1080, 'order' => 1]);
+
+    $this->get(route('pro.show', $section))
+        ->assertOk()
+        ->assertSee('aspect-ratio: 863 / 1080', escape: false);
+});
+
+it('falls back to a portrait shape for an image whose size was never recorded', function () {
+    Storage::fake('public');
+    $section = Section::factory()->create(['slug' => 'en-bref', 'order' => 1]);
+    Slide::factory()->for($section)->create(['width' => null, 'height' => null]);
+
+    $this->get(route('pro.show', $section))
+        ->assertOk()
+        ->assertSee('aspect-ratio: 4 / 5', escape: false);
+});
+
 it('turns away a file that is not an image', function () {
     Storage::fake('public');
     $this->actingAs(makeSlideAdmin());

@@ -38,6 +38,18 @@ class Slide extends Model
         $query->orderBy('order');
     }
 
+    /**
+     * The shape of the image, for the page to reserve its space before it loads.
+     * Slides uploaded before the dimensions were recorded fall back to the
+     * portrait format the carousels are drawn in.
+     */
+    public function aspectRatio(): string
+    {
+        return $this->width && $this->height
+            ? $this->width.' / '.$this->height
+            : '4 / 5';
+    }
+
     public function url(): string
     {
         return Storage::disk(config('filesystems.media_disk'))->url($this->path);

@@ -49,10 +49,14 @@ class SlideController extends Controller
         $order = $section->slides()->forLocale($lang)->max('order') ?? 0;
 
         foreach (request()->file('files') as $file) {
+            [$width, $height] = getimagesize($file->getRealPath()) ?: [null, null];
+
             $section->slides()->create([
                 'lang' => $lang,
                 'order' => ++$order,
                 'path' => $file->store('slides', $disk),
+                'width' => $width,
+                'height' => $height,
             ]);
         }
 

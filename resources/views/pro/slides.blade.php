@@ -2,9 +2,9 @@
 
     <div class="max-w-md mx-auto">
 
-        <button type="button" class="block w-full border-2 border-zinc-800" x-on:click="current = (current + 1) % count">
+        <button type="button" class="relative block w-full border-2 border-zinc-800" style="aspect-ratio: {{ $slides->first()->aspectRatio() }}" x-on:click="current = (current + 1) % count">
             @foreach ($slides as $slide)
-                <img src="{{ $slide->url() }}" alt="" loading="{{ $loop->first ? 'eager' : 'lazy' }}" class="w-full" x-show="current === {{ $loop->index }}" @unless ($loop->first) x-cloak @endunless>
+                <img src="{{ $slide->url() }}" alt="" width="{{ $slide->width }}" height="{{ $slide->height }}" loading="{{ $loop->first ? 'eager' : 'lazy' }}" class="absolute inset-0 w-full h-full object-contain" x-show="current === {{ $loop->index }}" @unless ($loop->first) x-cloak @endunless>
             @endforeach
         </button>
 

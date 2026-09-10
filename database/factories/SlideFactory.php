@@ -21,6 +21,8 @@ class SlideFactory extends Factory
             'lang' => 'fr',
             'order' => fake()->numberBetween(1, 99),
             'path' => 'slides/'.fake()->uuid().'.jpg',
+            'width' => 863,
+            'height' => 1080,
         ];
     }
 

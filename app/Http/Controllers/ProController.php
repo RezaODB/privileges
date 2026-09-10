@@ -6,16 +6,21 @@ use App\Models\Document;
 use App\Models\Quota;
 use App\Models\Section;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProController extends Controller
 {
-    public function index(): RedirectResponse
+    public function index(): View
     {
-        $section = Section::query()->published()->ordered()->firstOrFail();
+        $sections = Section::query()->published()->ordered()->get();
 
-        return redirect()->route('pro.show', $section);
+        abort_if($sections->isEmpty(), Response::HTTP_NOT_FOUND);
+
+        return view('pro.index', [
+            'section' => null,
+            'sections' => $sections,
+            'header' => 'includes.pro-header',
+        ]);
     }
 
     public function show(Section $section): View

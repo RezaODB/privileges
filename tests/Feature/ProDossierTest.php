@@ -52,11 +52,49 @@ it('leaves every chapter folded when a tab is opened', function () {
         ->assertDontSee('{ open: true }', escape: false);
 });
 
-it('sends the bare /pro url to the first published tab', function () {
-    Section::factory()->create(['slug' => 'about', 'order' => 9]);
-    $first = Section::factory()->create(['slug' => 'en-bref', 'order' => 1]);
+it('greets the visitor of /pro with the cover page of the dossier', function () {
+    Section::factory()->create(['slug' => 'en-bref', 'order' => 1, 'title_fr' => 'En bref']);
 
-    $this->get(route('pro.index'))->assertRedirect(route('pro.show', $first));
+    $this->get(route('pro.index'))
+        ->assertOk()
+        ->assertSee('Les privilèges invisibles')
+        ->assertSee('X/250')
+        ->assertSee(__('content.socioartystudy'))
+        ->assertSee('Barbara Iweins')
+        ->assertSee(__('content.dates'))
+        ->assertSee('lesprivilegesinvisibles@gmail.com')
+        ->assertSee('En bref')
+        ->assertDontSee('F.A.Q.');
+
+    $this->assertGuest();
+});
+
+it('keeps the cover out of reach while no tab is published', function () {
+    $this->get(route('pro.index'))->assertNotFound();
+
+    Section::factory()->unpublished()->create();
+    $this->get(route('pro.index'))->assertNotFound();
+
+    Section::factory()->create(['slug' => 'en-bref']);
+    $this->get(route('pro.index'))->assertOk();
+});
+
+it('opens the cover in the language the visitor picked', function () {
+    Section::factory()->create(['slug' => 'en-bref', 'order' => 1]);
+
+    $this->get(route('pro.index', ['lang' => 'en']))
+        ->assertOk()
+        ->assertSee(__('content.dates', [], 'en'))
+        ->assertSee(__('content.socioartystudy', [], 'en'));
+});
+
+it('leads back to the cover from every tab of the dossier', function () {
+    $section = Section::factory()->create(['slug' => 'en-bref', 'order' => 1]);
+
+    $this->get(route('pro.show', $section))
+        ->assertOk()
+        ->assertSee(route('pro.index'), escape: false)
+        ->assertSee('Index');
 });
 
 it('hides an unpublished tab from both the url and the navigation', function () {

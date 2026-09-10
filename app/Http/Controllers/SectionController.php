@@ -17,7 +17,7 @@ class SectionController extends Controller
         Gate::allowIf(fn (User $user) => $user->role === 2);
 
         return view('sections.index', [
-            'sections' => Section::query()->ordered()->withCount(['chapters', 'films'])->get(),
+            'sections' => Section::query()->ordered()->withCount(['chapters', 'films', 'slides'])->get(),
         ]);
     }
 

@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuotaController;
 use App\Http\Controllers\SculptureController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SlideController;
 use App\Http\Controllers\TheoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoteController;
@@ -60,6 +61,7 @@ Route::resource('documents', DocumentController::class)->except('show')->middlew
 Route::resource('sections', SectionController::class)->except('show')->middleware('auth');
 Route::resource('sections.chapters', ChapterController::class)->shallow()->except('show')->middleware('auth');
 Route::resource('sections.films', FilmController::class)->shallow()->except('show')->middleware('auth');
+Route::resource('sections.slides', SlideController::class)->shallow()->only(['index', 'create', 'store', 'update', 'destroy'])->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

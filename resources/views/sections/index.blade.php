@@ -20,6 +20,7 @@
                                 <code class="text-gray-500 text-sm">/pro/{{ $item->slug }}</code>
                                 <a href="{{ route('sections.chapters.index', $item) }}" class="text-blue-600 hover:underline">{{ $item->chapters_count }} bloc(s) de contenu</a>
                                 <a href="{{ route('sections.films.index', $item) }}" class="text-blue-600 hover:underline">{{ $item->films_count }} film(s)</a>
+                                <a href="{{ route('sections.slides.index', $item) }}" class="text-blue-600 hover:underline">{{ $item->slides_count }} image(s) de carrousel</a>
                                 <form action="{{ route('sections.update', $item) }}" method="post" class="ml-auto">
                                     @csrf
                                     @method('patch')

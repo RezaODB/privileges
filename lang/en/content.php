@@ -48,6 +48,8 @@ return [
     'participant_link' => 'For participants',
     'pro_empty' => 'The content of this tab is not available in this language yet.',
 
+    'previous' => 'Previous',
+    'next' => 'Next',
     'podcasts' => 'Podcasts',
     'podcast_theory' => 'Theoretical podcast',
     'podcast_practice' => 'Practical podcast',

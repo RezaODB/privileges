@@ -16,6 +16,10 @@
         </div>
     </div>
 
+    @if ($slides->isNotEmpty())
+        @include('pro.slides')
+    @endif
+
     @foreach ($chapters as $chapter)
         <x-chapter :title="$chapter->title" :body="$chapter->body" />
     @endforeach
@@ -32,7 +36,7 @@
         @include('pro.quota')
     @endif
 
-    @if ($chapters->isEmpty() && $films->isEmpty() && $quotas->isEmpty() && ! $section->shows_podcasts)
+    @if ($chapters->isEmpty() && $films->isEmpty() && $quotas->isEmpty() && $slides->isEmpty() && ! $section->shows_podcasts)
         <div class="max-w-md font-mono px-2 sm:px-8 py-8">{{ __('content.pro_empty') }}</div>
     @endif
 

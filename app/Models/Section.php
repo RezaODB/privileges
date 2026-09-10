@@ -30,6 +30,14 @@ class Section extends Model
     }
 
     /**
+     * @return HasMany<Slide, $this>
+     */
+    public function slides(): HasMany
+    {
+        return $this->hasMany(Slide::class);
+    }
+
+    /**
      * @param  Builder<Section>  $query
      */
     public function scopePublished(Builder $query): void

@@ -48,6 +48,8 @@ return [
     'participant_link' => 'Pour les participants',
     'pro_empty' => "Le contenu de cet onglet n'est pas encore disponible dans cette langue.",
 
+    'previous' => 'Précédent',
+    'next' => 'Suivant',
     'podcasts' => 'Podcasts',
     'podcast_theory' => 'Podcast théorique',
     'podcast_practice' => 'Podcast pratique',

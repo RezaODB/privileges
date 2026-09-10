@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use App\Models\Quota;
 use App\Models\Section;
+use App\Models\Slide;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProController extends Controller
@@ -31,6 +33,7 @@ class ProController extends Controller
             'section' => $section,
             'sections' => Section::query()->published()->ordered()->get(),
             'chapters' => $section->chapters()->forLocale(app()->getLocale())->ordered()->get(),
+            'slides' => $this->slidesFor($section),
             'quotas' => $section->shows_quota
                 ? Quota::query()->orderBy('order')->get()
                 : collect(),
@@ -38,5 +41,19 @@ class ProController extends Controller
             'documents' => Document::query()->forLocale(app()->getLocale())->ordered()->get(),
             'header' => 'includes.pro-header',
         ]);
+    }
+
+    /**
+     * The carousel of a tab in the active locale, falling back to the french one.
+     *
+     * @return Collection<int, Slide>
+     */
+    private function slidesFor(Section $section): Collection
+    {
+        $slides = $section->slides()->forLocale(app()->getLocale())->ordered()->get();
+
+        return $slides->isNotEmpty()
+            ? $slides
+            : $section->slides()->forLocale('fr')->ordered()->get();
     }
 }

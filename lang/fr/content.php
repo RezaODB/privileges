@@ -45,6 +45,7 @@ return [
     'ejected' => "Merci beaucoup pour votre participation. Votre accès à l'étude a été clôturé, il n'est donc plus possible de vous connecter. Pour toute question, n'hésitez pas à nous écrire à lesprivilegesinvisibles@gmail.com.",
 
     'pro_link' => 'Pour les professionnels',
+    'participant_link' => 'Pour les participants',
     'pro_empty' => "Le contenu de cet onglet n'est pas encore disponible dans cette langue.",
 
     'podcasts' => 'Podcasts',

@@ -63,6 +63,7 @@ it('greets the visitor of /pro with the cover page of the dossier', function () 
         ->assertSee('Barbara Iweins')
         ->assertSee(__('content.dates'))
         ->assertSee('lesprivilegesinvisibles@gmail.com')
+        ->assertSee(__('content.participant_link'))
         ->assertSee('En bref')
         ->assertDontSee('F.A.Q.');
 

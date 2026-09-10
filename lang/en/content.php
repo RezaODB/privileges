@@ -45,6 +45,7 @@ return [
     'ejected' => 'Thank you very much for taking part. Your access to the study has been closed, so signing in is no longer possible. If you have any question, please write to us at lesprivilegesinvisibles@gmail.com.',
 
     'pro_link' => 'For professionals',
+    'participant_link' => 'For participants',
     'pro_empty' => 'The content of this tab is not available in this language yet.',
 
     'podcasts' => 'Podcasts',

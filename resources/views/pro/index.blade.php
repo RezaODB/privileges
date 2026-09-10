@@ -20,7 +20,7 @@
             </div>
             <h3 class="text-xl text-center uppercase p-4">{{ __('content.dates') }}</h3>
         </div>
-        <x-contacts class="mt-8" />
+        <x-contacts participant-link class="mt-8" />
     </div>
 
 </section>

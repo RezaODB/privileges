@@ -1,4 +1,4 @@
-@props(['proLink' => false])
+@props(['proLink' => false, 'participantLink' => false])
 
 <div {{ $attributes }}>
     <h2 class="font-bold mb-1">CONTACT: </h2>
@@ -7,6 +7,9 @@
         <a href="tel:0032472612641" target="_blank" class="block hover:underline">+32(0)472612641</a>
         <a href="https://www.barbaraiweins.be/" target="_blank" class="block hover:underline">www.barbaraiweins.be</a>
         <a href="https://www.instagram.com/barbaraiweins/" target="_blank" class="block hover:underline">Instagram</a>
+        @if ($participantLink)
+            <a href="{{ route('index') }}" class="mt-2 block hover:underline">{{ __('content.participant_link') }} &rarr;</a>
+        @endif
         @if ($proLink)
             <a href="{{ route('pro.index') }}" class="mt-2 block hover:underline">{{ __('content.pro_link') }} &rarr;</a>
         @endif

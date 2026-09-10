@@ -1,6 +1,6 @@
 @props(['proLink' => false])
 
-<div {{ $attributes->merge(['class' => 'mt-8']) }}>
+<div {{ $attributes }}>
     <h2 class="font-bold mb-1">CONTACT: </h2>
     <div class="font-mono">
         <a href="mailto:lesprivilegesinvisibles@gmail.com" target="_blank" class="block hover:underline">lesprivilegesinvisibles@gmail.com</a>

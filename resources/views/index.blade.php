@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <x-contacts :pro-link="$hasProDossier" />
+        <x-contacts :pro-link="$hasProDossier" class="mt-8" />
     </div>
 
     @guest

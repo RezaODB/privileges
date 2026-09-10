@@ -20,4 +20,9 @@ yarn-error.log
 /.vscode
 /.zed
 AGENTS.md
+CLAUDE.md
 boost.json
+.mcp.json
+/.agents
+/.claude
+/.codex

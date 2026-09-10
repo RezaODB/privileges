@@ -19,7 +19,7 @@
 
     @auth
     @foreach ($items as $item)
-    <x-chapter :title="$item->title" :body="$item->body" :open="Route::currentRouteName() === 'step6'" />
+    <x-chapter :title="$item->title" :body="$item->body" />
     @endforeach
     @if (Route::currentRouteName() === 'step2')
     @livewire('quotas')

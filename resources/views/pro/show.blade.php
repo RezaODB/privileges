@@ -28,13 +28,13 @@
 
     @foreach ($chapters as $chapter)
         @if ($chapter->open)
-            <x-block :chapter="$chapter" :slides="$slides" />
+            <x-block :chapter="$chapter" :slides="$slides" :podcasts="$podcasts" />
         @else
             <x-chapter :title="$chapter->title" :body="$chapter->body" :number="$chapter->number" :summary="$chapter->summary" :children="$chapter->children" :films="$chapter->displayedFilms()" />
         @endif
     @endforeach
 
-    @if ($section->shows_podcasts && ! in_array('podcasts', $claimed, true))
+    @if ($section->shows_podcasts && $podcasts->isNotEmpty() && ! in_array('podcasts', $claimed, true))
         @include('pro.podcasts')
     @endif
 

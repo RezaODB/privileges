@@ -296,7 +296,7 @@ it('plays the theoretical and the practical podcast on the tabs that ask for the
 
     $this->get(route('pro.show', $withPodcasts))
         ->assertOk()
-        ->assertSee(__('content.podcast_theory'))
+        ->assertSee(\App\Models\Podcast::query()->where('path', 'theory.mp3')->value('title'))
         ->assertSee(asset('theory.mp3'), escape: false)
         ->assertSee(asset('practice.mp3'), escape: false);
 

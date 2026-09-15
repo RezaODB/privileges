@@ -10,6 +10,7 @@ use App\Http\Controllers\IntroController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\ProController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuotaController;
@@ -59,6 +60,7 @@ Route::resource('intros', IntroController::class)->except('show')->middleware('a
 Route::resource('sculptures', SculptureController::class)->except('show')->middleware('auth');
 Route::resource('faqs', FaqController::class)->except('show')->middleware('auth');
 Route::resource('documents', DocumentController::class)->except('show')->middleware('auth');
+Route::resource('podcasts', PodcastController::class)->except('show')->middleware('auth');
 Route::resource('sections', SectionController::class)->except('show')->middleware('auth');
 Route::resource('sections.chapters', ChapterController::class)->shallow()->except('show')->middleware('auth');
 Route::resource('sections.films', FilmController::class)->shallow()->except('show')->middleware('auth');

@@ -1,4 +1,4 @@
-@props(['chapter', 'slides' => null, 'section' => null])
+@props(['chapter', 'slides' => null, 'podcasts' => null])
 
 @php($films = $chapter->displayedFilms())
 
@@ -49,7 +49,9 @@
                     @break
 
                 @case (App\Enums\BlockKind::Podcasts)
-                    <x-podcast-players />
+                    @if ($podcasts && $podcasts->isNotEmpty())
+                        <x-podcast-players :podcasts="$podcasts" />
+                    @endif
                     @break
 
             @endswitch

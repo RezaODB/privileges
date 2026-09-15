@@ -49,6 +49,55 @@
     </label>
     @error('shows_podcasts')<div class="text-red-500">{{ $message }}</div>@enderror
 
+    <fieldset class="border border-gray-200 rounded-md p-4 grid grid-cols-1 gap-4">
+        <legend class="px-2 font-medium">En-t&ecirc;te de la page</legend>
+        <p class="text-sm text-gray-500 -mt-2">
+            Ce qui s'affiche en haut de l'onglet, avant les blocs de contenu. Laissez tout vide pour n'afficher aucun en-t&ecirc;te.
+        </p>
+
+        <div>
+            <input type="text" name="number" placeholder="Num&eacute;ro (ex. 03)" value="{{ old('number', $section->number) }}" class="w-full border-gray-200 shadow rounded-md">
+            <p class="text-sm text-gray-500 mt-1">Affich&eacute; au-dessus du titre, suivi d'un tiret.</p>
+        </div>
+        @error('number')<div class="text-red-500">{{ $message }}</div>@enderror
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+                <input type="text" name="subtitle_fr" placeholder="Sous-titre surlign&eacute; (FR)" value="{{ old('subtitle_fr', $section->subtitle_fr) }}" class="w-full border-gray-200 shadow rounded-md">
+                @error('subtitle_fr')<div class="text-red-500">{{ $message }}</div>@enderror
+            </div>
+            <div>
+                <input type="text" name="subtitle_en" placeholder="Highlighted subtitle (EN)" value="{{ old('subtitle_en', $section->subtitle_en) }}" class="w-full border-gray-200 shadow rounded-md">
+                @error('subtitle_en')<div class="text-red-500">{{ $message }}</div>@enderror
+            </div>
+            <p class="text-sm text-gray-500 sm:col-span-2">Une ligne courte, affich&eacute;e au fluo sous le titre.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+                <textarea name="intro_fr" rows="4" placeholder="Mini-explication du chapitre (FR)" class="w-full border-gray-200 shadow rounded-md">{{ old('intro_fr', $section->intro_fr) }}</textarea>
+                @error('intro_fr')<div class="text-red-500">{{ $message }}</div>@enderror
+            </div>
+            <div>
+                <textarea name="intro_en" rows="4" placeholder="Chapter summary (EN)" class="w-full border-gray-200 shadow rounded-md">{{ old('intro_en', $section->intro_en) }}</textarea>
+                @error('intro_en')<div class="text-red-500">{{ $message }}</div>@enderror
+            </div>
+            <p class="text-sm text-gray-500 sm:col-span-2">Deux ou trois lignes, &agrave; gauche sous le sous-titre. Les retours &agrave; la ligne sont conserv&eacute;s.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+                <textarea name="quote_fr" rows="3" placeholder="Citation (FR)" class="w-full border-gray-200 shadow rounded-md">{{ old('quote_fr', $section->quote_fr) }}</textarea>
+                @error('quote_fr')<div class="text-red-500">{{ $message }}</div>@enderror
+            </div>
+            <div>
+                <textarea name="quote_en" rows="3" placeholder="Quotation (EN)" class="w-full border-gray-200 shadow rounded-md">{{ old('quote_en', $section->quote_en) }}</textarea>
+                @error('quote_en')<div class="text-red-500">{{ $message }}</div>@enderror
+            </div>
+            <p class="text-sm text-gray-500 sm:col-span-2">&Agrave; droite de l'en-t&ecirc;te, en machine &agrave; &eacute;crire. Les retours &agrave; la ligne sont conserv&eacute;s.</p>
+        </div>
+    </fieldset>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
             <input type="text" name="films_title_fr" placeholder="Titre de la galerie vid&eacute;o (FR)" value="{{ old('films_title_fr', $section->films_title_fr) }}" class="w-full border-gray-200 shadow rounded-md">

@@ -56,6 +56,13 @@ class SectionController extends Controller
             'shows_podcasts' => ['required', 'boolean'],
             'films_title_fr' => ['nullable', 'string', 'max:255'],
             'films_title_en' => ['nullable', 'string', 'max:255'],
+            'number' => ['nullable', 'string', 'max:255'],
+            'subtitle_fr' => ['nullable', 'string', 'max:255'],
+            'subtitle_en' => ['nullable', 'string', 'max:255'],
+            'intro_fr' => ['nullable', 'string'],
+            'intro_en' => ['nullable', 'string'],
+            'quote_fr' => ['nullable', 'string'],
+            'quote_en' => ['nullable', 'string'],
         ]);
 
         Section::create([
@@ -86,6 +93,13 @@ class SectionController extends Controller
             'shows_podcasts' => ['sometimes', 'required', 'boolean'],
             'films_title_fr' => ['sometimes', 'nullable', 'string', 'max:255'],
             'films_title_en' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'number' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'subtitle_fr' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'subtitle_en' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'intro_fr' => ['sometimes', 'nullable', 'string'],
+            'intro_en' => ['sometimes', 'nullable', 'string'],
+            'quote_fr' => ['sometimes', 'nullable', 'string'],
+            'quote_en' => ['sometimes', 'nullable', 'string'],
         ]);
 
         $section->update($data);

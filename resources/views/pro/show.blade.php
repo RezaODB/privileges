@@ -16,6 +16,10 @@
         </div>
     </div>
 
+    @if ($section->hasHeader())
+        @include('pro.header')
+    @endif
+
     @if ($slides->isNotEmpty())
         @include('pro.slides')
     @endif

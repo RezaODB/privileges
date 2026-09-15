@@ -62,6 +62,41 @@ class Section extends Model
     }
 
     /**
+     * The line set in the marker under the page title, if the tab was given one.
+     */
+    public function localizedSubtitle(): ?string
+    {
+        return $this->{'subtitle_'.app()->getLocale()} ?: $this->subtitle_fr;
+    }
+
+    /**
+     * The short account of the whole chapter, shown to the left of the header.
+     */
+    public function localizedIntro(): ?string
+    {
+        return $this->{'intro_'.app()->getLocale()} ?: $this->intro_fr;
+    }
+
+    /**
+     * The quotation set against the intro, on the right of the header.
+     */
+    public function localizedQuote(): ?string
+    {
+        return $this->{'quote_'.app()->getLocale()} ?: $this->quote_fr;
+    }
+
+    /**
+     * Whether the tab was given enough to draw a header at all.
+     */
+    public function hasHeader(): bool
+    {
+        return (bool) ($this->number
+            || $this->localizedSubtitle()
+            || $this->localizedIntro()
+            || $this->localizedQuote());
+    }
+
+    /**
      * The heading shown above the film gallery, if the tab was given one.
      */
     public function localizedFilmsTitle(): ?string

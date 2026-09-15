@@ -50,8 +50,18 @@ class Slide extends Model
             : '4 / 5';
     }
 
-    public function url(): string
+    /**
+     * A slide is either a picture she uploaded or text she typed.
+     */
+    public function isText(): bool
     {
-        return Storage::disk(config('filesystems.media_disk'))->url($this->path);
+        return $this->path === null;
+    }
+
+    public function url(): ?string
+    {
+        return $this->path
+            ? Storage::disk(config('filesystems.media_disk'))->url($this->path)
+            : null;
     }
 }

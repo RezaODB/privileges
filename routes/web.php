@@ -65,7 +65,9 @@ Route::resource('sections', SectionController::class)->except('show')->middlewar
 Route::resource('sections.chapters', ChapterController::class)->shallow()->except('show')->middleware('auth');
 Route::resource('sections.films', FilmController::class)->shallow()->except('show')->middleware('auth');
 Route::resource('chapters.figures', FigureController::class)->shallow()->except('show')->middleware('auth');
-Route::resource('sections.slides', SlideController::class)->shallow()->only(['index', 'create', 'store', 'update', 'destroy'])->middleware('auth');
+Route::resource('sections.slides', SlideController::class)->shallow()->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])->middleware('auth');
+Route::get('/sections/{section}/slides/write', [SlideController::class, 'write'])->middleware('auth')->name('sections.slides.write');
+Route::post('/sections/{section}/slides/write', [SlideController::class, 'storeText'])->middleware('auth')->name('sections.slides.storeText');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

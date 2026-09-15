@@ -4,7 +4,18 @@
 
     <button type="button" class="relative block w-full border-2 border-zinc-800" style="aspect-ratio: {{ $slides->first()->aspectRatio() }}" x-on:click="current = (current + 1) % count">
         @foreach ($slides as $slide)
-            <img src="{{ $slide->url() }}" alt="" width="{{ $slide->width }}" height="{{ $slide->height }}" loading="{{ $loop->first ? 'eager' : 'lazy' }}" class="absolute inset-0 w-full h-full object-contain" x-show="current === {{ $loop->index }}" @unless ($loop->first) x-cloak @endunless>
+            <div class="absolute inset-0" x-show="current === {{ $loop->index }}" @unless ($loop->first) x-cloak @endunless>
+                @if ($slide->isText())
+                    <div class="h-full overflow-auto px-6 py-10 sm:px-10 text-left">
+                        @if ($slide->title)
+                            <p class="font-serif text-xl sm:text-2xl leading-snug"><mark>{{ $slide->title }}</mark></p>
+                        @endif
+                        <div class="font-serif text-lg sm:text-xl leading-snug mt-4 prose-p:mt-4 prose-a:underline">{!! $slide->body !!}</div>
+                    </div>
+                @else
+                    <img src="{{ $slide->url() }}" alt="" width="{{ $slide->width }}" height="{{ $slide->height }}" loading="{{ $loop->first ? 'eager' : 'lazy' }}" class="w-full h-full object-contain">
+                @endif
+            </div>
         @endforeach
     </button>
 

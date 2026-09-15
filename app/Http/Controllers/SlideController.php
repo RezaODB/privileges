@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\EditorHtmlSanitizer;
 use App\Models\Section;
 use App\Models\Slide;
 use App\Models\User;
@@ -63,13 +64,59 @@ class SlideController extends Controller
         return redirect()->route('sections.slides.index', $section);
     }
 
+    public function write(Section $section): View
+    {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+
+        return view('slides.write', [
+            'section' => $section,
+            'slide' => new Slide,
+        ]);
+    }
+
+    public function edit(Slide $slide): View
+    {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+
+        return view('slides.edit', [
+            'section' => $slide->section,
+            'slide' => $slide,
+        ]);
+    }
+
+    public function storeText(Section $section): RedirectResponse
+    {
+        Gate::allowIf(fn (User $user) => $user->role === 2);
+
+        $data = request()->validate([
+            'lang' => ['required', 'in:fr,en'],
+            'title' => ['nullable', 'string', 'max:255'],
+            'body' => ['required', 'string'],
+        ]);
+
+        $section->slides()->create([
+            ...$data,
+            'body' => app(EditorHtmlSanitizer::class)->sanitize($data['body']),
+            'order' => ($section->slides()->forLocale($data['lang'])->max('order') ?? 0) + 1,
+        ]);
+
+        return redirect()->route('sections.slides.index', $section);
+    }
+
     public function update(Slide $slide): RedirectResponse
     {
         Gate::allowIf(fn (User $user) => $user->role === 2);
 
         $data = request()->validate([
-            'order' => ['required', 'integer'],
+            'order' => ['sometimes', 'required', 'integer'],
+            'lang' => ['sometimes', 'required', 'in:fr,en'],
+            'title' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'body' => ['sometimes', 'required', 'string'],
         ]);
+
+        if (array_key_exists('body', $data)) {
+            $data['body'] = app(EditorHtmlSanitizer::class)->sanitize($data['body']);
+        }
 
         $slide->update($data);
 
@@ -80,7 +127,9 @@ class SlideController extends Controller
     {
         Gate::allowIf(fn (User $user) => $user->role === 2);
 
-        Storage::disk(config('filesystems.media_disk'))->delete($slide->path);
+        if ($slide->path) {
+            Storage::disk(config('filesystems.media_disk'))->delete($slide->path);
+        }
 
         $slide->delete();
 

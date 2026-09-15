@@ -8,7 +8,10 @@
                         <h2 class="font-bold uppercase">{{ $section->title_fr }}</h2>
                         <a href="{{ route('pro.show', $section) }}" target="_blank" class="text-blue-600 hover:underline">Voir la page &rarr;</a>
                     </div>
-                    <a href="{{ route('sections.slides.create', $section) }}" class="px-4 py-2 bg-green-600 rounded-md text-white inline-block">Create</a>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="{{ route('sections.slides.write', $section) }}" class="px-4 py-2 bg-green-600 rounded-md text-white inline-block">&Eacute;crire une slide</a>
+                        <a href="{{ route('sections.slides.create', $section) }}" class="px-4 py-2 bg-gray-600 rounded-md text-white inline-block">Envoyer des images</a>
+                    </div>
                     <p class="text-sm text-gray-500">
                         Le carrousel s'affiche en haut de l'onglet. Adresse à mettre derrière l'image dans un email&nbsp;:
                         <code>{{ route('pro.show', $section) }}#carrousel</code>
@@ -18,7 +21,16 @@
                         <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
                             @foreach ($items as $item)
                                 <div class="border rounded-md p-2 space-y-2">
-                                    <img src="{{ $item->url() }}" alt="" class="w-full bg-gray-100 rounded">
+                                    @if ($item->isText())
+                                        <a href="{{ route('slides.edit', $item) }}" class="block aspect-[4/5] overflow-hidden bg-amber-50 rounded p-2 text-xs leading-snug">
+                                            @if ($item->title)
+                                                <span class="bg-yellow-200">{{ $item->title }}</span>
+                                            @endif
+                                            <span class="block mt-1 text-gray-600">{{ Str::limit(strip_tags($item->body), 160) }}</span>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('slides.edit', $item) }}"><img src="{{ $item->url() }}" alt="" class="w-full bg-gray-100 rounded"></a>
+                                    @endif
                                     <form action="{{ route('slides.update', $item) }}" method="post">
                                         @csrf
                                         @method('patch')

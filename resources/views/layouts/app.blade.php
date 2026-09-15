@@ -22,7 +22,25 @@
             { title: 'two-column', value: 'two-col' },
         ],
         plugins: 'link lists paste code image media wordcount code',
-        toolbar: 'h2 h3 | bold italic blockquote indent aligncenter | numlist bullist | link image media code',
+        toolbar: 'h2 h3 | bold italic fluo blockquote indent aligncenter | numlist bullist | link image media code',
+        formats: {
+            fluo: { inline: 'mark' },
+        },
+        content_style: 'mark { background-color: transparent; background-image: linear-gradient(105deg, rgba(252,232,58,0) .5%, rgba(252,232,58,.85) 1.5%, rgba(252,232,58,.85) 98%, rgba(252,232,58,0) 99.5%); box-decoration-break: clone; -webkit-box-decoration-break: clone; color: inherit; padding: .08em .3em; border-radius: .15em; }',
+        setup: function (editor) {
+            editor.ui.registry.addToggleButton('fluo', {
+                icon: 'highlight-bg-color',
+                tooltip: 'Surligner au fluo',
+                onAction: function () {
+                    editor.execCommand('mceToggleFormat', false, 'fluo');
+                },
+                onSetup: function (api) {
+                    return editor.formatter.formatChanged('fluo', function (state) {
+                        api.setActive(state);
+                    }).unbind;
+                },
+            });
+        },
         menubar: false,
         paste_as_text: true,
         image_title: true,

@@ -16,6 +16,7 @@ class EditorHtmlSanitizer
         'b',
         'i',
         'u',
+        'mark',
         'ul',
         'ol',
         'li',

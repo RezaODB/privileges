@@ -49,6 +49,15 @@
         .sheet > * {
             position: relative;
         }
+        mark {
+            background-color: transparent;
+            background-image: linear-gradient(105deg, rgba(252,232,58,0) .5%, rgba(252,232,58,.85) 1.5%, rgba(252,232,58,.85) 98%, rgba(252,232,58,0) 99.5%);
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            color: inherit;
+            padding: .08em .3em;
+            border-radius: .15em;
+        }
         blockquote p {
             text-align: center !important;
             quotes: none !important;

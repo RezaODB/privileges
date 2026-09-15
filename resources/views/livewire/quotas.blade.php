@@ -9,13 +9,13 @@
         @endif
     </div>
     @endif
-    <h2 class="text-3xl uppercase">{{ __('content.form') }}</h2>
+    <h2 class="text-3xl font-serif uppercase">{{ __('content.form') }}</h2>
     <form wire:submit>
         <div class="flex flex-col h-screen">
             <div class="flex-grow overflow-auto">
               <table class="relative w-full">
                 <thead>
-                  <tr class="text-xl text-right uppercase font-medium border-b-2 border-zinc-800 sticky top-0 bg-[#fdf2e3]">
+                  <tr class="text-xl text-right uppercase font-medium border-b-2 border-zinc-800 sticky top-0 bg-paper">
                     <td></td>
                     <td class="[writing-mode:vertical-lr] py-3">{{ __('content.always') }}</td>
                     <td class="[writing-mode:vertical-lr] py-3">{{ __('content.often') }}</td>
@@ -35,12 +35,12 @@
                                 <div>@error('answers.*') {{ $message }} @enderror</div>
                             </div>
                         </td>
-                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="always" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"></td>
-                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="often" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"></td> 
-                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="sometimes" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"></td> 
-                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="rarely" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"></td> 
-                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="never" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"></td> 
-                        <td class="px-2"><input type="checkbox" wire:model.live="boosters" value="{{ $item->id }}" class="rounded-full w-6 h-6 mx-2 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3]" {{ count($boosters) >= 3 && !in_array($item->id, $boosters) ? 'disabled' : '' }}> 
+                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="always" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-paper disabled:border-none"></td>
+                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="often" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-paper disabled:border-none"></td> 
+                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="sometimes" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-paper disabled:border-none"></td> 
+                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="rarely" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-paper disabled:border-none"></td> 
+                        <td class="px-2"><input type="radio" wire:model.live="answers.{{ $item->id }}" value="never" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-paper disabled:border-none"></td> 
+                        <td class="px-2"><input type="checkbox" wire:model.live="boosters" value="{{ $item->id }}" class="rounded-full w-6 h-6 mx-2 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-paper" {{ count($boosters) >= 3 && !in_array($item->id, $boosters) ? 'disabled' : '' }}> 
                     </tr>
                     @endforeach
                 </tbody>
@@ -59,13 +59,13 @@
             </div>
         </div>
         <div class="py-3 border-b-2 border-zinc-800 border-dotted flex items-center justify-end gap-4 ml-px">
-            <input type="radio" wire:model.live="answers.{{ $item->id }}" value="always" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-[#fdf2e3] disabled:border-none"> 
+            <input type="radio" wire:model.live="answers.{{ $item->id }}" value="always" class="rounded-none w-8 h-3 text-zinc-800 checked:bg-none focus:ring-0 disabled:bg-paper disabled:border-none"> 
             
         </div>
         @endforeach --}}
         <div class="flex flex-col lg:flex-row gap-x-6 gap-y-4 mt-12">
-            <label for="comment" class="text-3xl uppercase">{{ __('content.comment') }}</label>
-            <textarea wire:model.live.debounce.1000ms="answers.comment" id="comment" rows="5" class="w-full h-full focus:ring-0 disabled:bg-[#fdf2e3]"></textarea>
+            <label for="comment" class="text-3xl font-serif uppercase">{{ __('content.comment') }}</label>
+            <textarea wire:model.live.debounce.1000ms="answers.comment" id="comment" rows="5" class="w-full h-full focus:ring-0 disabled:bg-paper"></textarea>
         </div>
         <div class="mt-12 text-right">
             <button wire:click="submit" class="border-2 border-zinc-800 font-bold py-2 px-4 uppercase hover:underline">{{ __('content.submit')  }}</button>

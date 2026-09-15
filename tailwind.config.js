@@ -12,6 +12,13 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                // What the sheet *looks* like once its texture is multiplied over
+                // it — for anything opaque laid on top, such as a sticky table
+                // head. The base tone it is built from lives in .sheet.
+                paper: '#ece1c9',
+                folder: '#e5d0b5',
+            },
             fontFamily: {
                 mono: ['Courier Prime', ...defaultTheme.fontFamily.mono],
                 serif: ['Libre Baskerville', ...defaultTheme.fontFamily.serif],

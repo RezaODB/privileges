@@ -1,12 +1,12 @@
 <section class="px-2 sm:px-8 mt-16">
 
-    <h2 class="text-3xl uppercase">{{ __('content.form') }}</h2>
+    <h2 class="text-3xl font-serif uppercase">{{ __('content.form') }}</h2>
     <p class="font-mono max-w-2xl mt-4">{{ __('content.pro_quota_note') }}</p>
 
     <div class="overflow-x-auto mt-8">
         <table class="relative w-full">
             <thead>
-                <tr class="text-xl text-right uppercase font-medium border-b-2 border-zinc-800 sticky top-0 bg-[#fdf2e3]">
+                <tr class="text-xl text-right uppercase font-medium border-b-2 border-zinc-800 sticky top-0 bg-paper">
                     <td></td>
                     <td class="[writing-mode:vertical-lr] py-3">{{ __('content.always') }}</td>
                     <td class="[writing-mode:vertical-lr] py-3">{{ __('content.often') }}</td>

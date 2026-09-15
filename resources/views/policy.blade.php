@@ -2,17 +2,17 @@
 
 @section('content')
 
-<section class="bg-[#fdf2e3] p-3 pb-16 shadow-xl rounded-3xl">
+<section class="sheet p-3 pb-16 shadow-xl">
 
-    <h2 class="text-right text-2xl sm:text-4xl font-light mb-8">{{ Auth::user()->order ?? 'X' }}/250</h2>
+    <h2 class="text-right text-2xl sm:text-4xl font-serif mb-8">{{ Auth::user()->order ?? 'X' }}/250</h2>
         
     <div class="font-mono mb-4 px-2 sm:px-8" x-data="{ open: false }">
         <div class="flex items-baseline justify-between gap-4 border-zinc-800 border-b-4 pb-4 cursor-pointer" x-on:click="open = !open">
             @if (app()->isLocale('fr'))
-            <h1 class="text-2xl font-sans uppercase">Accord de participation</h1>
+            <h1 class="text-2xl font-serif uppercase">Accord de participation</h1>
             @endif
             @if (app()->isLocale('en'))
-            <h1 class="text-2xl font-sans uppercase">Participation agreement</h1>
+            <h1 class="text-2xl font-serif uppercase">Participation agreement</h1>
             @endif
             <h2 x-text="open ? '(- Close)' : '(+ Open)'" class="whitespace-nowrap"></h2>
         </div>
@@ -21,7 +21,7 @@
                 <div class="h-12 flex-1"></div>
                 <div class="h-12 flex-1"></div>
             </div>
-            <div class="pb-12 prose max-w-none columns-md gap-12 [column-rule:2px_solid_#27272a] prose-h1:break-after-avoid prose-h2:break-after-avoid prose-h3:break-after-avoid prose-ol:ml-4 prose-li:text-justify prose-a:underline prose-p:text-justify prose-h2:font-sans prose-h2:text-2xl prose-h2:uppercase prose-h2:font-normal prose-h2:border-b-2 prose-h2:border-zinc-800 prose-h2:pb-4 prose-h2:-mx-6 prose-h2:px-6 prose-h3:font-sans prose-h3:uppercase prose-h3:font-medium prose-h3:text-lg prose-blockquote:border-y-2 prose-blockquote:border-x-0 prose-blockquote:border-zinc-800 prose-blockquote:-mx-6 prose-blockquote:text-xl prose-blockquote:uppercase prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-center prose-blockquote:text-[#374151] overflow-hidden">
+            <x-prose class="pb-12">
                 @if (app()->isLocale('fr'))
                 <h3>Merci de participer à mon projet artistique Les Privilèges Invisibles !</h3>
                 <p>Je travaille sur ce projet en amont depuis 2 ans et j'ai tellement hâte de commencer cette étude titanesque avec toutes les personnes qui ont compté pour moi à un moment de ma vie.</p>
@@ -57,17 +57,17 @@
                 <p>The artist reserves the artistic freedom to decide on the directions and developments of the project, which may include adjustments to individual contributions based on creative or organizational needs.</p>
                 <p>Thank you again for participating in this deeply personal project! To formalize everything, I include some general conditions and the data protection policy below.</p>
                 @endif
-            </div>
+            </x-prose>
         </div>
     </div>
 
     <div class="font-mono mb-4 px-2 sm:px-8" x-data="{ open: false }">
         <div class="flex items-baseline justify-between gap-4 border-zinc-800 border-b-4 pb-4 cursor-pointer" x-on:click="open = !open">
             @if (app()->isLocale('fr'))
-            <h1 class="text-2xl font-sans uppercase">Droits intellectuels, droit à l'image et politique de protection des données</h1>
+            <h1 class="text-2xl font-serif uppercase">Droits intellectuels, droit à l'image et politique de protection des données</h1>
             @endif
             @if (app()->isLocale('en'))
-            <h1 class="text-2xl font-sans uppercase">INTELLECTUAL PROPERTY, IMAGE RIGHTS, AND DATA PROTECTION POLICY</h1>
+            <h1 class="text-2xl font-serif uppercase">INTELLECTUAL PROPERTY, IMAGE RIGHTS, AND DATA PROTECTION POLICY</h1>
             @endif
             <h2 x-text="open ? '(- Close)' : '(+ Open)'" class="whitespace-nowrap"></h2>
         </div>
@@ -76,7 +76,7 @@
                 <div class="h-12 flex-1"></div>
                 <div class="h-12 flex-1"></div>
             </div>
-            <div class="pb-12 prose max-w-none columns-md gap-12 [column-rule:2px_solid_#27272a] prose-h1:break-after-avoid prose-h2:break-after-avoid prose-h3:break-after-avoid prose-ol:ml-4 prose-li:text-justify prose-a:underline prose-p:text-justify prose-h2:font-sans prose-h2:text-2xl prose-h2:uppercase prose-h2:font-normal prose-h2:border-b-2 prose-h2:border-zinc-800 prose-h2:pb-4 prose-h2:-mx-6 prose-h2:px-6 prose-h3:font-sans prose-h3:uppercase prose-h3:font-medium prose-h3:text-lg prose-blockquote:border-y-2 prose-blockquote:border-x-0 prose-blockquote:border-zinc-800 prose-blockquote:-mx-6 prose-blockquote:text-xl prose-blockquote:uppercase prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-center prose-blockquote:text-[#374151] overflow-hidden">
+            <x-prose class="pb-12">
                 @if (app()->isLocale('fr'))
                 <h3>Identification</h3>
                 <p>Les conditions générales sont applicables entre vous en tant que participant (ci-après le Participant) dans le cadre du Projet Les Privilèges Invisibles et Madame Barbara Iweins dont les coordonnées sont 11, Rue Antoine Labarre – 1050 Bruxelles ci-après désignée par "l'Artiste".</p>
@@ -131,7 +131,7 @@
                <h3>Applicable Law and Competent Courts</h3>
                <p>The contractual relationships between the parties to which these terms apply are governed exclusively by Belgian law. The parties agree to attempt to resolve any issues arising from this contract amicably, at a minimum through an invitation to mediation. Failing this, the French-speaking courts and tribunals of the judicial district of Brussels will have sole jurisdiction.</p>
                 @endif
-            </div>
+            </x-prose>
         </div>
     </div>
     

@@ -46,6 +46,22 @@ class User extends Authenticatable
     }
 
     /**
+     * Record the questionnaire, creating the answer row when it is missing and
+     * leaving any votes already cast untouched.
+     *
+     * @param  array<array-key, mixed>  $answers
+     */
+    public function saveQuestionnaire(array $answers): void
+    {
+        $this->answers()
+            ->firstOrNew([], ['votes' => []])
+            ->fill(['answers' => $answers])
+            ->save();
+
+        $this->unsetRelation('answers');
+    }
+
+    /**
      * Determine whether the user has been ejected and may no longer access the site.
      * Administrators are never ejected, so they can always undo the flag.
      */

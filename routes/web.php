@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\BrochureController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\DocumentController;
@@ -34,6 +35,7 @@ Route::get('/step3', [PageController::class, 'step3'])->name('step3');
 Route::get('/step4', [PageController::class, 'step4'])->name('step4');
 Route::get('/step5', [PageController::class, 'step5'])->name('step5');
 Route::get('/step6', [PageController::class, 'step6'])->name('step6');
+Route::post('/answers', [AnswerController::class, 'store'])->middleware('auth')->name('answers.store');
 
 // DOSSIER PRO (public)
 Route::get('/pro', [ProController::class, 'index'])->name('pro.index');

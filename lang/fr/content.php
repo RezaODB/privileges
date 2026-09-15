@@ -42,6 +42,9 @@ return [
     'rarely' => 'rarement',
     'never' => 'jamais',
     'submit' => 'soumettre',
+    'form_saved' => 'Formulaire enregistré.',
+    'answers_saved' => ':count réponse(s) sur :total sont enregistrées sur nos serveurs.',
+    'answers_none_saved' => "Aucune réponse n'est encore enregistrée sur nos serveurs.",
     'ejected' => "Merci beaucoup pour votre participation. Votre accès à l'étude a été clôturé, il n'est donc plus possible de vous connecter. Pour toute question, n'hésitez pas à nous écrire à lesprivilegesinvisibles@gmail.com.",
 
     'pro_link' => 'Pour les professionnels',

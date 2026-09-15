@@ -42,6 +42,9 @@ return [
     'rarely' => 'rarely',
     'never' => 'never',
     'submit' => 'submit',
+    'form_saved' => 'Form saved.',
+    'answers_saved' => ':count of :total answers are saved on our servers.',
+    'answers_none_saved' => 'No answer is saved on our servers yet.',
     'ejected' => 'Thank you very much for taking part. Your access to the study has been closed, so signing in is no longer possible. If you have any question, please write to us at lesprivilegesinvisibles@gmail.com.',
 
     'pro_link' => 'For professionals',

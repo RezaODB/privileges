@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\BlockKind;
 use App\Http\EditorHtmlSanitizer;
 use App\Models\Chapter;
 use App\Models\Section;
@@ -10,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
 
 class ChapterController extends Controller
 {
@@ -58,6 +60,9 @@ class ChapterController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'number' => ['nullable', 'string', 'max:255'],
             'summary' => ['nullable', 'string'],
+            'subtitle' => ['nullable', 'string', 'max:255'],
+            'kind' => ['sometimes', 'required', Rule::enum(BlockKind::class)],
+            'open' => ['sometimes', 'required', 'boolean'],
             'parent_id' => ['nullable', 'integer', $this->parentRule($section)],
             'body' => ['required', 'string'],
         ]);
@@ -80,6 +85,9 @@ class ChapterController extends Controller
             'title' => ['sometimes', 'required', 'string', 'max:255'],
             'number' => ['sometimes', 'nullable', 'string', 'max:255'],
             'summary' => ['sometimes', 'nullable', 'string'],
+            'subtitle' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'kind' => ['sometimes', 'required', Rule::enum(BlockKind::class)],
+            'open' => ['sometimes', 'required', 'boolean'],
             'parent_id' => ['sometimes', 'nullable', 'integer', $this->parentRule($chapter->section, $chapter)],
             'body' => ['sometimes', 'required', 'string'],
             'order' => ['sometimes', 'required', 'integer'],

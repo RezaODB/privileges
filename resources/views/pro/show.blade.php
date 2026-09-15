@@ -16,23 +16,29 @@
         </div>
     </div>
 
+    @php($claimed = $chapters->where('open', true)->pluck('kind')->filter()->map->value->all())
+
     @if ($section->hasHeader())
         @include('pro.header')
     @endif
 
-    @if ($slides->isNotEmpty())
+    @if ($slides->isNotEmpty() && ! in_array('slides', $claimed, true))
         @include('pro.slides')
     @endif
 
     @foreach ($chapters as $chapter)
-        <x-chapter :title="$chapter->title" :body="$chapter->body" :number="$chapter->number" :summary="$chapter->summary" :children="$chapter->children" :films="$chapter->displayedFilms()" />
+        @if ($chapter->open)
+            <x-block :chapter="$chapter" :slides="$slides" />
+        @else
+            <x-chapter :title="$chapter->title" :body="$chapter->body" :number="$chapter->number" :summary="$chapter->summary" :children="$chapter->children" :films="$chapter->displayedFilms()" />
+        @endif
     @endforeach
 
-    @if ($section->shows_podcasts)
+    @if ($section->shows_podcasts && ! in_array('podcasts', $claimed, true))
         @include('pro.podcasts')
     @endif
 
-    @if ($films->isNotEmpty())
+    @if ($films->isNotEmpty() && ! in_array('films', $claimed, true))
         @include('pro.films')
     @endif
 

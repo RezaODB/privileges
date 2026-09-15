@@ -38,6 +38,38 @@
     </div>
 
     <div>
+        <input type="text" name="subtitle" placeholder="Sous-titre surlign&eacute; au fluo" value="{{ old('subtitle', $chapter->subtitle) }}" class="w-full border-gray-200 shadow rounded-md">
+        <p class="text-sm text-gray-500 mt-1">Une ligne courte, sous le titre. N'appara&icirc;t que dans les blocs toujours ouverts.</p>
+    </div>
+    @error('subtitle')<div class="text-red-500">{{ $message }}</div>@enderror
+
+    <fieldset class="border border-gray-200 rounded-md p-4 grid grid-cols-1 gap-4">
+        <legend class="px-2 font-medium">Affichage</legend>
+
+        <label class="flex items-start gap-2">
+            <input type="hidden" name="open" value="0">
+            <input type="checkbox" name="open" value="1" @checked(old('open', $chapter->open ?? false)) class="mt-1 rounded border-gray-300">
+            <span>
+                Toujours ouvert
+                <span class="block text-sm text-gray-500">Le bloc s'affiche d&eacute;pli&eacute;, sans bouton&nbsp;: titre et sous-titre &agrave; gauche, contenu &agrave; droite. C'est la mise en page de l'onglet En bref. D&eacute;coch&eacute;, le bloc reste un accord&eacute;on.</span>
+            </span>
+        </label>
+        @error('open')<div class="text-red-500">{{ $message }}</div>@enderror
+
+        <div>
+            <label for="kind" class="block font-medium mb-1">Ce que le bloc affiche</label>
+            <select name="kind" id="kind" class="w-full border-gray-200 shadow rounded-md">
+                @foreach (App\Enums\BlockKind::options() as $value => $label)
+                    <option value="{{ $value }}" @selected(old('kind', $chapter->kind?->value ?? 'text') === $value)>{{ $label }}</option>
+                @endforeach
+            </select>
+            <p class="text-sm text-gray-500 mt-1">En plus du texte ci-dessous. &laquo;&nbsp;Les vid&eacute;os du bloc&nbsp;&raquo; affiche les films rattach&eacute;s &agrave; ce chapitre dans l'onglet Films.</p>
+        </div>
+        @error('kind')<div class="text-red-500">{{ $message }}</div>@enderror
+
+    </fieldset>
+
+    <div>
         <textarea name="summary" rows="2" placeholder="Mini-r&eacute;cap, &agrave; droite du titre" class="w-full border-gray-200 shadow rounded-md">{{ old('summary', $chapter->summary) }}</textarea>
         <p class="text-sm text-gray-500 mt-1">Une phrase, visible sans ouvrir le bloc. Laissez vide pour n'afficher que le titre.</p>
     </div>

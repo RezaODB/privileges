@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\BlockKind;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,6 +14,17 @@ class Chapter extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    /**
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'kind' => BlockKind::class,
+            'open' => 'boolean',
+        ];
+    }
 
     /**
      * @return BelongsTo<Section, $this>

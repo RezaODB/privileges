@@ -10,7 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
         <!-- Scripts -->
         <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
@@ -32,6 +32,23 @@
             background-color: #f3e3d3;
             column-span: all; 
         }
+        .sheet {
+            position: relative;
+            background-color: #f3e8d2;
+        }
+        .sheet::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: url('/folder.webp');
+            background-size: 100% auto;
+            mix-blend-mode: multiply;
+            opacity: .22;
+        }
+        .sheet > * {
+            position: relative;
+        }
         blockquote p {
             text-align: center !important;
             quotes: none !important;
@@ -40,7 +57,7 @@
     <body class="font-sans antialiased bg-gray-100 text-zinc-800">
         <div class="max-w-screen-2xl mx-auto sm:px-4">
             <div class="min-h-screen pb-16 sm:my-4 bg-[#e5d0b5] shadow-2xl relative rounded-t-xl rounded-b-md overflow-hidden">
-                <div class="absolute inset-0 pointer-events-none opacity-50" style="background-image: url({{ asset('folder.png') }}); background-size: 100% auto;"></div>
+                <div class="absolute inset-0 pointer-events-none opacity-50" style="background-image: url({{ asset('folder.webp') }}); background-size: 100% auto;"></div>
                 <header class="relative">
                     @include($header ?? 'includes.header')
                 </header>

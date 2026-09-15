@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="bg-[#fdf2e3] p-3 pb-16 shadow-xl rounded-3xl">
+<section class="sheet p-3 pb-16 shadow-xl">
 
     <div class="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 font-mono uppercase text-sm px-2 sm:px-8 pt-2 mb-8">
         <div class="flex flex-wrap gap-x-6 gap-y-2">

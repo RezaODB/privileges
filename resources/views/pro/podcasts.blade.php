@@ -1,6 +1,6 @@
 <section class="px-2 sm:px-8 mt-16">
 
-    <h1 class="text-2xl sm:text-3xl font-sans uppercase border-zinc-800 border-b-4 pb-4 mb-8">{{ __('content.podcasts') }}</h1>
+    <h1 class="text-2xl sm:text-3xl font-serif uppercase border-zinc-800 border-b-2 pb-4 mb-8">{{ __('content.podcasts') }}</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono">
         <div>

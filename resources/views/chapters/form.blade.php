@@ -8,6 +8,23 @@
     </select>
     @error('lang')<div class="text-red-500">{{ $message }}</div>@enderror
 
+    <div>
+        <label for="parent_id" class="block font-medium mb-1">Chapitre parent</label>
+        <select name="parent_id" id="parent_id" class="w-full border-gray-200 shadow rounded-md" @disabled($parents->isEmpty() && ! $chapter->parent_id)>
+            <option value="">&mdash; Chapitre principal (aucun parent)</option>
+            @foreach ($parents as $parent)
+                <option value="{{ $parent->id }}" @selected((int) old('parent_id', $chapter->parent_id) === $parent->id)>
+                    {{ strtoupper($parent->lang) }} &mdash; {{ $parent->number ? $parent->number.'. ' : '' }}{{ $parent->title }}
+                </option>
+            @endforeach
+        </select>
+        <p class="text-sm text-gray-500 mt-1">
+            Rang&eacute; sous un autre chapitre, celui-ci devient un sous-chapitre&nbsp;: il ne s'affiche plus dans la liste principale,
+            mais &agrave; l'int&eacute;rieur de son parent, s&eacute;par&eacute; par un filet vertical. Deux niveaux au maximum, et le parent doit &ecirc;tre dans la m&ecirc;me langue.
+        </p>
+    </div>
+    @error('parent_id')<div class="text-red-500">{{ $message }}</div>@enderror
+
     <div class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-4">
         <div>
             <input type="text" name="number" placeholder="N&deg; (ex. 01)" value="{{ old('number', $chapter->number) }}" class="w-full border-gray-200 shadow rounded-md">

@@ -1,6 +1,9 @@
-@props(['title', 'body', 'number' => null, 'summary' => null, 'open' => false])
+@props(['title', 'body', 'number' => null, 'summary' => null, 'children' => null, 'open' => false])
+
+@php($subChapters = $children ?? collect())
 
 <div class="font-mono mb-4 px-2 sm:px-8" x-data="{ open: {{ $open ? 'true' : 'false' }} }">
+
     <div class="flex flex-wrap items-baseline gap-x-8 gap-y-2 border-zinc-800 border-b-2 pb-4 cursor-pointer" x-on:click="open = !open">
         @if ($number)
             <span class="text-lg sm:text-xl sm:min-w-12">{{ $number }}</span>
@@ -11,11 +14,43 @@
         @endif
         <h2 x-text="open ? '(- Close)' : '(+ Open)'" class="whitespace-nowrap {{ $summary ? '' : 'ml-auto' }}"></h2>
     </div>
+
     <div x-show="open" x-collapse>
+
         <div class="flex lg:divide-x divide-zinc-800">
             <div class="h-12 flex-1"></div>
             <div class="h-12 flex-1"></div>
         </div>
-        <div class="pb-12 prose max-w-none columns-md gap-12 [orphans:2] [widows:2] [column-rule:1px_solid_#27272a] prose-headings:break-after-avoid prose-headings:break-inside-avoid prose-ol:ml-4 prose-li:text-justify prose-a:underline prose-p:text-justify prose-h2:font-mono prose-h2:text-2xl prose-h2:uppercase prose-h2:font-normal prose-h2:border-b prose-h2:border-zinc-800 prose-h2:pb-4 prose-h2:-mx-6 prose-h2:px-6 prose-h3:font-mono prose-h3:uppercase prose-h3:font-medium prose-h3:text-lg prose-blockquote:border-y prose-blockquote:border-x-0 prose-blockquote:border-zinc-800 prose-blockquote:-mx-6 prose-blockquote:text-xl prose-blockquote:uppercase prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-center prose-blockquote:text-[#374151] overflow-hidden">{!! $body !!}</div>
+
+        <x-prose class="pb-12">{!! $body !!}</x-prose>
+
+        @if ($subChapters->isNotEmpty())
+            <div x-data="{ child: null }" class="pb-12">
+
+                <div class="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-zinc-800 border-t-2 border-zinc-800 pt-6">
+                    @foreach ($subChapters as $subChapter)
+                        <button type="button" class="group flex-1 flex flex-col items-start text-left py-4 sm:py-0 sm:px-6 sm:first:pl-0 sm:last:pr-0" x-on:click="child = child === {{ $subChapter->id }} ? null : {{ $subChapter->id }}">
+                            @if ($subChapter->number)
+                                <div class="text-sm mb-1">{{ $subChapter->number }}</div>
+                            @endif
+                            <div class="font-serif uppercase text-lg leading-tight group-hover:underline">{{ $subChapter->title }}</div>
+                            @if ($subChapter->summary)
+                                <div class="text-sm mt-2">{{ $subChapter->summary }}</div>
+                            @endif
+                            <div class="text-lg mt-auto pt-6" x-text="child === {{ $subChapter->id }} ? '&darr;' : '&rarr;'"></div>
+                        </button>
+                    @endforeach
+                </div>
+
+                @foreach ($subChapters as $subChapter)
+                    <div x-show="child === {{ $subChapter->id }}" x-collapse x-cloak>
+                        <x-prose class="pt-8">{!! $subChapter->body !!}</x-prose>
+                    </div>
+                @endforeach
+
+            </div>
+        @endif
+
     </div>
+
 </div>

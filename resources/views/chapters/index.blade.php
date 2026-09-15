@@ -11,20 +11,10 @@
                     <a href="{{ route('sections.chapters.create', $section) }}" class="px-4 py-2 bg-green-600 rounded-md text-white inline-block">Create</a>
                     <div class="divide-y">
                         @foreach ($chapters as $item)
-                            <div class="flex gap-4 items-center p-1 hover:bg-gray-100">
-                                <form action="{{ route('chapters.update', $item) }}" method="post">
-                                    @csrf
-                                    @method('patch')
-                                    <input type="number" name="order" value="{{ $item->order }}" min="0" max="99" step="1" onchange="this.form.submit()" class="p-1 border-gray-200 shadow rounded-md">
-                                </form>
-                                <span class="text-gray-600 font-bold uppercase">{{ $item->lang }}</span>
-                                <a href="{{ route('chapters.edit', $item) }}" class="text-blue-600 hover:underline">{{ $item->title }}</a>
-                                <form action="{{ route('chapters.destroy', $item) }}" method="post" class="ml-auto">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="text-red-600 text-sm uppercase hover:underline" onclick="return confirm('Delete item?')">Delete</button>
-                                </form>
-                            </div>
+                            <x-chapter-row :chapter="$item" />
+                            @foreach ($item->children as $child)
+                                <x-chapter-row :chapter="$child" nested />
+                            @endforeach
                         @endforeach
                     </div>
                 </div>

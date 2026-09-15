@@ -32,7 +32,12 @@ class ProController extends Controller
         return view('pro.show', [
             'section' => $section,
             'sections' => Section::query()->published()->ordered()->get(),
-            'chapters' => $section->chapters()->forLocale(app()->getLocale())->ordered()->get(),
+            'chapters' => $section->chapters()
+                ->forLocale(app()->getLocale())
+                ->topLevel()
+                ->ordered()
+                ->with(['children' => fn ($query) => $query->ordered()])
+                ->get(),
             'slides' => $this->slidesFor($section),
             'quotas' => $section->shows_quota
                 ? Quota::query()->orderBy('order')->get()

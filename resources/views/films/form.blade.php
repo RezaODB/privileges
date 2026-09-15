@@ -17,7 +17,7 @@
         </select>
         <p class="text-sm text-gray-500 mt-1">
             Rattach&eacute; &agrave; un chapitre, le film n'appara&icirc;t plus dans la galerie de l'onglet mais &agrave; l'int&eacute;rieur du chapitre, quand on l'ouvre.
-            <strong>Les chapitres sont par langue&nbsp;:</strong> une galerie rattach&eacute;e au chapitre FR ne s'affiche pas sur la page anglaise.
+            <strong>Une seule fois suffit&nbsp;:</strong> rattach&eacute;e au chapitre fran&ccedil;ais, la galerie s'affiche aussi sur la page anglaise, dans le chapitre portant le m&ecirc;me num&eacute;ro. Rattachez-la au chapitre EN seulement pour y montrer d'autres vid&eacute;os.
         </p>
     </div>
     @error('chapter_id')<div class="text-red-500">{{ $message }}</div>@enderror

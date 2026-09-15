@@ -49,8 +49,9 @@
                 @foreach ($subChapters as $subChapter)
                     <div x-show="child === {{ $subChapter->id }}" x-collapse x-cloak>
                         <x-prose class="pt-8">{!! $subChapter->body !!}</x-prose>
-                        @if ($subChapter->films->isNotEmpty())
-                            <x-film-gallery :films="$subChapter->films" />
+                        @php($subChapterFilms = $subChapter->displayedFilms())
+                        @if ($subChapterFilms->isNotEmpty())
+                            <x-film-gallery :films="$subChapterFilms" />
                         @endif
                     </div>
                 @endforeach

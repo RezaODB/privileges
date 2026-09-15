@@ -53,6 +53,46 @@ class Chapter extends Model
     }
 
     /**
+     * The gallery to draw when this chapter opens: its own films, or those of
+     * its french twin, so a gallery uploaded once shows in both languages.
+     *
+     * @return \Illuminate\Support\Collection<int, Film>
+     */
+    public function displayedFilms(): \Illuminate\Support\Collection
+    {
+        if ($this->films->isNotEmpty() || $this->lang === 'fr') {
+            return $this->films;
+        }
+
+        return $this->frenchTwin()?->films()->ordered()->get() ?? collect();
+    }
+
+    /**
+     * The french chapter this one translates, matched on tab, number and the
+     * chapter it sits under. Null when she has not numbered them.
+     */
+    public function frenchTwin(): ?Chapter
+    {
+        if ($this->lang === 'fr' || ! $this->number) {
+            return null;
+        }
+
+        return static::query()
+            ->where('section_id', $this->section_id)
+            ->where('lang', 'fr')
+            ->where('number', $this->number)
+            ->when(
+                $this->parent_id,
+                fn (Builder $query) => $query->whereHas(
+                    'parent',
+                    fn (Builder $parent) => $parent->where('number', $this->parent->number)
+                ),
+                fn (Builder $query) => $query->topLevel()
+            )
+            ->first();
+    }
+
+    /**
      * @param  Builder<Chapter>  $query
      */
     public function scopeTopLevel(Builder $query): void

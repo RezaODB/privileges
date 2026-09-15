@@ -49,3 +49,63 @@ it('keeps the films when the chapter holding them is deleted', function () {
     expect($film->fresh()->chapter_id)->toBeNull();
     expect($section->films()->onTheTab()->count())->toBe(1);
 });
+
+it('shows the french gallery on the english page when the english chapter has none', function () {
+    $section = Section::factory()->create(['slug' => 'cadre-pratique']);
+
+    $french = Chapter::factory()->for($section)->create([
+        'lang' => 'fr',
+        'number' => 'A',
+        'title' => 'Patchwork photographique',
+    ]);
+    $english = Chapter::factory()->for($section)->create([
+        'lang' => 'en',
+        'number' => 'A',
+        'title' => 'Photographic patchwork',
+    ]);
+
+    Film::factory()->for($section)->create([
+        'chapter_id' => $french->id,
+        'title_fr' => 'Ambrotype n°12',
+        'title_en' => 'Ambrotype no. 12',
+    ]);
+
+    expect($english->displayedFilms())->toHaveCount(1);
+
+    $this->get(route('pro.show', ['section' => $section, 'lang' => 'en']))
+        ->assertOk()
+        ->assertSee('Ambrotype no. 12');
+});
+
+it('prefers the english gallery when the english chapter has one of its own', function () {
+    $section = Section::factory()->create(['slug' => 'cadre-pratique']);
+
+    $french = Chapter::factory()->for($section)->create(['lang' => 'fr', 'number' => 'A']);
+    $english = Chapter::factory()->for($section)->create(['lang' => 'en', 'number' => 'A']);
+
+    Film::factory()->for($section)->create(['chapter_id' => $french->id, 'title_fr' => 'Version FR']);
+    Film::factory()->for($section)->create(['chapter_id' => $english->id, 'title_en' => 'English cut']);
+
+    expect($english->displayedFilms())->toHaveCount(1);
+    expect($english->displayedFilms()->first()->title_en)->toBe('English cut');
+});
+
+it('matches twins within their own parent, not across parents', function () {
+    $section = Section::factory()->create(['slug' => 'cadre-pratique']);
+
+    $frenchParent = Chapter::factory()->for($section)->create(['lang' => 'fr', 'number' => '02']);
+    $otherParent = Chapter::factory()->for($section)->create(['lang' => 'fr', 'number' => '03']);
+    $englishParent = Chapter::factory()->for($section)->create(['lang' => 'en', 'number' => '02']);
+
+    $frenchChild = Chapter::factory()->for($section)->create([
+        'lang' => 'fr', 'number' => 'A', 'parent_id' => $frenchParent->id,
+    ]);
+    Chapter::factory()->for($section)->create([
+        'lang' => 'fr', 'number' => 'A', 'parent_id' => $otherParent->id,
+    ]);
+    $englishChild = Chapter::factory()->for($section)->create([
+        'lang' => 'en', 'number' => 'A', 'parent_id' => $englishParent->id,
+    ]);
+
+    expect($englishChild->frenchTwin()?->id)->toBe($frenchChild->id);
+});

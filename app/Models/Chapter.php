@@ -105,6 +105,16 @@ class Chapter extends Model
     }
 
     /**
+     * The figures shown when this block is of the "chiffres" kind.
+     *
+     * @return HasMany<Figure, $this>
+     */
+    public function figures(): HasMany
+    {
+        return $this->hasMany(Figure::class);
+    }
+
+    /**
      * @param  Builder<Chapter>  $query
      */
     public function scopeTopLevel(Builder $query): void

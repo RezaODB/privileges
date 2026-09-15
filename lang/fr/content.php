@@ -51,6 +51,8 @@ return [
     'previous' => 'Précédent',
     'next' => 'Suivant',
     'podcasts' => 'Podcasts',
+    'see_all_figures' => 'Voir toutes les statistiques',
+    'see_fewer_figures' => 'Voir moins',
     'podcast_theory' => 'Podcast théorique',
     'podcast_practice' => 'Podcast pratique',
 

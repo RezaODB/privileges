@@ -4,6 +4,7 @@ use App\Http\Controllers\BrochureController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\FigureController;
 use App\Http\Controllers\FilmController;
 use App\Http\Controllers\IntroController;
 use App\Http\Controllers\MapController;
@@ -61,6 +62,7 @@ Route::resource('documents', DocumentController::class)->except('show')->middlew
 Route::resource('sections', SectionController::class)->except('show')->middleware('auth');
 Route::resource('sections.chapters', ChapterController::class)->shallow()->except('show')->middleware('auth');
 Route::resource('sections.films', FilmController::class)->shallow()->except('show')->middleware('auth');
+Route::resource('chapters.figures', FigureController::class)->shallow()->except('show')->middleware('auth');
 Route::resource('sections.slides', SlideController::class)->shallow()->only(['index', 'create', 'store', 'update', 'destroy'])->middleware('auth');
 
 Route::middleware('auth')->group(function () {

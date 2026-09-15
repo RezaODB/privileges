@@ -42,6 +42,12 @@
                     @endif
                     @break
 
+                @case (App\Enums\BlockKind::Figures)
+                    @if ($chapter->figures->isNotEmpty())
+                        <x-figure-grid :figures="$chapter->figures" />
+                    @endif
+                    @break
+
                 @case (App\Enums\BlockKind::Podcasts)
                     <x-podcast-players />
                     @break

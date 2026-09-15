@@ -36,7 +36,7 @@ class ProController extends Controller
                 ->forLocale(app()->getLocale())
                 ->topLevel()
                 ->ordered()
-                ->with(['films' => fn ($query) => $query->ordered(), 'children' => fn ($query) => $query->ordered()->with(['films' => fn ($films) => $films->ordered()])])
+                ->with(['figures' => fn ($query) => $query->ordered(), 'films' => fn ($query) => $query->ordered(), 'children' => fn ($query) => $query->ordered()->with(['films' => fn ($films) => $films->ordered()])])
                 ->get(),
             'slides' => $this->slidesFor($section),
             'quotas' => $section->shows_quota

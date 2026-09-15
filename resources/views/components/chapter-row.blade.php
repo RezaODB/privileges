@@ -14,7 +14,8 @@
     @if ($chapter->summary)
         <span class="text-gray-400 text-sm truncate max-w-xs">{{ $chapter->summary }}</span>
     @endif
-    <form action="{{ route('chapters.destroy', $chapter) }}" method="post" class="ml-auto">
+    <a href="{{ route('chapters.figures.index', $chapter) }}" class="ml-auto text-blue-600 hover:underline text-sm">{{ $chapter->figures()->count() }} chiffre(s)</a>
+    <form action="{{ route('chapters.destroy', $chapter) }}" method="post">
         @csrf
         @method('delete')
         <button type="submit" class="text-red-600 text-sm uppercase hover:underline" onclick="return confirm('{{ $chapter->children()->exists() ? 'Supprimer ce chapitre et ses sous-chapitres ?' : 'Delete item?' }}')">Delete</button>

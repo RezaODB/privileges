@@ -8,6 +8,7 @@ enum BlockKind: string
     case Slides = 'slides';
     case Films = 'films';
     case Podcasts = 'podcasts';
+    case Figures = 'figures';
 
     /**
      * What Barbara reads in the admin when choosing what a block shows.
@@ -19,6 +20,7 @@ enum BlockKind: string
             self::Slides => 'Le carrousel de l’onglet',
             self::Films => 'Les vidéos du bloc',
             self::Podcasts => 'Les podcasts',
+            self::Figures => 'Les chiffres du bloc',
         };
     }
 

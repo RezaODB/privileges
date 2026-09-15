@@ -12,7 +12,8 @@
 ])
 
 @php($proLinks = [
-    ['route' => 'sections.index', 'pattern' => 'sections.*|chapters.*|films.*', 'label' => 'Onglets'],
+    ['route' => 'sections.index', 'pattern' => 'sections.*|chapters.*|films.*|figures.*|slides.*', 'label' => 'Onglets'],
+    ['route' => 'podcasts.index', 'pattern' => 'podcasts.*', 'label' => 'Podcasts'],
     ['route' => 'documents.index', 'pattern' => 'documents.*', 'label' => 'Documents'],
 ])
 

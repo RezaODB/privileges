@@ -49,6 +49,8 @@ class ChapterController extends Controller
         $data = request()->validate([
             'lang' => ['required', 'string', 'max:255'],
             'title' => ['required', 'string', 'max:255'],
+            'number' => ['nullable', 'string', 'max:255'],
+            'summary' => ['nullable', 'string'],
             'body' => ['required', 'string'],
         ]);
 
@@ -68,6 +70,8 @@ class ChapterController extends Controller
         $data = request()->validate([
             'lang' => ['sometimes', 'required', 'string', 'max:255'],
             'title' => ['sometimes', 'required', 'string', 'max:255'],
+            'number' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'summary' => ['sometimes', 'nullable', 'string'],
             'body' => ['sometimes', 'required', 'string'],
             'order' => ['sometimes', 'required', 'integer'],
         ]);

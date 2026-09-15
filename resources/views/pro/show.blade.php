@@ -25,7 +25,7 @@
     @endif
 
     @foreach ($chapters as $chapter)
-        <x-chapter :title="$chapter->title" :body="$chapter->body" />
+        <x-chapter :title="$chapter->title" :body="$chapter->body" :number="$chapter->number" :summary="$chapter->summary" />
     @endforeach
 
     @if ($section->shows_podcasts)

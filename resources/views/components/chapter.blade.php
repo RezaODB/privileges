@@ -1,9 +1,15 @@
-@props(['title', 'body', 'open' => false])
+@props(['title', 'body', 'number' => null, 'summary' => null, 'open' => false])
 
 <div class="font-mono mb-4 px-2 sm:px-8" x-data="{ open: {{ $open ? 'true' : 'false' }} }">
-    <div class="flex items-baseline justify-between gap-4 border-zinc-800 border-b-2 pb-4 cursor-pointer" x-on:click="open = !open">
+    <div class="flex flex-wrap items-baseline gap-x-8 gap-y-2 border-zinc-800 border-b-2 pb-4 cursor-pointer" x-on:click="open = !open">
+        @if ($number)
+            <span class="text-lg sm:text-xl sm:min-w-12">{{ $number }}</span>
+        @endif
         <h1 class="text-2xl sm:text-3xl font-serif uppercase">{{ $title }}</h1>
-        <h2 x-text="open ? '(- Close)' : '(+ Open)'" class="whitespace-nowrap"></h2>
+        @if ($summary)
+            <p class="text-sm sm:w-72 sm:shrink-0 sm:ml-auto">{{ $summary }}</p>
+        @endif
+        <h2 x-text="open ? '(- Close)' : '(+ Open)'" class="whitespace-nowrap {{ $summary ? '' : 'ml-auto' }}"></h2>
     </div>
     <div x-show="open" x-collapse>
         <div class="flex lg:divide-x divide-zinc-800">

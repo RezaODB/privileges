@@ -9,7 +9,7 @@
                         <a href="{{ route('pro.show', $section) }}" target="_blank" class="text-blue-600 hover:underline">Voir la page &rarr;</a>
                     </div>
                     <a href="{{ route('sections.films.create', $section) }}" class="px-4 py-2 bg-green-600 rounded-md text-white inline-block">Create</a>
-                    <p class="text-sm text-gray-500">La galerie s'affiche sous les blocs de contenu de cet onglet.</p>
+                    <p class="text-sm text-gray-500">Par d&eacute;faut la galerie s'affiche sous les blocs de contenu de cet onglet. Un film peut aussi &ecirc;tre rattach&eacute; &agrave; un chapitre&nbsp;: il s'affiche alors &agrave; l'int&eacute;rieur, quand on l'ouvre.</p>
                     <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
                         @foreach ($films as $item)
                             <div class="border rounded-md p-2 space-y-2">
@@ -28,6 +28,9 @@
                                     </form>
                                     <a href="{{ route('films.edit', $item) }}" class="text-blue-600 hover:underline text-sm truncate">{{ $item->title_fr ?: 'Sans titre' }}</a>
                                 </div>
+                                @if ($item->chapter)
+                                    <p class="text-xs text-gray-500 truncate">Dans&nbsp;: {{ strtoupper($item->chapter->lang) }} &mdash; {{ $item->chapter->title }}</p>
+                                @endif
                                 <form action="{{ route('films.destroy', $item) }}" method="post">
                                     @csrf
                                     @method('delete')

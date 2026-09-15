@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chapter;
 use App\Models\Film;
 use App\Models\Section;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
@@ -28,7 +30,7 @@ class FilmController extends Controller
 
         return view('films.index', [
             'section' => $section,
-            'films' => $section->films()->ordered()->get(),
+            'films' => $section->films()->ordered()->with('chapter')->get(),
         ]);
     }
 
@@ -39,6 +41,7 @@ class FilmController extends Controller
         return view('films.create', [
             'section' => $section,
             'film' => new Film,
+            'chapters' => $this->chaptersFor($section),
         ]);
     }
 
@@ -49,6 +52,7 @@ class FilmController extends Controller
         return view('films.edit', [
             'section' => $film->section,
             'film' => $film,
+            'chapters' => $this->chaptersFor($film->section),
         ]);
     }
 
@@ -61,6 +65,7 @@ class FilmController extends Controller
             'title_en' => ['nullable', 'string', 'max:255'],
             'file' => ['required', 'file', 'mimetypes:'.implode(',', self::VIDEO_MIMETYPES), 'extensions:'.implode(',', self::VIDEO_EXTENSIONS)],
             'poster' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp'],
+            'chapter_id' => ['nullable', 'integer', $this->chapterRule($section)],
         ]);
 
         $disk = config('filesystems.media_disk');
@@ -68,6 +73,7 @@ class FilmController extends Controller
         $section->films()->create([
             'title_fr' => $data['title_fr'] ?? null,
             'title_en' => $data['title_en'] ?? null,
+            'chapter_id' => $data['chapter_id'] ?? null,
             'path' => request()->file('file')->store('films', $disk),
             'poster_path' => request()->file('poster')?->store('films/posters', $disk),
             'order' => $section->films()->max('order') + 1,
@@ -86,6 +92,7 @@ class FilmController extends Controller
             'order' => ['sometimes', 'required', 'integer'],
             'file' => ['sometimes', 'file', 'mimetypes:'.implode(',', self::VIDEO_MIMETYPES), 'extensions:'.implode(',', self::VIDEO_EXTENSIONS)],
             'poster' => ['sometimes', 'image', 'mimes:jpg,jpeg,png,webp'],
+            'chapter_id' => ['sometimes', 'nullable', 'integer', $this->chapterRule($film->section)],
         ]);
 
         $disk = config('filesystems.media_disk');
@@ -107,6 +114,35 @@ class FilmController extends Controller
         $film->update($data);
 
         return redirect()->route('sections.films.index', $film->section);
+    }
+
+    /**
+     * The chapters of this tab a film may be filed under, both languages, so
+     * she can see that a gallery has to be attached on each side.
+     *
+     * @return Collection<int, Chapter>
+     */
+    private function chaptersFor(Section $section): Collection
+    {
+        return $section->chapters()->ordered()->get();
+    }
+
+    /**
+     * Refuse a chapter belonging to another tab.
+     */
+    private function chapterRule(Section $section): \Closure
+    {
+        return function (string $attribute, mixed $value, \Closure $fail) use ($section): void {
+            if ($value === null) {
+                return;
+            }
+
+            $chapter = Chapter::query()->find($value);
+
+            if (! $chapter || ! $chapter->section->is($section)) {
+                $fail('Ce chapitre n’appartient pas à cet onglet.');
+            }
+        };
     }
 
     public function destroy(Film $film): RedirectResponse

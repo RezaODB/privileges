@@ -43,6 +43,16 @@ class Chapter extends Model
     }
 
     /**
+     * The films filed under this chapter, shown when it is opened.
+     *
+     * @return HasMany<Film, $this>
+     */
+    public function films(): HasMany
+    {
+        return $this->hasMany(Film::class);
+    }
+
+    /**
      * @param  Builder<Chapter>  $query
      */
     public function scopeTopLevel(Builder $query): void

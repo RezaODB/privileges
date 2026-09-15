@@ -1,4 +1,4 @@
-@props(['title', 'body', 'number' => null, 'summary' => null, 'children' => null, 'open' => false])
+@props(['title', 'body', 'number' => null, 'summary' => null, 'children' => null, 'films' => null, 'open' => false])
 
 @php($subChapters = $children ?? collect())
 
@@ -24,6 +24,10 @@
 
         <x-prose class="pb-12">{!! $body !!}</x-prose>
 
+        @if ($films && $films->isNotEmpty())
+            <x-film-gallery :films="$films" class="pb-12" />
+        @endif
+
         @if ($subChapters->isNotEmpty())
             <div x-data="{ child: null }" class="pb-12">
 
@@ -45,6 +49,9 @@
                 @foreach ($subChapters as $subChapter)
                     <div x-show="child === {{ $subChapter->id }}" x-collapse x-cloak>
                         <x-prose class="pt-8">{!! $subChapter->body !!}</x-prose>
+                        @if ($subChapter->films->isNotEmpty())
+                            <x-film-gallery :films="$subChapter->films" />
+                        @endif
                     </div>
                 @endforeach
 

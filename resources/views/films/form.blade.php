@@ -5,6 +5,23 @@
 
 <div class="grid grid-cols-1 gap-4">
 
+    <div>
+        <label for="chapter_id" class="block font-medium mb-1">O&ugrave; afficher ce film</label>
+        <select name="chapter_id" id="chapter_id" class="w-full border-gray-200 shadow rounded-md">
+            <option value="">&mdash; Dans la galerie de l'onglet, sous les blocs de contenu</option>
+            @foreach ($chapters as $chapter)
+                <option value="{{ $chapter->id }}" @selected((int) old('chapter_id', $film->chapter_id) === $chapter->id)>
+                    {{ strtoupper($chapter->lang) }} &mdash; {{ $chapter->number ? $chapter->number.'. ' : '' }}{{ $chapter->title }}
+                </option>
+            @endforeach
+        </select>
+        <p class="text-sm text-gray-500 mt-1">
+            Rattach&eacute; &agrave; un chapitre, le film n'appara&icirc;t plus dans la galerie de l'onglet mais &agrave; l'int&eacute;rieur du chapitre, quand on l'ouvre.
+            <strong>Les chapitres sont par langue&nbsp;:</strong> une galerie rattach&eacute;e au chapitre FR ne s'affiche pas sur la page anglaise.
+        </p>
+    </div>
+    @error('chapter_id')<div class="text-red-500">{{ $message }}</div>@enderror
+
     <input type="text" name="title_fr" placeholder="Légende (FR) — facultatif" value="{{ old('title_fr', $film->title_fr) }}" class="border-gray-200 shadow rounded-md">
     @error('title_fr')<div class="text-red-500">{{ $message }}</div>@enderror
 

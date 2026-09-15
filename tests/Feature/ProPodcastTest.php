@@ -52,7 +52,8 @@ it('draws the same waveform for a podcast every time, and a different one per po
     $first = Podcast::factory()->create(['id' => 101]);
     $second = Podcast::factory()->create(['id' => 102]);
 
-    expect($first->waveform())->toHaveCount(48)
+    expect($first->waveform(64))->toHaveCount(64)
+        ->and($first->waveform())->not->toBeEmpty()
         ->and($first->waveform())->toBe($first->waveform())
         ->and($first->waveform())->not->toBe($second->waveform());
 });

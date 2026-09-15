@@ -49,7 +49,7 @@ class Podcast extends Model
      *
      * @return list<int>
      */
-    public function waveform(int $bars = 48): array
+    public function waveform(int $bars = 90): array
     {
         mt_srand($this->id ?: 1);
 

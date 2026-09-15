@@ -38,7 +38,7 @@
 
                 @case (App\Enums\BlockKind::Films)
                     @if ($films->isNotEmpty())
-                        <x-film-gallery :films="$films" />
+                        <x-film-gallery :films="$films" :visible="$chapter->films_visible" />
                     @endif
                     @break
 

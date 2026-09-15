@@ -67,6 +67,13 @@
         </div>
         @error('kind')<div class="text-red-500">{{ $message }}</div>@enderror
 
+        <div>
+            <label for="films_visible" class="block font-medium mb-1">Vid&eacute;os visibles avant la fl&egrave;che</label>
+            <input type="number" name="films_visible" id="films_visible" min="1" max="5" value="{{ old('films_visible', $chapter->films_visible) }}" class="w-32 border-gray-200 shadow rounded-md">
+            <p class="text-sm text-gray-500 mt-1">Par exemple <code>3</code>&nbsp;: les trois premi&egrave;res s'affichent, les autres apparaissent quand le visiteur clique sur &laquo;&nbsp;Voir toutes les vid&eacute;os&nbsp;&raquo;. Laissez vide pour toutes les afficher.</p>
+        </div>
+        @error('films_visible')<div class="text-red-500">{{ $message }}</div>@enderror
+
     </fieldset>
 
     <div>

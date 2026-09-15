@@ -53,6 +53,8 @@ return [
     'podcasts' => 'Podcasts',
     'play' => 'Écouter',
     'pause' => 'Pause',
+    'see_all_films' => 'Voir toutes les vidéos',
+    'see_fewer_films' => 'Voir moins',
     'see_all_figures' => 'Voir toutes les statistiques',
     'see_fewer_figures' => 'Voir moins',
     'podcast_theory' => 'Podcast théorique',

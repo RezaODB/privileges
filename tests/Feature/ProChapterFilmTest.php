@@ -109,3 +109,44 @@ it('matches twins within their own parent, not across parents', function () {
 
     expect($englishChild->frenchTwin()?->id)->toBe($frenchChild->id);
 });
+
+it('holds the extra videos behind an arrow when the block sets a limit', function () {
+    $section = Section::factory()->create(['slug' => 'en-bref']);
+    $block = Chapter::factory()->for($section)->create([
+        'lang' => 'fr',
+        'title' => 'Coulisses',
+        'kind' => App\Enums\BlockKind::Films,
+        'open' => true,
+        'films_visible' => 3,
+        'body' => '',
+    ]);
+
+    Film::factory()->count(3)->for($section)->create(['chapter_id' => $block->id]);
+
+    $this->get(route('pro.show', $section))
+        ->assertOk()
+        ->assertDontSee(__('content.see_all_films'));
+
+    Film::factory()->for($section)->create(['chapter_id' => $block->id]);
+
+    $this->get(route('pro.show', $section))
+        ->assertOk()
+        ->assertSee(__('content.see_all_films'));
+});
+
+it('shows every video when the block sets no limit', function () {
+    $section = Section::factory()->create(['slug' => 'en-bref']);
+    $block = Chapter::factory()->for($section)->create([
+        'lang' => 'fr',
+        'kind' => App\Enums\BlockKind::Films,
+        'open' => true,
+        'films_visible' => null,
+        'body' => '',
+    ]);
+
+    Film::factory()->count(6)->for($section)->create(['chapter_id' => $block->id]);
+
+    $this->get(route('pro.show', $section))
+        ->assertOk()
+        ->assertDontSee(__('content.see_all_films'));
+});

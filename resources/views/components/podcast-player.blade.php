@@ -47,7 +47,7 @@
         ></button>
 
         <svg
-            viewBox="0 0 {{ count($bars) * 3 }} 40"
+            viewBox="0 0 {{ count($bars) * 2.5 }} 40"
             preserveAspectRatio="none"
             class="h-10 flex-1 cursor-pointer"
             role="presentation"
@@ -55,9 +55,9 @@
         >
             @foreach ($bars as $index => $height)
                 <rect
-                    x="{{ $index * 3 }}"
+                    x="{{ $index * 2.5 }}"
                     y="{{ (40 - $height * 0.4) / 2 }}"
-                    width="1.4"
+                    width="0.9"
                     height="{{ $height * 0.4 }}"
                     fill="currentColor"
                     x-bind:opacity="progress * {{ count($bars) }} > {{ $index }} ? 1 : 0.3"

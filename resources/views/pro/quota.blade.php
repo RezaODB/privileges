@@ -6,7 +6,7 @@
     <div class="overflow-x-auto mt-8">
         <table class="relative w-full">
             <thead>
-                <tr class="text-xl text-right uppercase font-medium border-b-2 border-zinc-800 sticky top-0 bg-paper">
+                <tr class="text-xl text-right uppercase font-medium border-b-2 border-zinc-800">
                     <td></td>
                     <td class="[writing-mode:vertical-lr] py-3">{{ __('content.always') }}</td>
                     <td class="[writing-mode:vertical-lr] py-3">{{ __('content.often') }}</td>

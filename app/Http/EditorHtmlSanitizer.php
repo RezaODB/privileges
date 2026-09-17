@@ -27,12 +27,19 @@ class EditorHtmlSanitizer
         'img',
         'figure',
         'figcaption',
+        'iframe',
     ];
 
     private const array ALLOWED_ATTRIBUTES = [
         'a' => ['href', 'title', 'target', 'rel'],
         'img' => ['src', 'alt', 'title', 'class'],
+        'iframe' => ['src', 'title', 'allow', 'allowfullscreen', 'referrerpolicy'],
     ];
+
+    /**
+     * The only players an iframe may load: a YouTube or Vimeo embed.
+     */
+    private const string EMBED_SOURCE = '#^https://(www\.youtube\.com/embed/|www\.youtube-nocookie\.com/embed/|player\.vimeo\.com/video/)#';
 
     public function sanitize(?string $html): string
     {
@@ -83,6 +90,12 @@ class EditorHtmlSanitizer
 
         if (! in_array($tagName, self::ALLOWED_TAGS, true)) {
             $this->unwrap($element);
+
+            return;
+        }
+
+        if ($tagName === 'iframe' && preg_match(self::EMBED_SOURCE, trim($element->getAttribute('src'))) !== 1) {
+            $element->parentNode?->removeChild($element);
 
             return;
         }

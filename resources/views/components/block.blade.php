@@ -24,7 +24,7 @@
 
         <div class="lg:col-span-2">
 
-            @if (trim(strip_tags($chapter->body)) !== '')
+            @if (trim(strip_tags($chapter->body, '<iframe><img>')) !== '')
                 <x-prose class="mb-8 columns-1">{!! $chapter->body !!}</x-prose>
             @endif
 

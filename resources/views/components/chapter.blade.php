@@ -22,7 +22,9 @@
             <div class="h-12 flex-1"></div>
         </div>
 
-        <x-prose class="pb-12">{!! $body !!}</x-prose>
+        @if (trim(strip_tags($body, '<iframe><img>')) !== '')
+            <x-prose class="pb-12">{!! $body !!}</x-prose>
+        @endif
 
         @if ($films && $films->isNotEmpty())
             <x-film-gallery :films="$films" class="pb-12" />
@@ -48,7 +50,9 @@
 
                 @foreach ($subChapters as $subChapter)
                     <div x-show="child === {{ $subChapter->id }}" x-collapse x-cloak>
-                        <x-prose class="pt-8">{!! $subChapter->body !!}</x-prose>
+                        @if (trim(strip_tags($subChapter->body, '<iframe><img>')) !== '')
+                            <x-prose class="pt-8">{!! $subChapter->body !!}</x-prose>
+                        @endif
                         @php($subChapterFilms = $subChapter->displayedFilms())
                         @if ($subChapterFilms->isNotEmpty())
                             <x-film-gallery :films="$subChapterFilms" />

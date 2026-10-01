@@ -65,12 +65,12 @@ class ChapterController extends Controller
             'films_visible' => ['sometimes', 'nullable', 'integer', 'min:1', 'max:5'],
             'open' => ['sometimes', 'required', 'boolean'],
             'parent_id' => ['nullable', 'integer', $this->parentRule($section)],
-            'body' => ['required', 'string'],
+            'body' => ['nullable', 'string'],
         ]);
 
         $section->chapters()->create([
             ...$data,
-            'body' => app(EditorHtmlSanitizer::class)->sanitize($data['body']),
+            'body' => app(EditorHtmlSanitizer::class)->sanitize($data['body'] ?? null),
             'order' => $section->chapters()->max('order') + 1,
         ]);
 
@@ -91,7 +91,7 @@ class ChapterController extends Controller
             'films_visible' => ['sometimes', 'nullable', 'integer', 'min:1', 'max:5'],
             'open' => ['sometimes', 'required', 'boolean'],
             'parent_id' => ['sometimes', 'nullable', 'integer', $this->parentRule($chapter->section, $chapter)],
-            'body' => ['sometimes', 'required', 'string'],
+            'body' => ['sometimes', 'nullable', 'string'],
             'order' => ['sometimes', 'required', 'integer'],
         ]);
 

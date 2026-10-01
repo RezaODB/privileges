@@ -26,13 +26,15 @@
         @include('pro.slides')
     @endif
 
-    @foreach ($chapters as $chapter)
-        @if ($chapter->open)
-            <x-block :chapter="$chapter" :slides="$slides" :podcasts="$podcasts" />
-        @else
-            <x-chapter :title="$chapter->title" :body="$chapter->body" :number="$chapter->number" :summary="$chapter->summary" :children="$chapter->children" :films="$chapter->displayedFilms()" />
-        @endif
-    @endforeach
+    <div>
+        @foreach ($chapters as $chapter)
+            @if ($chapter->open)
+                <x-block :chapter="$chapter" :slides="$slides" :podcasts="$podcasts" />
+            @else
+                <x-chapter :title="$chapter->title" :body="$chapter->body" :number="$chapter->number" :summary="$chapter->summary" :children="$chapter->children" :films="$chapter->displayedFilms()" />
+            @endif
+        @endforeach
+    </div>
 
     @if ($section->shows_podcasts && $podcasts->isNotEmpty() && ! in_array('podcasts', $claimed, true))
         @include('pro.podcasts')

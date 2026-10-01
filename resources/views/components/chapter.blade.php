@@ -33,7 +33,7 @@
         @if ($subChapters->isNotEmpty())
             <div x-data="{ child: null }" class="pb-12">
 
-                <div class="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-zinc-800 border-t-2 border-zinc-800 pt-6">
+                <div class="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-zinc-800">
                     @foreach ($subChapters as $subChapter)
                         <button type="button" class="group flex-1 flex flex-col items-start text-left py-4 sm:py-0 sm:px-6 sm:first:pl-0 sm:last:pr-0" x-on:click="child = child === {{ $subChapter->id }} ? null : {{ $subChapter->id }}">
                             @if ($subChapter->number)

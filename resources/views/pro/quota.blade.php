@@ -1,7 +1,6 @@
 <section class="px-2 sm:px-8 mt-16">
 
     <h2 class="text-3xl font-serif uppercase">{{ __('content.form') }}</h2>
-    <p class="font-mono max-w-2xl mt-4">{{ __('content.pro_quota_note') }}</p>
 
     <div class="overflow-x-auto mt-8">
         <table class="relative w-full">

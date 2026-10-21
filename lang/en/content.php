@@ -63,6 +63,5 @@ return [
     'podcast_theory' => 'Theoretical podcast',
     'podcast_practice' => 'Practical podcast',
 
-    'pro_quota_note' => 'This is the questionnaire handed to the participants of the study, reproduced here as is. It cannot be filled in from this page.',
 
 ];

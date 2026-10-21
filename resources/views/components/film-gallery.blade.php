@@ -26,6 +26,9 @@
                     @else
                         <video src="{{ $film->url() }}" preload="metadata" muted playsinline class="relative w-full h-full object-cover"></video>
                     @endif
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <span class="flex items-center justify-center w-12 h-12 pl-1 rounded-full border-2 border-zinc-800 bg-white/80 text-zinc-800 text-lg leading-none transition group-hover:bg-white">&#9654;&#xFE0E;</span>
+                    </div>
                 </div>
                 @if ($film->localizedTitle())
                     <div class="font-mono text-sm mt-2 group-hover:underline">{{ $film->localizedTitle() }}</div>

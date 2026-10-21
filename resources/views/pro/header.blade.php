@@ -15,7 +15,7 @@
             @endif
 
             @if ($section->localizedIntro())
-                <p class="font-serif mt-4 max-w-md whitespace-pre-line">{{ $section->localizedIntro() }}</p>
+                <p class="font-serif text-sm mt-4 max-w-md whitespace-pre-line">{{ $section->localizedIntro() }}</p>
             @endif
 
         </div>

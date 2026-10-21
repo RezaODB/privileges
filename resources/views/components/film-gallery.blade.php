@@ -27,7 +27,7 @@
                         <video src="{{ $film->url() }}" preload="metadata" muted playsinline class="relative w-full h-full object-cover"></video>
                     @endif
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <span class="flex items-center justify-center w-12 h-12 pl-1 rounded-full border-2 border-zinc-800 bg-white/80 text-zinc-800 text-lg leading-none transition group-hover:bg-white">&#9654;&#xFE0E;</span>
+                        <svg viewBox="0 0 12 14" class="w-4 h-5 fill-white opacity-45 transition-opacity duration-200 group-hover:opacity-90" aria-hidden="true"><path d="M0 0 12 7 0 14z"/></svg>
                     </div>
                 </div>
                 @if ($film->localizedTitle())

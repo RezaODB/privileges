@@ -22,14 +22,6 @@
             <div class="h-12 flex-1"></div>
         </div>
 
-        @if (trim(strip_tags($body, '<iframe><img>')) !== '')
-            <x-prose class="pb-12">{!! $body !!}</x-prose>
-        @endif
-
-        @if ($films && $films->isNotEmpty())
-            <x-film-gallery :films="$films" class="pb-12" />
-        @endif
-
         @if ($subChapters->isNotEmpty())
             <div x-data="{ child: null }" class="pb-12">
 
@@ -39,7 +31,9 @@
                             @if ($subChapter->number)
                                 <div class="text-sm mb-1">{{ $subChapter->number }}</div>
                             @endif
-                            <div class="font-serif uppercase text-lg leading-tight group-hover:underline">{{ $subChapter->title }}</div>
+                            <div class="font-serif uppercase text-lg leading-tight">
+                                <mark class="px-0 bg-transparent bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-[background-size] duration-300" x-bind:class="child === {{ $subChapter->id }} && '!bg-[length:100%_100%]'">{{ $subChapter->title }}</mark>
+                            </div>
                             @if ($subChapter->summary)
                                 <div class="text-sm mt-2">{{ $subChapter->summary }}</div>
                             @endif
@@ -61,6 +55,14 @@
                 @endforeach
 
             </div>
+        @endif
+
+        @if (trim(strip_tags($body, '<iframe><img>')) !== '')
+            <x-prose class="pb-12">{!! $body !!}</x-prose>
+        @endif
+
+        @if ($films && $films->isNotEmpty())
+            <x-film-gallery :films="$films" class="pb-12" />
         @endif
 
     </div>

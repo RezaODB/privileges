@@ -29,20 +29,13 @@ function fakePdf(string $name = 'dossier.pdf', int $kilobytes = 40): UploadedFil
     return UploadedFile::fake()->create($name, $kilobytes, 'application/pdf');
 }
 
-it('offers only the documents of the language being read', function () {
+it('no longer lists the documents at the top of a tab', function () {
     Storage::fake('public');
     $section = Section::factory()->create(['slug' => 'en-bref', 'order' => 1]);
     Document::factory()->create(['label' => 'Dossier complet', 'order' => 1]);
-    Document::factory()->english()->create(['label' => 'Full dossier', 'order' => 1]);
 
     $this->get(route('pro.show', ['section' => $section, 'lang' => 'fr']))
         ->assertOk()
-        ->assertSee('Dossier complet')
-        ->assertDontSee('Full dossier');
-
-    $this->get(route('pro.show', ['section' => $section, 'lang' => 'en']))
-        ->assertOk()
-        ->assertSee('Full dossier')
         ->assertDontSee('Dossier complet');
 });
 

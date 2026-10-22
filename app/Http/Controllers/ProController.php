@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Document;
 use App\Models\Podcast;
 use App\Models\Quota;
 use App\Models\Section;
@@ -45,7 +44,6 @@ class ProController extends Controller
                 : collect(),
             'films' => $section->films()->onTheTab()->ordered()->get(),
             'podcasts' => Podcast::query()->forLocale(app()->getLocale())->ordered()->get(),
-            'documents' => Document::query()->forLocale(app()->getLocale())->ordered()->get(),
             'header' => 'includes.pro-header',
         ]);
     }

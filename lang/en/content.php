@@ -62,6 +62,8 @@ return [
     'see_fewer_figures' => 'See fewer',
     'podcast_theory' => 'Theoretical podcast',
     'podcast_practice' => 'Practical podcast',
-
+    'error_not_found' => 'This page does not exist.',
+    'error_server' => 'The site is having a problem. Please try again in a few minutes.',
+    'error_back_home' => 'Back to the home page',
 
 ];

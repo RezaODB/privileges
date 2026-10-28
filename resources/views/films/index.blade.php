@@ -17,7 +17,7 @@
                                     @if ($item->posterUrl())
                                         <img src="{{ $item->posterUrl() }}" alt="" class="w-full h-full object-cover">
                                     @else
-                                        <video src="{{ $item->url() }}" preload="metadata" muted class="w-full h-full object-cover"></video>
+                                        <video src="{{ $item->url() }}#t=0.001" preload="metadata" muted playsinline class="w-full h-full object-cover"></video>
                                     @endif
                                 </div>
                                 <div class="flex items-center gap-2">

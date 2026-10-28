@@ -24,7 +24,7 @@
                     @if ($film->posterUrl())
                         <img src="{{ $film->posterUrl() }}" alt="{{ $film->localizedTitle() }}" loading="lazy" class="relative w-full h-full object-cover">
                     @else
-                        <video src="{{ $film->url() }}" preload="metadata" muted playsinline class="relative w-full h-full object-cover"></video>
+                        <video src="{{ $film->url() }}#t=0.001" preload="metadata" muted playsinline class="relative w-full h-full object-cover"></video>
                     @endif
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <svg viewBox="0 0 12 14" class="w-4 h-5 fill-white opacity-45 transition-opacity duration-200 group-hover:opacity-90" aria-hidden="true"><path d="M0 0 12 7 0 14z"/></svg>
